@@ -82,13 +82,13 @@ public class TextInteraction : MonoBehaviour
         if (!isTypingDone)
         {
             foreach (char c in Input.inputString)
-                            {                    
-                                if (c == ansText[typed_str_index+1])
-                                {
-                                    typed_str_index += 1;
-                                    text.GetComponent<Text>().text = "<color=white>" + showText.Substring(0, typed_str_index + 1) + "</color>" + showText.Substring(typed_str_index + 1);
-                                }
-                            }
+            {                    
+                if (c == ansText[typed_str_index+1])
+                {
+                    typed_str_index += 1;
+                    text.GetComponent<Text>().text = "<color=white>" + showText.Substring(0, typed_str_index + 1) + "</color>" + showText.Substring(typed_str_index + 1);
+                }
+            }
         }
         else { text.GetComponent<Text>().text = "<color=white>" + showText.Substring(0, typed_str_index + 1) + "</color>" + showText.Substring(typed_str_index + 1);  }
     }
@@ -116,7 +116,7 @@ public class TextInteraction : MonoBehaviour
         return rand_str;
     }
 
-    string interfereTypingMethod1(string showText)  // ¹ê»Ú­n«öªº«öÁä¬O¤W­±¨º­Ó
+    string interfereTypingMethod1(string showText)  // ï¿½ï¿½Ú­nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         Dictionary<string, string> dict = new Dictionary<string, string>();
         dict.Add("q","1");

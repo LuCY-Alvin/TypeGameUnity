@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 0fb489fc1443fe943a7fa4285ea25add
+guid: ca9a9d0c57b5fe941ac9e5726c331f6d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -101,23 +100,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_hurt_0
+      name: Smear 01 Horizontal 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6553fb31d55e0634a8c7f0a503600f5f
-      internalID: -1778718983
+      spriteID: 3a0608781b072804f8d346f76b7e7043
+      internalID: 1705170315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_hurt_1
+      name: Smear 01 Horizontal 1_1
       rect:
         serializedVersion: 2
         x: 48
@@ -152,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdce26097abebc248b48c35e8144f98b
-      internalID: -1089535052
+      spriteID: 7d380e5c72943ab4f9b41f7307e1e2e4
+      internalID: -661883241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_hurt_2
+      name: Smear 01 Horizontal 1_2
       rect:
         serializedVersion: 2
         x: 96
@@ -173,8 +160,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fdfabb236a0dda47aec15e10c66e09c
-      internalID: 982355241
+      spriteID: 0c2f22ccedb9a5b4fae0cc5d485f80ca
+      internalID: 1225728529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smear 01 Horizontal 1_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5143ae031fe72a9469407dbec3d2abfe
+      internalID: 1103887810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smear 01 Horizontal 1_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2016c6aac63d7468881b74c1896d9a
+      internalID: 2073998824
       vertices: []
       indices: 
       edges: []
@@ -190,9 +219,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Woodcutter_hurt_2: 982355241
-      Woodcutter_hurt_0: -1778718983
-      Woodcutter_hurt_1: -1089535052
+      Smear 01 Horizontal 1_0: 1705170315
+      Smear 01 Horizontal 1_1: -661883241
+      Smear 01 Horizontal 1_3: 1103887810
+      Smear 01 Horizontal 1_4: 2073998824
+      Smear 01 Horizontal 1_2: 1225728529
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

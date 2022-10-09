@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 7c38a7c784e36554b8072645e242d4e8
+guid: b1f2faa319906d14db618a3325bef576
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -117,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_attack3_0
+      name: Woodcutter_jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35c210ad7bb36284fa2d114545b90cdb
-      internalID: 1031675703
+      spriteID: fc10135d21d4f3749a94a28259394660
+      internalID: -522292751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack3_1
+      name: Woodcutter_jump_1
       rect:
         serializedVersion: 2
         x: 48
@@ -152,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcfe5cf8bd8c9c44b82b5b9cf6a004a1
-      internalID: -1725942046
+      spriteID: 517dab396cf9289449381343b3f88945
+      internalID: -2095368504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack3_2
+      name: Woodcutter_jump_2
       rect:
         serializedVersion: 2
         x: 96
@@ -173,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d30c4a5350591a44ad0a07fb1082c5e
-      internalID: 237845335
+      spriteID: 64be8a9798d76d44cbac94f357bf2630
+      internalID: 1597788878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack3_3
+      name: Woodcutter_jump_3
       rect:
         serializedVersion: 2
         x: 144
@@ -194,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaa751941c49c8345aa8387f6fea11ac
-      internalID: 1975571020
+      spriteID: cd682cd7ca1abfa46b270f94183187bd
+      internalID: 1162227263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack3_4
+      name: Woodcutter_jump_4
       rect:
         serializedVersion: 2
         x: 192
@@ -215,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c188fb64d8c2304187d49bd9e5517fb
-      internalID: 216212509
+      spriteID: c954c011d635dac4695d16a5c2b79656
+      internalID: 440101747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack3_5
+      name: Woodcutter_jump_5
       rect:
         serializedVersion: 2
         x: 240
@@ -236,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62141c9fa59a146468d9e5badf90bb69
-      internalID: -1206476089
+      spriteID: 3747f54a22bb4c949b83cfb584897e3a
+      internalID: 1575836768
       vertices: []
       indices: 
       edges: []
@@ -253,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Woodcutter_attack3_4: 216212509
-      Woodcutter_attack3_1: -1725942046
-      Woodcutter_attack3_3: 1975571020
-      Woodcutter_attack3_0: 1031675703
-      Woodcutter_attack3_2: 237845335
-      Woodcutter_attack3_5: -1206476089
+      Woodcutter_jump_2: 1597788878
+      Woodcutter_jump_5: 1575836768
+      Woodcutter_jump_4: 440101747
+      Woodcutter_jump_0: -522292751
+      Woodcutter_jump_3: 1162227263
+      Woodcutter_jump_1: -2095368504
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: ff3ed825247c9e644b911ca7ae8c0653
+guid: 0680f552484b664468aaea5391467a78
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -101,23 +100,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_attack2_0
+      name: Firebolt SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,20 +112,20 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e624e41649961f49ad275f41729ccec
-      internalID: 372737893
+      spriteID: 9b36d989887ae144c999f7407907e403
+      internalID: 1225591174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_1
+      name: Firebolt SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 48
@@ -146,20 +133,20 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61970d35c63d8bb4c8ec43695af7d507
-      internalID: -993337045
+      spriteID: 89c6654f26ae65b4b86f08d84b0f2272
+      internalID: -584653071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_2
+      name: Firebolt SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 96
@@ -167,20 +154,20 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 144f3e3ee877d0a44bb3a6c95812d0fc
-      internalID: 2136804402
+      spriteID: 73a8728d424f4544294edf2b9dcdd4e7
+      internalID: 228581796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_3
+      name: Firebolt SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 144
@@ -188,41 +175,20 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b437739614f819c40bd9dc54d61ab3a7
-      internalID: -199447517
+      spriteID: cbe5aeb7ac7d6b344b14fe8105ddb633
+      internalID: -1359786590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02d38ec38c12c844b8108629bab172b8
-      internalID: -2047766324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woodcutter_attack2_5
+      name: Firebolt SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 240
@@ -230,14 +196,119 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d45965e459b3b7419430279f57b009d
-      internalID: 1328684367
+      spriteID: 4b7d0e2ccd9e82d4e94972134a4465ec
+      internalID: -386331414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Firebolt SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b3a64a4a3536d4b90be4bc23b7ba36
+      internalID: -817113274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Firebolt SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4ef5a11469e7c4da272ab57c2c33eb
+      internalID: -1376417333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Firebolt SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6daa708a73639834889c886a70e357a1
+      internalID: 1135254974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Firebolt SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727b7a31476e89e4ab1185d867272e6a
+      internalID: -1780981421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Firebolt SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cadc6f3a99c0d44cb861f4d7c34b98d
+      internalID: -1298403180
       vertices: []
       indices: 
       edges: []
@@ -253,12 +324,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Woodcutter_attack2_5: 1328684367
-      Woodcutter_attack2_0: 372737893
-      Woodcutter_attack2_1: -993337045
-      Woodcutter_attack2_3: -199447517
-      Woodcutter_attack2_2: 2136804402
-      Woodcutter_attack2_4: -2047766324
+      Firebolt SpriteSheet_1: -584653071
+      Firebolt SpriteSheet_6: -1376417333
+      Firebolt SpriteSheet_4: -386331414
+      Firebolt SpriteSheet_0: 1225591174
+      Firebolt SpriteSheet_2: 228581796
+      Firebolt SpriteSheet_5: -817113274
+      Firebolt SpriteSheet_3: -1359786590
+      Firebolt SpriteSheet_9: -1298403180
+      Firebolt SpriteSheet_7: 1135254974
+      Firebolt SpriteSheet_8: -1780981421
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

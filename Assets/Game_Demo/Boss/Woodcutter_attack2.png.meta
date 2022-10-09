@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 5ed69b0e45bd13340ad963691002e6d6
+guid: ff3ed825247c9e644b911ca7ae8c0653
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -117,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_craft_0
+      name: Woodcutter_attack2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0ac1fce11c18fb47ae8f51f76fb49c1
-      internalID: -1519133292
+      spriteID: 3e624e41649961f49ad275f41729ccec
+      internalID: 372737893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_craft_1
+      name: Woodcutter_attack2_1
       rect:
         serializedVersion: 2
         x: 48
@@ -152,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ad8db4effea02f4ab9d78dd873f411c
-      internalID: -2063586048
+      spriteID: 61970d35c63d8bb4c8ec43695af7d507
+      internalID: -993337045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_craft_2
+      name: Woodcutter_attack2_2
       rect:
         serializedVersion: 2
         x: 96
@@ -173,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 217d3cd9fd594d041afa228d9612dee1
-      internalID: 278867001
+      spriteID: 144f3e3ee877d0a44bb3a6c95812d0fc
+      internalID: 2136804402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_craft_3
+      name: Woodcutter_attack2_3
       rect:
         serializedVersion: 2
         x: 144
@@ -194,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc3f9b999ece69845955f6c808041e67
-      internalID: -1271820143
+      spriteID: b437739614f819c40bd9dc54d61ab3a7
+      internalID: -199447517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_craft_4
+      name: Woodcutter_attack2_4
       rect:
         serializedVersion: 2
         x: 192
@@ -215,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 018f11e7d1dde36448e14a5e0dd6b691
-      internalID: -1099871015
+      spriteID: 02d38ec38c12c844b8108629bab172b8
+      internalID: -2047766324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_craft_5
+      name: Woodcutter_attack2_5
       rect:
         serializedVersion: 2
         x: 240
@@ -236,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2978c4c9acc927d42bafc610dacf0b5a
-      internalID: -286864953
+      spriteID: 5d45965e459b3b7419430279f57b009d
+      internalID: 1328684367
       vertices: []
       indices: 
       edges: []
@@ -253,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Woodcutter_craft_0: -1519133292
-      Woodcutter_craft_1: -2063586048
-      Woodcutter_craft_5: -286864953
-      Woodcutter_craft_3: -1271820143
-      Woodcutter_craft_4: -1099871015
-      Woodcutter_craft_2: 278867001
+      Woodcutter_attack2_5: 1328684367
+      Woodcutter_attack2_0: 372737893
+      Woodcutter_attack2_1: -993337045
+      Woodcutter_attack2_3: -199447517
+      Woodcutter_attack2_2: 2136804402
+      Woodcutter_attack2_4: -2047766324
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

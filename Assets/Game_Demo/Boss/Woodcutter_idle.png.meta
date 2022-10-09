@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: fc7bc753360c5ca479fdd64c3fa4fe82
+guid: cec34cf888575914db65f90a305c0a9a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -117,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_attack1_0
+      name: Woodcutter_idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05e967c000b835b4b9fa51cdd3f20f21
-      internalID: 1250591090
+      spriteID: c13ad563a22ccfe44bbc5841334db193
+      internalID: 1951256769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack1_1
+      name: Woodcutter_idle_1
       rect:
         serializedVersion: 2
         x: 48
@@ -152,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a834aa68326cba945988d799f805d917
-      internalID: 1463885783
+      spriteID: 0bb8ae8336554ed4286670531983d67c
+      internalID: -1875991328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack1_2
+      name: Woodcutter_idle_2
       rect:
         serializedVersion: 2
         x: 96
@@ -173,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b256caef76bbfd54d8cccb2be65db857
-      internalID: -778359665
+      spriteID: 90efa1ca161fb7947a15053ae64f4252
+      internalID: 2067920937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack1_3
+      name: Woodcutter_idle_3
       rect:
         serializedVersion: 2
         x: 144
@@ -194,50 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea3b810f0ef596a4891f0d73877936f2
-      internalID: -1823844714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woodcutter_attack1_4
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a2f6334a2775dc43a26dddb7e6b9fe5
-      internalID: 1641351223
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woodcutter_attack1_5
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8350bf4e3898a6e44acd0a2c0b4991fc
-      internalID: -921161649
+      spriteID: 7917afc6d70d4384cbd4bab701490877
+      internalID: -19496086
       vertices: []
       indices: 
       edges: []
@@ -253,12 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Woodcutter_attack1_2: -778359665
-      Woodcutter_attack1_5: -921161649
-      Woodcutter_attack1_4: 1641351223
-      Woodcutter_attack1_0: 1250591090
-      Woodcutter_attack1_3: -1823844714
-      Woodcutter_attack1_1: 1463885783
+      Woodcutter_idle_3: -19496086
+      Woodcutter_idle_2: 2067920937
+      Woodcutter_idle_0: 1951256769
+      Woodcutter_idle_1: -1875991328
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

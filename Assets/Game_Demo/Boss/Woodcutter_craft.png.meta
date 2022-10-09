@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: b95b3f5b621fa2044992403def92d2d9
+guid: 5ed69b0e45bd13340ad963691002e6d6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -117,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_walk_0
+      name: Woodcutter_craft_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56afb90eaf6973c4682b44bc1721e34d
-      internalID: -1149294028
+      spriteID: d0ac1fce11c18fb47ae8f51f76fb49c1
+      internalID: -1519133292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_1
+      name: Woodcutter_craft_1
       rect:
         serializedVersion: 2
         x: 48
@@ -152,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 517d73caaaa7d9642b330a7690b36dd2
-      internalID: 565762016
+      spriteID: 9ad8db4effea02f4ab9d78dd873f411c
+      internalID: -2063586048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_2
+      name: Woodcutter_craft_2
       rect:
         serializedVersion: 2
         x: 96
@@ -173,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5115540bdabd6304187650e81b9e883b
-      internalID: 98385688
+      spriteID: 217d3cd9fd594d041afa228d9612dee1
+      internalID: 278867001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_3
+      name: Woodcutter_craft_3
       rect:
         serializedVersion: 2
         x: 144
@@ -194,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b50b1f41c6f9cdd4b83aed7058e8540c
-      internalID: -833644887
+      spriteID: dc3f9b999ece69845955f6c808041e67
+      internalID: -1271820143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_4
+      name: Woodcutter_craft_4
       rect:
         serializedVersion: 2
         x: 192
@@ -215,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24bdca0dfce96f3408db44a17a206c20
-      internalID: 232988026
+      spriteID: 018f11e7d1dde36448e14a5e0dd6b691
+      internalID: -1099871015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_walk_5
+      name: Woodcutter_craft_5
       rect:
         serializedVersion: 2
         x: 240
@@ -236,8 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82cae0a950244364fbbab5e4a94d112c
-      internalID: -1537845500
+      spriteID: 2978c4c9acc927d42bafc610dacf0b5a
+      internalID: -286864953
       vertices: []
       indices: 
       edges: []
@@ -253,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Woodcutter_walk_1: 565762016
-      Woodcutter_walk_2: 98385688
-      Woodcutter_walk_0: -1149294028
-      Woodcutter_walk_3: -833644887
-      Woodcutter_walk_4: 232988026
-      Woodcutter_walk_5: -1537845500
+      Woodcutter_craft_0: -1519133292
+      Woodcutter_craft_1: -2063586048
+      Woodcutter_craft_5: -286864953
+      Woodcutter_craft_3: -1271820143
+      Woodcutter_craft_4: -1099871015
+      Woodcutter_craft_2: 278867001
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

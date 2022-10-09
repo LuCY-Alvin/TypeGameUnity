@@ -7,25 +7,42 @@ public class CastController : MonoBehaviour
 {
     public GameObject castPanel;
     public GameObject textBox;
+    public Animator animator;
     
     private string input;
 
     void Start()
     {
-        input = "";        
+        input = "";
+        textBox.GetComponent<Text>().text = input;        
         castPanel.SetActive(false);
-
     }
 
     public void StartCast()
     {
         input = "";
+        textBox.GetComponent<Text>().text = input;
         castPanel.SetActive(true);
     }
 
     public void EndCast()
-    {
-        Debug.Log(input);
+    {        
+        input = input.TrimStart();
+        input = input.TrimEnd();
+
+    // Cast spell
+    // TODO: Spell system
+        if(input == "healing"){
+            Debug.Log("Cast: " + input);
+        }
+        else if(input == "fire"){
+            Debug.Log("Cast: " + input);
+        }
+        else{
+            Debug.Log("no spell name ." + input + ".");
+        }
+
+    // Finish Cast
         castPanel.SetActive(false);
     }
 

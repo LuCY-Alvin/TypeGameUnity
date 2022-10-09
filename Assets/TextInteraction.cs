@@ -5,36 +5,45 @@ using System.Collections.Generic;
 public class TextInteraction : MonoBehaviour
 {
     public int typed_str_index = -1;
-    public string showText = null;
-    public string ansText = null;
-    public string isStartTyping = null;
-    public bool isTypingDone = false;
+    public string showText = null; // 顯示的文字
+    public string ansText = null; // 玩家應要打的文字
+    public string isStartTyping = null; // 按下空白鍵後可開始打字
+    public bool isTypingDone = false; // 玩家是否正確打玩了
+    public bool isEventTriggered = false; // 隨機開始被動輸入機制
     private Text text;
 
     // Start is called before the first frame update
     void Start()
     {
-        initialShowText("keyboard upward shift");
+        initialText("None"); // 生成showText和ansText
+        generateTextObject(); // 生成text物件
     }
 
     // Update is called once per frame
     void Update()
     {
-        isTypingDone = !(typed_str_index + 1 < ansText.Length);
-        if (Input.GetKey(KeyCode.Space)) { isStartTyping = "space pressed"; }
-        Debug.Log(isStartTyping);
-        if (text != null && isStartTyping=="space pressed")
+        //RectTransform rectTransform = text.GetComponent<RectTransform>();
+        //rectTransform.localPosition = transform.localPosition;
+        triggerEvent(); // 若還未開始被動輸入機制，隨機選擇是否觸發
+        if (isEventTriggered)
         {
-            showTextForTyping(isTypingDone);
-            activatePassiveMechanism(isTypingDone);
+            isTypingDone = !(typed_str_index + 1 < ansText.Length);
+            if (Input.GetKey(KeyCode.Space)) { 
+                isStartTyping = "space pressed";
+            }
+            if (text != null && isStartTyping=="space pressed")
+            {
+                showTextForTyping(isTypingDone);
+                activatePassiveMechanism(isTypingDone);
+            }
         }
     }
 
-    void initialShowText(string interfereMethod)
+
+
+    void initialText(string interfereMethod)
     {
         showText = generateRandomString();
-        Font arial;
-        arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
         switch (interfereMethod)
         {
             case "None":
@@ -44,8 +53,13 @@ public class TextInteraction : MonoBehaviour
                 ansText = interfereTypingMethod1(showText);
                 break;
         }
-        
+    }
 
+    void generateTextObject()
+    {
+        Font arial;
+        arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+        
         // Create Canvas GameObject.
         GameObject canvasGO = new GameObject();
         canvasGO.name = "Canvas";
@@ -65,7 +79,7 @@ public class TextInteraction : MonoBehaviour
         // Set Text component properties.
         text = textGO.GetComponent<Text>();
         text.font = arial;
-        text.text = showText;
+        // text.text = showText;
         text.color = Color.black;
         text.fontSize = 14;
         text.alignment = TextAnchor.MiddleCenter;
@@ -73,8 +87,18 @@ public class TextInteraction : MonoBehaviour
         // Provide Text position and size using RectTransform.
         RectTransform rectTransform;
         rectTransform = text.GetComponent<RectTransform>();
+        //rectTransform.localPosition = transform.localPosition;
         rectTransform.localPosition = new Vector3(-150, -50, 0);
         rectTransform.sizeDelta = new Vector2(160, 30);
+    }
+        
+    void triggerEvent()
+    {
+        if (!isEventTriggered && Random.Range(0f, 500f) <= 1f)
+        {
+            text.text = showText;
+            isEventTriggered = true;
+        }
     }
     
     void showTextForTyping(bool isTypingDone)
@@ -93,12 +117,17 @@ public class TextInteraction : MonoBehaviour
         else { text.GetComponent<Text>().text = "<color=white>" + showText.Substring(0, typed_str_index + 1) + "</color>" + showText.Substring(typed_str_index + 1);  }
     }
 
-    void activatePassiveMechanism(bool isTypingDone)
+    void activatePassiveMechanism(bool isTypingDone)  // 開啟取消怪物攻擊
     {
         if (Input.GetKeyDown(KeyCode.Return) && isTypingDone)
         {
             Destroy(text);
+            // 預備下一輪被動輸入機制
             isStartTyping = null;
+            isEventTriggered = false;
+            typed_str_index = -1;
+            initialText("None"); 
+            generateTextObject();
             Debug.Log("enter and destroy");
         }
         else { return; }
@@ -107,8 +136,8 @@ public class TextInteraction : MonoBehaviour
     string generateRandomString()
     {
         string rand_str = null;
-        const string glyphs = "abcdefghijklmnopqrstuvwxyz"; //add the characters you want
-        int charAmount = Random.Range(5, 10); //set those to the minimum and maximum length of your string
+        const string glyphs = "abcdefghijklmnopqrstuvwxyz"; 
+        int charAmount = Random.Range(5, 10);
         for (int i = 0; i < charAmount; i++)
         {
             rand_str += glyphs[Random.Range(0, glyphs.Length)];

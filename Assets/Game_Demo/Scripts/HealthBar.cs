@@ -55,7 +55,7 @@ public class HealthBar : MonoBehaviour
             print("Stop BT");
             btController.BulletTime(false);
         }
-        print(isbulletTime);
+        // print(isbulletTime);
         if (currentMp + unit  <= initMax && currentMp - (2 * unit) >= 0) {
             if (isbulletTime) {
                 currentMp -= (2 * unit);

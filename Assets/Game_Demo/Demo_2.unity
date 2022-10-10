@@ -7913,6 +7913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObject: {fileID: 889517499}
+  player: {fileID: 1621064059}
   typed_str_index: -1
   showText: 
   ansText: 

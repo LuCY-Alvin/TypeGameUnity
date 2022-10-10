@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
-	bool isBTtime = false;
+	public bool isBTtime = false;
 	// bool crouch = false;
 
 	/* combat related */

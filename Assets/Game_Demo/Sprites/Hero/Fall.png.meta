@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 8f6586adceab92f41bb0f9f6681af7eb
+guid: 87b7ca6a0aa2b924ebfae9b8f0eb0bb4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -63,7 +63,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -117,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hit_0
+      name: Fall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9f4ce83e019ee242b882774f533252e
-      internalID: 365204557
+      spriteID: f6f3a1ec686880c459f4086e2336dc2c
+      internalID: 1538908630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hit_1
+      name: Fall_1
       rect:
         serializedVersion: 2
         x: 231
@@ -152,50 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc2cc682557cf624f8c46a9425cf0f45
-      internalID: -1992910485
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hit_2
-      rect:
-        serializedVersion: 2
-        x: 462
-        y: 45
-        width: 231
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d6e3e8e61dd6cb4aa95a8ece6dbf6b8
-      internalID: 327051136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hit_3
-      rect:
-        serializedVersion: 2
-        x: 693
-        y: 45
-        width: 231
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d80c06ba72367643a475c27d4e49788
-      internalID: -1764359384
+      spriteID: e29e8f7ad2e6f3e40b041296b10bb8ee
+      internalID: 1797853016
       vertices: []
       indices: 
       edges: []
@@ -211,10 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hit_2: 327051136
-      Hit_1: -1992910485
-      Hit_0: 365204557
-      Hit_3: -1764359384
+      Fall_1: 1797853016
+      Fall_0: 1538908630
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

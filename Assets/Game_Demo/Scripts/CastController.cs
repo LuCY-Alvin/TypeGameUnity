@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class CastController : MonoBehaviour
 {
-    public GameObject castPanel;
+    public SpellController spellController;
+
+    public GameObject castPanel;    
     public GameObject textBox;
-    public Animator animator;
     
     private string input;
 
@@ -32,11 +33,13 @@ public class CastController : MonoBehaviour
 
     // Cast spell
     // TODO: Spell system
-        if(input == "healing"){
+        if(input == "heal"){
             Debug.Log("Cast: " + input);
+            spellController.Heal();
         }
-        else if(input == "fire"){
+        else if(input == "firebolt"){
             Debug.Log("Cast: " + input);
+            spellController.Firebolt();
         }
         else{
             Debug.Log("no spell name ." + input + ".");

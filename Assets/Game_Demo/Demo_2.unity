@@ -7660,7 +7660,7 @@ GameObject:
   m_Layer: 6
   m_Name: CombatPoint
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7672,7 +7672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681016601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.88, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0.66, y: -0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8328,6 +8328,7 @@ GameObject:
   - component: {fileID: 1621064069}
   - component: {fileID: 1621064068}
   - component: {fileID: 1621064064}
+  - component: {fileID: 1621064070}
   - component: {fileID: 1621064067}
   m_Layer: 6
   m_Name: Player
@@ -8443,7 +8444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621064059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.78, y: 3.33, z: 0}
+  m_LocalPosition: {x: 84.5, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8451,6 +8452,7 @@ Transform:
   - {fileID: 2103687149}
   - {fileID: 139846310}
   - {fileID: 576619876}
+  - {fileID: 1809967401}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8489,6 +8491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbc216cb5045d14f851bfd27da80a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatPoint: {fileID: 681016601}
   m_JumpForce: 1100
   m_CrouchSpeed: 0.4
   m_MovementSmoothing: 0.05
@@ -8530,9 +8533,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5809902, y: -2.8866243}
+  m_Offset: {x: -0.52, y: -2.8866243}
   serializedVersion: 2
-  m_Radius: 0.9511629
+  m_Radius: 1.159875
 --- !u!95 &1621064067
 Animator:
   serializedVersion: 4
@@ -8578,9 +8581,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa4872168e817544abb34b6b65000dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellController: {fileID: 1621064070}
   castPanel: {fileID: 234963636}
   textBox: {fileID: 224044688}
-  animator: {fileID: 1621064067}
+--- !u!114 &1621064070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621064059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70792b9eecb9314fa97d368e04a3f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 681016602}
+  healPoint: {fileID: 1809967401}
+  prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}
+  prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
+--- !u!1 &1809967400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809967401}
+  m_Layer: 6
+  m_Name: HealPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809967401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809967400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.91, y: 1.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1621064063}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853785053
 GameObject:
   m_ObjectHideFlags: 0
@@ -14020,7 +14070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103687148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.31, z: 0}
+  m_LocalPosition: {x: -0.59, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

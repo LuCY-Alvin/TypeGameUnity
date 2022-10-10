@@ -10,21 +10,21 @@ public class TimeController : MonoBehaviour
     private static bool isbulletTime = false;
 
     void Awake() {
-    
         defauleFixedDeltaTime = Time.fixedDeltaTime;
     }
 
     public void BulletTime(bool isTime){
         if(isTime){
             Time.timeScale = bulletTimeScale;
-            isbulletTime = true;
         }
         else{
             Time.timeScale = 1f;
-            isbulletTime = false;
         }
-        
         Time.fixedDeltaTime = defauleFixedDeltaTime * Time.timeScale;
+    }
+
+    public void SetIsbulletTime(bool _isbulletTime){
+        isbulletTime = _isbulletTime;
     }
     
     public static bool GetIsbulletTime() {

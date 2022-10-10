@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour {
 			if( Input.GetKeyDown(KeyCode.Space) ) // Bullet time and Start Cast
 			{	
 				isBTtime = true;
+				btController.SetIsbulletTime(isBTtime);
 				castController.StartCast();
 			}
 
@@ -63,6 +64,7 @@ public class PlayerMovement : MonoBehaviour {
 			if( Input.GetKeyDown(KeyCode.Return) ) // End Bullet time and Cast
 			{
 				isBTtime = false;
+				btController.SetIsbulletTime(isBTtime);
 				castController.EndCast();
 			}
 		}
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		btController.BulletTime(isBTtime);
-
+		
 		if(!isBTtime){
 		// Move our character
 			controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);

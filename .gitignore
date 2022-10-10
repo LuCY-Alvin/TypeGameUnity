@@ -5,6 +5,7 @@
 
 Library/
 Logs/
+Temp/
 
 # Node artifact files
 node_modules/

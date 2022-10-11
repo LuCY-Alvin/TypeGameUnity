@@ -9,11 +9,11 @@ public class TextInteraction : MonoBehaviour
     public GameObject boss;
     public GameObject player;
     public int typed_str_index = -1;
-    public string showText = null; // ��ܪ���r
-    public string ansText = null; // ���a���n������r
-    public bool isStartTyping = false; // ���U�kshift��i�}�l���r
-    public bool isTypingDone = false; // ���a�O�_���T�����F
-    public bool isEventTriggered = false; // �H���}�l�Q�ʿ�J����
+    public string showText = null; 
+    public string ansText = null; 
+    public bool isStartTyping = false; 
+    public bool isTypingDone = false; 
+    public bool isEventTriggered = false; 
     public bool isCancelUltimate = false;
     private Text text;
     protected Animator animator;
@@ -29,7 +29,7 @@ public class TextInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (isEventTriggered) // �Y�٥��}�l�Q�ʿ�J����A�H����ܬO�_Ĳ�o
+        if (isEventTriggered) 
         {
             readyToType();
             if (isStartTyping)
@@ -135,13 +135,12 @@ public class TextInteraction : MonoBehaviour
         else { text.GetComponent<Text>().text = "<color=red>" + showText.Substring(0, typed_str_index + 1) + "</color>" + showText.Substring(typed_str_index + 1);  }
     }
 
-    void activatePassiveMechanism(bool isTypingDone)  // �}�Ҩ����Ǫ�����
+    void activatePassiveMechanism(bool isTypingDone)  
     {
         if (Input.GetKeyDown(KeyCode.Return) && isTypingDone)
         {
             //Destroy(text);
             Destroy(GameObject.Find("Canvas_text"));
-            // �w�ƤU�@���Q�ʿ�J����
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
@@ -152,24 +151,18 @@ public class TextInteraction : MonoBehaviour
         else { return; }
     }
 
-    public void enterUltimateMode(bool isTimeUp)  // �ɶ���Ǫ���j��
+    public void enterUltimateMode(bool isTimeUp)
     {
         if (isTimeUp)
         {
 
             //Destroy(text);
             Destroy(GameObject.Find("Canvas_text"));
-            // �w�ƤU�@���Q�ʿ�J����
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
-<<<<<<< HEAD
-            m_timeController.BulletTime(false);
+            m_timeController.EndBulletTime();
             player.GetComponent<PlayerMovement>().enabled = true;
-=======
-            //m_timeController.BulletTime(false);
-            //m_timeController.EndBulletTime();
->>>>>>> e664796a6dc94fa5d72aee02948110c84c8c8804
         }
         else { return; }
     }
@@ -186,7 +179,7 @@ public class TextInteraction : MonoBehaviour
         return rand_str;
     }
 
-    string upwardShift(string showText)  // ��ڭn��������O�W������
+    string upwardShift(string showText)
     {
         Dictionary<string, string> dict = new Dictionary<string, string>();
         dict.Add("q","1");

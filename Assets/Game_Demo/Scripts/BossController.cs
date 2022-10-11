@@ -36,12 +36,14 @@ public class BossController : MonoBehaviour
             {
                 animator.SetBool("CancelUltimate", m_textInteraction.isCancelUltimate);
                 animator.SetBool("PassiveTypingMode", !m_textInteraction.isCancelUltimate);
+                //animator.SetTrigger("Ultimate");
             }
             else if (stateInfo.fullPathHash == Animator.StringToHash("Base Layer.boss-atk2"))
             {
                 m_textInteraction.enterUltimateMode(true);
                 animator.SetBool("CancelUltimate", false);
                 animator.SetBool("PassiveTypingMode", false);
+                //animator.SetTrigger("Ultimate", false);
             }
         }
     }

@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class TextInteraction : MonoBehaviour
 {
     TimeController m_timeController;
     public GameObject gameObject;
+    public GameObject player;
     public int typed_str_index = -1;
     public string showText = null; // ï¿½ï¿½Üªï¿½ï¿½ï¿½r
     public string ansText = null; // ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½r
@@ -24,9 +26,14 @@ public class TextInteraction : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+<<<<<<< HEAD
     {
         //triggerEvent(); // ï¿½Yï¿½Ù¥ï¿½ï¿½}ï¿½lï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½Aï¿½Hï¿½ï¿½ï¿½ï¿½Ü¬Oï¿½_Ä²ï¿½o
         if (isEventTriggered)
+=======
+    {        
+        if (isEventTriggered) // ­YÁÙ¥¼¶}©l³Q°Ê¿é¤J¾÷¨î¡AÀH¾÷¿ï¾Ü¬O§_Ä²µo
+>>>>>>> ec17084fa0693fb9a75a8a6125262e9738e46871
         {
             readyToType();
             if (isStartTyping)
@@ -63,15 +70,16 @@ public class TextInteraction : MonoBehaviour
         
         // Create Canvas GameObject.
         GameObject canvasGO = new GameObject();
-        canvasGO.name = "Canvas";
+        canvasGO.name = "Canvas_text";
         canvasGO.AddComponent<Canvas>();
         canvasGO.AddComponent<CanvasScaler>();
         canvasGO.AddComponent<GraphicRaycaster>();
+        canvasGO.GetComponent<CanvasScaler>().dynamicPixelsPerUnit = 500;
 
         // Get canvas from the GameObject.
         Canvas canvas;
         canvas = canvasGO.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.renderMode = RenderMode.WorldSpace;
 
         GameObject textGO = new GameObject();
         textGO.transform.parent = canvasGO.transform;
@@ -80,7 +88,6 @@ public class TextInteraction : MonoBehaviour
         // Set Text component properties.
         text = textGO.GetComponent<Text>();
         text.font = arial;
-        // text.text = showText;
         text.color = Color.white;
         text.fontSize = 20;
         text.alignment = TextAnchor.MiddleCenter;
@@ -88,15 +95,14 @@ public class TextInteraction : MonoBehaviour
         // Provide Text position and size using RectTransform.
         RectTransform rectTransform;
         rectTransform = text.GetComponent<RectTransform>();
-        //rectTransform.localPosition = transform.localPosition;
-        // Vector3 shift_vec = Vector3(0, 10, 0);
-        rectTransform.localPosition = gameObject.transform.position + new Vector3(150, -5, 0);
-        rectTransform.sizeDelta = new Vector2(160, 30);
+        rectTransform.position = canvasGO.transform.position + new Vector3(gameObject.transform.position.x - canvasGO.transform.position.x, 0, 0);
+        rectTransform.sizeDelta = new Vector2(100, 20);
     }
         
     void triggerEvent()
     {
-        if (!isEventTriggered && Random.Range(0f, 10f) <= 1f)
+        //&& (float)Math.Abs(player.transform.position.x-gameObject.transform.position.x)<= 5
+        if (!isEventTriggered && UnityEngine.Random.Range(0f, 10f) <= 1f)
         {
             initialText("None"); 
             generateTextObject();
@@ -134,8 +140,14 @@ public class TextInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) && isTypingDone)
         {
+<<<<<<< HEAD
             Destroy(text);
             // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
+=======
+            //Destroy(text);
+            Destroy(GameObject.Find("Canvas_text"));
+            // ¹w³Æ¤U¤@½ü³Q°Ê¿é¤J¾÷¨î
+>>>>>>> ec17084fa0693fb9a75a8a6125262e9738e46871
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
@@ -150,8 +162,14 @@ public class TextInteraction : MonoBehaviour
     {
         if (isTimeUp)
         {
+<<<<<<< HEAD
             Destroy(text);
             // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
+=======
+            //Destroy(text);
+            Destroy(GameObject.Find("Canvas_text"));
+            // ¹w³Æ¤U¤@½ü³Q°Ê¿é¤J¾÷¨î
+>>>>>>> ec17084fa0693fb9a75a8a6125262e9738e46871
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
@@ -165,10 +183,10 @@ public class TextInteraction : MonoBehaviour
     {
         string rand_str = null;
         const string glyphs = "abcdefghijklmnopqrstuvwxyz"; 
-        int charAmount = Random.Range(3, 5);
+        int charAmount = UnityEngine.Random.Range(3, 5);
         for (int i = 0; i < charAmount; i++)
         {
-            rand_str += glyphs[Random.Range(0, glyphs.Length)];
+            rand_str += glyphs[UnityEngine.Random.Range(0, glyphs.Length)];
         }
         return rand_str;
     }

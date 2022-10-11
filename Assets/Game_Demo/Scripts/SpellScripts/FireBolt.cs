@@ -19,7 +19,7 @@ public class FireBolt : MonoBehaviour
     {
         if(hitInfo.gameObject.layer != playerLayers){
             Debug.Log("hit: " + hitInfo.name);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

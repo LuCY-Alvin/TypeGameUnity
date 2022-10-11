@@ -7,11 +7,11 @@ public class TextInteraction : MonoBehaviour
     TimeController m_timeController;
     public GameObject gameObject;
     public int typed_str_index = -1;
-    public string showText = null; // Åã¥Üªº¤å¦r
-    public string ansText = null; // ª±®aÀ³­n¥´ªº¤å¦r
-    public bool isStartTyping = false; // «ö¤U¥kshift«á¥i¶}©l¥´¦r
-    public bool isTypingDone = false; // ª±®a¬O§_¥¿½T¥´ª±¤F
-    public bool isEventTriggered = false; // ÀH¾÷¶}©l³Q°Ê¿é¤J¾÷¨î
+    public string showText = null; // ï¿½ï¿½Üªï¿½ï¿½ï¿½r
+    public string ansText = null; // ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½r
+    public bool isStartTyping = false; // ï¿½ï¿½ï¿½Uï¿½kshiftï¿½ï¿½iï¿½}ï¿½lï¿½ï¿½ï¿½r
+    public bool isTypingDone = false; // ï¿½ï¿½ï¿½aï¿½Oï¿½_ï¿½ï¿½ï¿½Tï¿½ï¿½ï¿½ï¿½ï¿½F
+    public bool isEventTriggered = false; // ï¿½Hï¿½ï¿½ï¿½}ï¿½lï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
     public bool isCancelUltimate = false;
     private Text text;
 
@@ -25,14 +25,15 @@ public class TextInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //triggerEvent(); // ­YÁÙ¥¼¶}©l³Q°Ê¿é¤J¾÷¨î¡AÀH¾÷¿ï¾Ü¬O§_Ä²µo
+        //triggerEvent(); // ï¿½Yï¿½Ù¥ï¿½ï¿½}ï¿½lï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½Aï¿½Hï¿½ï¿½ï¿½ï¿½Ü¬Oï¿½_Ä²ï¿½o
         if (isEventTriggered)
         {
             readyToType();
             if (isStartTyping)
             {
                 isTypingDone = !(typed_str_index + 1 < ansText.Length);
-                m_timeController.BulletTime(true);
+                //m_timeController.BulletTime(true);
+                //m_timeController.StartBulletTime();
                 showTextForTyping(isTypingDone);
                 activatePassiveMechanism(isTypingDone);
             }
@@ -129,12 +130,12 @@ public class TextInteraction : MonoBehaviour
         else { text.GetComponent<Text>().text = "<color=red>" + showText.Substring(0, typed_str_index + 1) + "</color>" + showText.Substring(typed_str_index + 1);  }
     }
 
-    void activatePassiveMechanism(bool isTypingDone)  // ¶}±Ò¨ú®ø©Çª«§ðÀ»
+    void activatePassiveMechanism(bool isTypingDone)  // ï¿½}ï¿½Ò¨ï¿½ï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½ï¿½ï¿½
     {
         if (Input.GetKeyDown(KeyCode.Return) && isTypingDone)
         {
             Destroy(text);
-            // ¹w³Æ¤U¤@½ü³Q°Ê¿é¤J¾÷¨î
+            // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
@@ -145,16 +146,17 @@ public class TextInteraction : MonoBehaviour
         else { return; }
     }
 
-    public void enterUltimateMode(bool isTimeUp)  // ®É¶¡¨ì©Çª«©ñ¤j©Û
+    public void enterUltimateMode(bool isTimeUp)  // ï¿½É¶ï¿½ï¿½ï¿½Çªï¿½ï¿½ï¿½jï¿½ï¿½
     {
         if (isTimeUp)
         {
             Destroy(text);
-            // ¹w³Æ¤U¤@½ü³Q°Ê¿é¤J¾÷¨î
+            // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
-            m_timeController.BulletTime(false);
+            //m_timeController.BulletTime(false);
+            //m_timeController.EndBulletTime();
         }
         else { return; }
     }
@@ -171,7 +173,7 @@ public class TextInteraction : MonoBehaviour
         return rand_str;
     }
 
-    string upwardShift(string showText)  // ¹ê»Ú­n«öªº«öÁä¬O¤W­±¨º­Ó
+    string upwardShift(string showText)  // ï¿½ï¿½Ú­nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         Dictionary<string, string> dict = new Dictionary<string, string>();
         dict.Add("q","1");

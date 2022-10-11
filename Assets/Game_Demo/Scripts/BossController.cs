@@ -27,7 +27,8 @@ public class BossController : MonoBehaviour
 
             if (stateInfo.fullPathHash == Animator.StringToHash("Base Layer.boss-idle"))
             {
-                m_timeController.BulletTime(false);
+                // m_timeController.BulletTime(false);
+                // m_timeController.EndBulletTime();
                 animator.SetBool("CancelUltimate", !m_textInteraction.isEventTriggered);
                 animator.SetBool("PassiveTypingMode", m_textInteraction.isEventTriggered);  
             }

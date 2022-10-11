@@ -36,7 +36,6 @@ public class TextInteraction : MonoBehaviour
             {
                 player.GetComponent<PlayerMovement>().enabled = false;
                 isTypingDone = !(typed_str_index + 1 < ansText.Length);
-                //m_timeController.BulletTime(true);
                 //m_timeController.StartBulletTime();
                 showTextForTyping(isTypingDone);
                 activatePassiveMechanism(isTypingDone);
@@ -99,8 +98,8 @@ public class TextInteraction : MonoBehaviour
     
     void triggerEvent()
     {
-        //&& (float)Math.Abs(player.transform.position.x-gameObject.transform.position.x)<= 5
-        if (!isEventTriggered && UnityEngine.Random.Range(0f, 10f) <= 1f)
+        //
+        if (!isEventTriggered && UnityEngine.Random.Range(0f, 10f) <= 1f && (float)Math.Abs(player.transform.position.x-boss.transform.position.x)<= 5)
         {
             initialText("None"); 
             generateTextObject();

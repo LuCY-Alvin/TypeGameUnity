@@ -7094,6 +7094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btController: {fileID: 1621064068}
+  castController: {fileID: 1621064071}
   _hpMask: {fileID: 1034187906}
   _mpMask: {fileID: 1135512207}
   currentHp: 100
@@ -7276,7 +7277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0660ac7bdd31299478db07c755c086ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 889517499}
+  boss: {fileID: 889517499}
   player: {fileID: 1621064059}
   typed_str_index: -1
   showText: 
@@ -7297,7 +7298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d58395f3ee45b4ba5d0afd351c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 889517499}
+  boss: {fileID: 889517499}
 --- !u!1 &897199576
 GameObject:
   m_ObjectHideFlags: 0
@@ -8423,9 +8424,9 @@ GameObject:
   - component: {fileID: 1621064060}
   - component: {fileID: 1621064066}
   - component: {fileID: 1621064065}
-  - component: {fileID: 1621064069}
   - component: {fileID: 1621064068}
   - component: {fileID: 1621064064}
+  - component: {fileID: 1621064071}
   - component: {fileID: 1621064070}
   - component: {fileID: 1621064067}
   m_Layer: 6
@@ -8568,10 +8569,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1621064065}
   btController: {fileID: 1621064068}
-  castController: {fileID: 1621064069}
+  castController: {fileID: 1621064071}
   animator: {fileID: 1621064067}
   runSpeed: 50
-  isBTtime: 0
   combatPoint: {fileID: 681016602}
   combatRange: 1.5
   enemyLayers:
@@ -8667,21 +8667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTimeScale: 0.5
---- !u!114 &1621064069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621064059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa4872168e817544abb34b6b65000dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellController: {fileID: 1621064070}
-  castPanel: {fileID: 234963636}
-  textBox: {fileID: 224044688}
 --- !u!114 &1621064070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8698,6 +8683,21 @@ MonoBehaviour:
   healPoint: {fileID: 1809967401}
   prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}
   prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
+--- !u!114 &1621064071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621064059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa4872168e817544abb34b6b65000dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellController: {fileID: 1621064070}
+  castPanel: {fileID: 234963636}
+  textBox: {fileID: 224044688}
 --- !u!1 &1809967400
 GameObject:
   m_ObjectHideFlags: 0

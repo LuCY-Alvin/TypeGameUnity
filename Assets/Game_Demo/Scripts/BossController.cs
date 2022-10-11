@@ -6,15 +6,15 @@ public class BossController : MonoBehaviour
 {
     TextInteraction m_textInteraction;
     TimeController m_timeController;
-    public GameObject gameObject;
+    public GameObject boss;
     protected Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        m_textInteraction = gameObject.GetComponent<TextInteraction>();
-        m_timeController = gameObject.GetComponent<TimeController>();
+        m_textInteraction = boss.GetComponent<TextInteraction>();
+        m_timeController = boss.GetComponent<TimeController>();
     }
 
     // Update is called once per frame
@@ -27,7 +27,8 @@ public class BossController : MonoBehaviour
 
             if (stateInfo.fullPathHash == Animator.StringToHash("Base Layer.boss-idle"))
             {
-                m_timeController.BulletTime(false);
+                // m_timeController.BulletTime(false);
+                // m_timeController.EndBulletTime();
                 animator.SetBool("CancelUltimate", !m_textInteraction.isEventTriggered);
                 animator.SetBool("PassiveTypingMode", m_textInteraction.isEventTriggered);  
             }
@@ -35,14 +36,12 @@ public class BossController : MonoBehaviour
             {
                 animator.SetBool("CancelUltimate", m_textInteraction.isCancelUltimate);
                 animator.SetBool("PassiveTypingMode", !m_textInteraction.isCancelUltimate);
-                //animator.SetTrigger("Ultimate");
             }
             else if (stateInfo.fullPathHash == Animator.StringToHash("Base Layer.boss-atk2"))
             {
                 m_textInteraction.enterUltimateMode(true);
                 animator.SetBool("CancelUltimate", false);
                 animator.SetBool("PassiveTypingMode", false);
-                //animator.SetTrigger("Ultimate", false);
             }
         }
     }

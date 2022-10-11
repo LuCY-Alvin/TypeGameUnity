@@ -7,6 +7,7 @@ using TMPro;
 public class HealthBar : MonoBehaviour
 {   
     public TimeController btController;
+    public CastController castController;
     public RectMask2D _hpMask;
     public RectMask2D _mpMask;
 
@@ -49,11 +50,13 @@ public class HealthBar : MonoBehaviour
     }
 
     void ManaHandler() {
-        var isbulletTime = TimeController.GetIsbulletTime();
+        var isbulletTime = TimeController.GetIsBulletTime();
         var unit = 10;
         if (currentMp < 50) {
             print("Stop BT");
-            btController.BulletTime(false);
+            btController.EndBulletTime();
+            castController.EndCast();
+            //btController.BulletTime(false);
         }
         // print(isbulletTime);
         if (currentMp + unit  <= initMax && currentMp - (2 * unit) >= 0) {

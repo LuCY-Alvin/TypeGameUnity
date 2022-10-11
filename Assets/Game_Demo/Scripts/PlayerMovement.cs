@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
-	public bool isBTtime = false;
 	// bool crouch = false;
 
 	/* combat related */
@@ -20,18 +19,18 @@ public class PlayerMovement : MonoBehaviour {
 	public float combatRange = 1.5f;
 	public LayerMask enemyLayers;
 	
+	
 	// Update is called once per frame
 	void Update () {
-
-		if( !isBTtime ){
+		
+		if( TimeController.GetIsBulletTime() == false){
 		// Movement
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 			if( Input.GetKeyDown(KeyCode.Space) ) // Bullet time and Start Cast
 			{	
-				isBTtime = true;
-				btController.SetIsbulletTime(isBTtime);
+				btController.StartBulletTime();
 				castController.StartCast();
 			}
 
@@ -63,8 +62,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			if( Input.GetKeyDown(KeyCode.Return) ) // End Bullet time and Cast
 			{
-				isBTtime = false;
-				btController.SetIsbulletTime(isBTtime);
+				btController.EndBulletTime();
 				castController.EndCast();
 			}
 		}
@@ -82,9 +80,10 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-		btController.BulletTime(isBTtime);
+		//btController.BulletTime(isBTtime);
+		//Debug.Log(TimeController.GetIsBulletTime());		
 		
-		if(!isBTtime){
+		if(TimeController.GetIsBulletTime() == false){
 		// Move our character
 			controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
 			jump = false;

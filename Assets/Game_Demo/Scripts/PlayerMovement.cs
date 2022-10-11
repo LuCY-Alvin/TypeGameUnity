@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour {
 	public CastController castController;
 	public Animator animator;
 
+	public HealthBar _healthBar;
+
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
@@ -49,6 +51,8 @@ public class PlayerMovement : MonoBehaviour {
 				foreach(Collider2D enemy in hitEnemies){
 				// TODO: hit reaction 
 					Debug.Log("hit " + enemy.name);
+					var currentMp = _healthBar.GetCurrentMp();
+            		_healthBar.SetValue(currentMp + 6, "mp");
 				}
 			}
 		}

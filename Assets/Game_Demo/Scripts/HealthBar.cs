@@ -19,8 +19,7 @@ public class HealthBar : MonoBehaviour
     public int initMax = 200;
     // Start is called before the first frame update
     void Start()
-    {
-    	// hpText.text = '123';     
+    {    
         // x = left, z = right
         // _maxRightMask = _barRect.rect.width - _mask.padding.x - _mask.padding.z;
         // _hpIndicator.SetText($"{_health.Hp}/{_health.MaxHp}");
@@ -28,7 +27,15 @@ public class HealthBar : MonoBehaviour
         SetValue(currentHp, "hp");
         SetValue(currentMp, "mp");
 
-        InvokeRepeating ("ManaHandler", 1, 1); 
+        InvokeRepeating ("ManaHandler", 0.5f, 0.5f); 
+    }
+
+    public int GetCurrentHp() {
+        return currentHp;
+    }
+
+    public int GetCurrentMp() {
+        return currentMp;
     }
 
     public void SetValue(int newValue, string type)
@@ -40,10 +47,12 @@ public class HealthBar : MonoBehaviour
             var padding =  _hpMask.padding;
             padding.z = initMax - newValue;
             _hpMask.padding = padding;
+            currentHp = newValue;
         } else {
             var padding =  _mpMask.padding;
             padding.z = initMax - newValue;
             _mpMask.padding = padding;
+            currentMp = newValue;
         }
     	
     	//_hpIndicator.SetText($"{newValue}/{_health.MaxHp}");
@@ -51,19 +60,26 @@ public class HealthBar : MonoBehaviour
 
     void ManaHandler() {
         var isbulletTime = TimeController.GetIsBulletTime();
-        var unit = 10;
-        if (currentMp < 50) {
+
+        var unit = 3;
+        if (currentMp <= 0) {
             print("Stop BT");
             btController.EndBulletTime();
             castController.EndCast();
             //btController.BulletTime(false);
         }
         // print(isbulletTime);
-        if (currentMp + unit  <= initMax && currentMp - (2 * unit) >= 0) {
+        if (currentMp <= initMax && currentMp >= 0) {
             if (isbulletTime) {
-                currentMp -= (2 * unit);
+                currentMp -= (3 * unit);
+                if (currentMp <= 0) {
+                    currentMp = 0;
+                }
             } else {
                 currentMp += unit;
+                if (currentMp >= initMax) {
+                    currentMp = initMax;
+                }
             }
 
             SetValue(currentMp, "mp");

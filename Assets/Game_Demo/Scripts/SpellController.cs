@@ -9,12 +9,29 @@ public class SpellController : MonoBehaviour
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
 
+    public HealthBar _healthBar;
+
     public void Heal(){
-        Instantiate(prefabHeal, healPoint.position, healPoint.rotation);
+        var cost = 40;
+        var currentMp = _healthBar.GetCurrentMp();
+
+        if (cost < currentMp) {
+            Instantiate(prefabHeal, healPoint.position, healPoint.rotation);
+            var currentHp = _healthBar.GetCurrentHp();
+            
+            _healthBar.SetValue(currentHp + 30, "hp");
+            _healthBar.SetValue(currentMp - cost, "mp");
+        }
     }
 
     public void Firebolt(){
-        Instantiate(prefabFirebolt, firePoint.position, firePoint.rotation);
+        var cost = 60;
+        var currentMp = _healthBar.GetCurrentMp();
+
+        if (cost < currentMp) {
+            Instantiate(prefabFirebolt, firePoint.position, firePoint.rotation);
+            _healthBar.SetValue(currentMp - cost, "mp");
+        }
     }
 
 

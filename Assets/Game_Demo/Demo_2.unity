@@ -8683,6 +8683,8 @@ MonoBehaviour:
   healPoint: {fileID: 1809967401}
   prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}
   prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
+  _healthBar: {fileID: 836390122}
+  _castController: {fileID: 1621064071}
 --- !u!114 &1621064071
 MonoBehaviour:
   m_ObjectHideFlags: 0

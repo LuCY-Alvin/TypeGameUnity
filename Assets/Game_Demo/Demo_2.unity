@@ -7286,6 +7286,9 @@ MonoBehaviour:
   isTypingDone: 0
   isEventTriggered: 0
   isCancelUltimate: 0
+  SmearPosition: {fileID: 8223329850036902814, guid: deceb292fa10f1f40b43e51d4ae9f9fc, type: 3}
+  bossPosition: {fileID: 889517501}
+  prefabSmear: {fileID: 6438883624522521149, guid: deceb292fa10f1f40b43e51d4ae9f9fc, type: 3}
 --- !u!114 &889517507
 MonoBehaviour:
   m_ObjectHideFlags: 0

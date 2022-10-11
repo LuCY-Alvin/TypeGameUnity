@@ -18,6 +18,10 @@ public class TextInteraction : MonoBehaviour
     private Text text;
     protected Animator animator;
 
+    public Transform SmearPosition;
+    public Transform bossPosition;
+    public GameObject prefabSmear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -154,7 +158,7 @@ public class TextInteraction : MonoBehaviour
     {
         if (isTimeUp)
         {
-
+            Instantiate(prefabSmear, bossPosition.position, SmearPosition.rotation);
             //Destroy(text);
             Destroy(GameObject.Find("Canvas_text"));
             isStartTyping = false;

@@ -28,14 +28,8 @@ public class TextInteraction : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-<<<<<<< HEAD
-    {
-        //triggerEvent(); // ï¿½Yï¿½Ù¥ï¿½ï¿½}ï¿½lï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½Aï¿½Hï¿½ï¿½ï¿½ï¿½Ü¬Oï¿½_Ä²ï¿½o
-        if (isEventTriggered)
-=======
     {        
-        if (isEventTriggered) // ­YÁÙ¥¼¶}©l³Q°Ê¿é¤J¾÷¨î¡AÀH¾÷¿ï¾Ü¬O§_Ä²µo
->>>>>>> ec17084fa0693fb9a75a8a6125262e9738e46871
+        if (isEventTriggered) // ï¿½Yï¿½Ù¥ï¿½ï¿½}ï¿½lï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½Aï¿½Hï¿½ï¿½ï¿½ï¿½Ü¬Oï¿½_Ä²ï¿½o
         {
             readyToType();
             if (isStartTyping)
@@ -145,14 +139,9 @@ public class TextInteraction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) && isTypingDone)
         {
-<<<<<<< HEAD
-            Destroy(text);
-            // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
-=======
             //Destroy(text);
             Destroy(GameObject.Find("Canvas_text"));
-            // ¹w³Æ¤U¤@½ü³Q°Ê¿é¤J¾÷¨î
->>>>>>> ec17084fa0693fb9a75a8a6125262e9738e46871
+            // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;
@@ -167,14 +156,10 @@ public class TextInteraction : MonoBehaviour
     {
         if (isTimeUp)
         {
-<<<<<<< HEAD
-            Destroy(text);
-            // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
-=======
+
             //Destroy(text);
             Destroy(GameObject.Find("Canvas_text"));
-            // ¹w³Æ¤U¤@½ü³Q°Ê¿é¤J¾÷¨î
->>>>>>> ec17084fa0693fb9a75a8a6125262e9738e46871
+            // ï¿½wï¿½Æ¤Uï¿½@ï¿½ï¿½ï¿½Qï¿½Ê¿ï¿½Jï¿½ï¿½ï¿½ï¿½
             isStartTyping = false;
             isEventTriggered = false;
             typed_str_index = -1;

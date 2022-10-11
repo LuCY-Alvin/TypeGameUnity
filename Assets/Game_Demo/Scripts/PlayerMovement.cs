@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		//btController.BulletTime(isBTtime);
-		Debug.Log(TimeController.GetIsBulletTime());		
+		//Debug.Log(TimeController.GetIsBulletTime());		
 		
 		if(TimeController.GetIsBulletTime() == false){
 		// Move our character

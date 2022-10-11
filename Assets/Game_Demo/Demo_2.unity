@@ -7214,7 +7214,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6117363, y: 1.4592857}
+  m_Size: {x: 1, y: 1.4592857}
   m_EdgeRadius: 0
 --- !u!95 &889517503
 Animator:
@@ -7299,6 +7299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 889517499}
+  _healthBar: {fileID: 836390122}
 --- !u!1 &897199576
 GameObject:
   m_ObjectHideFlags: 0
@@ -8431,7 +8432,7 @@ GameObject:
   - component: {fileID: 1621064067}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8571,6 +8572,7 @@ MonoBehaviour:
   btController: {fileID: 1621064068}
   castController: {fileID: 1621064071}
   animator: {fileID: 1621064067}
+  _healthBar: {fileID: 836390122}
   runSpeed: 50
   combatPoint: {fileID: 681016602}
   combatRange: 1.5
@@ -8684,7 +8686,6 @@ MonoBehaviour:
   prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}
   prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
   _healthBar: {fileID: 836390122}
-  _castController: {fileID: 1621064071}
 --- !u!114 &1621064071
 MonoBehaviour:
   m_ObjectHideFlags: 0

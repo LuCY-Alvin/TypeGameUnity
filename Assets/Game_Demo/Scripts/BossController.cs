@@ -6,9 +6,12 @@ public class BossController : MonoBehaviour
 {
     TextInteraction m_textInteraction;
     TimeController m_timeController;
+    
     public GameObject boss;
-    protected Animator animator;
+    public HealthBar _healthBar;
 
+    protected Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,15 @@ public class BossController : MonoBehaviour
                 animator.SetBool("CancelUltimate", false);
                 animator.SetBool("PassiveTypingMode", false);
             }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {	
+    	print("tag, " + collision.gameObject.tag);
+        if (collision.gameObject.tag == "Player") {
+          var currentHp = _healthBar.GetCurrentHp();
+            _healthBar.SetValue(currentHp - 10, "hp");
         }
     }
 }

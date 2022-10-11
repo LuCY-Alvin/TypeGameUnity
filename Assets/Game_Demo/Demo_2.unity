@@ -7912,7 +7912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0660ac7bdd31299478db07c755c086ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 889517499}
+  boss: {fileID: 889517499}
   player: {fileID: 1621064059}
   typed_str_index: -1
   showText: 
@@ -7933,7 +7933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d58395f3ee45b4ba5d0afd351c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 889517499}
+  boss: {fileID: 889517499}
 --- !u!1 &897199576
 GameObject:
   m_ObjectHideFlags: 0

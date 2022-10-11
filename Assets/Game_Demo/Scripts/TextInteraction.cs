@@ -6,7 +6,7 @@ using System;
 public class TextInteraction : MonoBehaviour
 {
     TimeController m_timeController;
-    public GameObject gameObject;
+    public GameObject boss;
     public GameObject player;
     public int typed_str_index = -1;
     public string showText = null; // 顯示的文字
@@ -16,11 +16,13 @@ public class TextInteraction : MonoBehaviour
     public bool isEventTriggered = false; // 隨機開始被動輸入機制
     public bool isCancelUltimate = false;
     private Text text;
+    protected Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_timeController = gameObject.GetComponent<TimeController>();
+        m_timeController = boss.GetComponent<TimeController>();
+        animator = GetComponent<Animator>();
         InvokeRepeating("triggerEvent", 1f, 1f);
     }
 
@@ -32,6 +34,7 @@ public class TextInteraction : MonoBehaviour
             readyToType();
             if (isStartTyping)
             {
+                player.GetComponent<PlayerMovement>().enabled = false;
                 isTypingDone = !(typed_str_index + 1 < ansText.Length);
                 m_timeController.BulletTime(true);
                 showTextForTyping(isTypingDone);
@@ -88,10 +91,11 @@ public class TextInteraction : MonoBehaviour
         // Provide Text position and size using RectTransform.
         RectTransform rectTransform;
         rectTransform = text.GetComponent<RectTransform>();
-        rectTransform.position = canvasGO.transform.position + new Vector3(gameObject.transform.position.x - canvasGO.transform.position.x, 0, 0);
+        rectTransform.position = canvasGO.transform.position + new Vector3(boss.transform.position.x - canvasGO.transform.position.x, 0, 0);
         rectTransform.sizeDelta = new Vector2(100, 20);
     }
-        
+
+    
     void triggerEvent()
     {
         //&& (float)Math.Abs(player.transform.position.x-gameObject.transform.position.x)<= 5
@@ -102,6 +106,7 @@ public class TextInteraction : MonoBehaviour
             text.text = showText;
             isCancelUltimate = false;
             isEventTriggered = true;
+            animator.SetBool("Ultimate", true);
         }
     }
 
@@ -140,8 +145,8 @@ public class TextInteraction : MonoBehaviour
             isEventTriggered = false;
             typed_str_index = -1;
             isCancelUltimate = true;
-            //m_timeController.BulletTime(false);
-            Debug.Log("enter and destroy");
+            animator.SetBool("Ultimate", false);
+            player.GetComponent<PlayerMovement>().enabled = true;
         }
         else { return; }
     }
@@ -157,6 +162,7 @@ public class TextInteraction : MonoBehaviour
             isEventTriggered = false;
             typed_str_index = -1;
             m_timeController.BulletTime(false);
+            player.GetComponent<PlayerMovement>().enabled = true;
         }
         else { return; }
     }

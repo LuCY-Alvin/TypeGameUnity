@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,15 +32,17 @@ public class CastController : MonoBehaviour
         input = input.TrimStart();
         input = input.TrimEnd();
 
-    // Cast spell
-    // TODO: Spell system
-        if(input == "heal"){
+        // Cast spell
+        // TODO: Spell system
+        string[] textList = input.Split(' ');
+        print(textList);
+        if(Array.IndexOf(textList, "heal") >= 0){
             Debug.Log("Cast: " + input);
-            spellController.Heal();
+            spellController.Heal(textList);
         }
-        else if(input == "firebolt"){
+        else if(Array.IndexOf(textList, "firebolt") >= 0){
             Debug.Log("Cast: " + input);
-            spellController.Firebolt();
+            spellController.Firebolt(textList);
         }
         else{
             Debug.Log("no spell name ." + input + ".");

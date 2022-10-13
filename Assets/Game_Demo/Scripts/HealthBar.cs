@@ -17,13 +17,15 @@ public class HealthBar : MonoBehaviour
     public int currentHp = 100;
     public int currentMp = 100;
     public int initMax = 200;
+
+    public TMP_Text _hpText;
+    public TMP_Text _mpText;
     // Start is called before the first frame update
     void Start()
     {    
         // x = left, z = right
         // _maxRightMask = _barRect.rect.width - _mask.padding.x - _mask.padding.z;
-        // _hpIndicator.SetText($"{_health.Hp}/{_health.MaxHp}");
-        // _initRightMask = _mask.padding.z;
+        
         SetValue(currentHp, "hp");
         SetValue(currentMp, "mp");
 
@@ -40,19 +42,20 @@ public class HealthBar : MonoBehaviour
 
     public void SetValue(int newValue, string type)
     {
-    	// var targetW = newValue * _maxRightMask / _health.MaxHp;
-    	// var newRightMask = _maxRightMask + _initRightMask - targetW;
-        
         if (type == "hp") {
             var padding =  _hpMask.padding;
             padding.z = initMax - newValue;
             _hpMask.padding = padding;
             currentHp = newValue;
+
+            _hpText.text = $"{currentHp} / {initMax}";
         } else {
             var padding =  _mpMask.padding;
             padding.z = initMax - newValue;
             _mpMask.padding = padding;
             currentMp = newValue;
+
+            _mpText.text = $"{currentMp} / {initMax}";
         }
     	
     	//_hpIndicator.SetText($"{newValue}/{_health.MaxHp}");

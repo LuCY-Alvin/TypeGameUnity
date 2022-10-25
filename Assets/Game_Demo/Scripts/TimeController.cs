@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)] float bulletTimeScale = 0.1f;
+    private static bool isBulletTime;
+    private const float defaultBTScale = 0.05f;
+    private float defauleFixedDeltaTime;
 
-    float defauleFixedDeltaTime;
-    private static bool isBulletTime = false;
+    // [SerializeField, Range(0f, 1f)] float bulletTimeScale = 0.1f;
 
     void Awake() {
         isBulletTime = false;
         defauleFixedDeltaTime = Time.fixedDeltaTime;
     }
 
-    public void StartBulletTime(){
+    public void StartBulletTime(float btScale = defaultBTScale){
         isBulletTime = true;
-        Time.timeScale = bulletTimeScale;
+        Time.timeScale = btScale;
         Time.fixedDeltaTime = defauleFixedDeltaTime * Time.timeScale;
     }
 

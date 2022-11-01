@@ -7405,7 +7405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02da0260476235b478adc556d2723788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTimeScale: 0.1
 --- !u!114 &889517506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9147,7 +9146,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   m_GroundCheck: {fileID: 139846310}
   m_CeilingCheck: {fileID: 2103687149}
   m_CrouchDisableCollider: {fileID: 1621064060}
@@ -9217,7 +9216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02da0260476235b478adc556d2723788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTimeScale: 0.5
 --- !u!114 &1621064070
 MonoBehaviour:
   m_ObjectHideFlags: 0

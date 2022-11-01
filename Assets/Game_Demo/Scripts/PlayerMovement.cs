@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	public HealthBar _healthBar;
 
+// Status
+	[SerializeField] private int atkDamage;
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
@@ -53,6 +55,8 @@ public class PlayerMovement : MonoBehaviour {
 					Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
             		_healthBar.SetValue(currentMp + 6, "mp");
+
+					enemy.GetComponent<EnemyStatus>().TakeDamage(atkDamage);
 				}
 			}
 		}
@@ -109,5 +113,13 @@ public class PlayerMovement : MonoBehaviour {
 
 		Gizmos.DrawWireSphere(combatPoint.position, combatRange);
 	}
+
+	public void TakeDamage(int damage){
+		// TODO: hurt animation
+		Debug.Log("Player takes " + damage + " damage!\n");
+        _healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
+	}
+
+	
 
 }

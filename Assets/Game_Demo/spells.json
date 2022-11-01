@@ -1,0 +1,42 @@
+
+
+{
+    "spells": [
+        {
+            "name": "firebolt",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 20
+        },
+        {
+            "name": "heal",
+            "type": "active",
+            "effect": "heal",
+            "point": 20,
+            "cost": 20
+        },
+        {
+            "name": "multiple",
+            "type": "support",
+            "effect": "buff",
+            "point": 50,
+            "cost": 50
+        },
+        {
+            "name": "intensify",
+            "type": "support",
+            "effect": "buff",
+            "point": 50,
+            "cost": 50
+        },
+        {
+            "name": "super",
+            "type": "support",
+            "effect": "buff",
+            "point": 2,
+            "cost": 3
+        }
+    ]
+    
+}

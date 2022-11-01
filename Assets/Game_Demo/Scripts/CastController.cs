@@ -34,19 +34,21 @@ public class CastController : MonoBehaviour
 
         // Cast spell
         // TODO: Spell system
-        string[] textList = input.Split(' ');
-        print(textList);
-        if(Array.IndexOf(textList, "heal") >= 0){
-            Debug.Log("Cast: " + input);
-            spellController.Heal(textList);
-        }
-        else if(Array.IndexOf(textList, "firebolt") >= 0){
-            Debug.Log("Cast: " + input);
-            spellController.Firebolt(textList);
-        }
-        else{
-            Debug.Log("no spell name ." + input + ".");
-        }
+        string[] inputList = input.Split(' ');
+
+        spellController.Spell(inputList);
+
+        // if(Array.IndexOf(textList, "heal") >= 0){
+        //     Debug.Log("Cast: " + input);
+        //     spellController.Heal(textList);
+        // }
+        // else if(Array.IndexOf(textList, "firebolt") >= 0){
+        //     Debug.Log("Cast: " + input);
+        //     spellController.Firebolt(textList);
+        // }
+        // else{
+        //     Debug.Log("no spell name ." + input + ".");
+        // }
 
     // Finish Cast
         castPanel.SetActive(false);

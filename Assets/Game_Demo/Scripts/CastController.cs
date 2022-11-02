@@ -8,7 +8,7 @@ public class CastController : MonoBehaviour
 {
     public SpellController spellController;
 
-    public GameObject castPanel;    
+    public GameObject castPanel;
     public GameObject textBox;
     
     private string input;
@@ -37,18 +37,6 @@ public class CastController : MonoBehaviour
         string[] inputList = input.Split(' ');
 
         spellController.Spell(inputList);
-
-        // if(Array.IndexOf(textList, "heal") >= 0){
-        //     Debug.Log("Cast: " + input);
-        //     spellController.Heal(textList);
-        // }
-        // else if(Array.IndexOf(textList, "firebolt") >= 0){
-        //     Debug.Log("Cast: " + input);
-        //     spellController.Firebolt(textList);
-        // }
-        // else{
-        //     Debug.Log("no spell name ." + input + ".");
-        // }
 
     // Finish Cast
         castPanel.SetActive(false);

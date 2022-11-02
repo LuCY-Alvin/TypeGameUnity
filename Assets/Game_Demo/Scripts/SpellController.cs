@@ -60,10 +60,10 @@ public class SpellController : MonoBehaviour
             supportSpells.Add(theSupportSpell);
         }
 
-        SpellHandler(theSpell, supportSpells.ToArray());
+        StartCoroutine(SpellHandler(theSpell, supportSpells.ToArray()));
     }
 
-    public void SpellHandler(Spell theSpell, Spell[] supportSpells) {
+    IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
             // 血魔，當下修改用
             var currentMp = _healthBar.GetCurrentMp();
             var currentHp = _healthBar.GetCurrentHp();
@@ -71,7 +71,11 @@ public class SpellController : MonoBehaviour
             // Handle status
             int nPoint = 1;
             int nCost = 1;
-
+            foreach(var item in supportSpells)
+            {
+                Console.WriteLine(item.name.ToString());
+            }
+            // Super Spell 處理
             var superSupport = Array.Find(
                 supportSpells,
                 item => checkSpell(item, "super", "support")
@@ -82,10 +86,21 @@ public class SpellController : MonoBehaviour
                 nCost *= superSupport.cost;
             }
 
+            // Multi Spell 處理
+            var multipleSupport = Array.Find(
+                supportSpells,
+                item => checkSpell(item, "multi", "support")
+            );
+
+            if (multipleSupport != null) {
+                nCost *= multipleSupport.cost;
+            }
+
+            
             // 耗魔許可檢查
             if (theSpell.cost * nCost >= (currentMp - 3)) {
                 Debug.Log("Spell Fail!");
-                return;
+                yield return new WaitForSeconds(0.2f);
             }
 
             if (theSpell.effect == "heal") {
@@ -107,7 +122,22 @@ public class SpellController : MonoBehaviour
                 theTransform = healPoint;
             }
 
-            GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
+            // 施放區
+            int spellCount = 1;
+            if (multipleSupport != null) {
+                spellCount = 3;
+            }
+            
+            float waitTime = 0.2f;
+            for (int i = 0; i < spellCount; i++) {
+                GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
+
+                // 有 Super 時會放大
+                if (superSupport != null) {
+                    newObject.transform.localScale += new Vector3(1,1,0);
+                }
+                yield return new WaitForSeconds(waitTime);
+            }
             
     }
 
@@ -115,40 +145,4 @@ public class SpellController : MonoBehaviour
     public bool checkSpell(Spell item, string name, string type) {
         return item.name == name && item.type == type;
     }
-    
-    public void Firebolt(string[] list){
-        var cost = 60;
-        var currentMp = _healthBar.GetCurrentMp();
-
-        if (cost < currentMp) {
-       
-            foreach(var item in list)
-            {
-                print(item.ToString());
-            }
-            if (Array.IndexOf(list, "multi") >= 0) {
-                StartCoroutine(multiFirebolt(list));
-            } else {
-                GameObject newObject = Instantiate(prefabFirebolt, firePoint.position, firePoint.rotation) as GameObject;
-                if (Array.IndexOf(list, "super") >= 0) {
-                    newObject.transform.localScale += new Vector3(1,1,0);
-                }
-            }
-        }
-
-        _healthBar.SetValue(currentMp - cost, "mp");
-    }
-
-    IEnumerator multiFirebolt(string[] list) {
-        float waitTime = 0.2f;
-        for (int i = 0; i < 3; i++) {
-            GameObject newObject = Instantiate(prefabFirebolt, firePoint.position, firePoint.rotation) as GameObject;
-            if (Array.IndexOf(list, "super") >= 0) {
-                newObject.transform.localScale += new Vector3(1,1,0);
-                yield return new WaitForSeconds(waitTime);
-            }
-        }
-    }
-
-
 }

@@ -17,11 +17,11 @@
             "cost": 20
         },
         {
-            "name": "multiple",
+            "name": "multi",
             "type": "support",
             "effect": "buff",
-            "point": 50,
-            "cost": 50
+            "point": 1,
+            "cost": 1
         },
         {
             "name": "intensify",

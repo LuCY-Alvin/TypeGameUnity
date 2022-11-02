@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,6 +11,7 @@ public class HealthBar : MonoBehaviour
     public CastController castController;
     public RectMask2D _hpMask;
     public RectMask2D _mpMask;
+    public RectTransform _mpSpellMask;
 
     private float _maxRightMask;
     private float _initRightMask;
@@ -20,16 +22,14 @@ public class HealthBar : MonoBehaviour
 
     public TMP_Text _hpText;
     public TMP_Text _mpText;
+    public TMP_Text _mpSpellText;
     // Start is called before the first frame update
     void Start()
-    {    
-        // x = left, z = right
-        // _maxRightMask = _barRect.rect.width - _mask.padding.x - _mask.padding.z;
-        
+    {
         SetValue(currentHp, "hp");
         SetValue(currentMp, "mp");
 
-        InvokeRepeating ("ManaHandler", 0.5f, 0.5f); 
+        InvokeRepeating ("ManaHandler", 0.5f, 0.1f); 
     }
 
     public int GetCurrentHp() {
@@ -55,16 +55,20 @@ public class HealthBar : MonoBehaviour
             _mpMask.padding = padding;
             currentMp = newValue;
 
+            Vector3 spellMaskVector = _mpSpellMask.localScale;
+            spellMaskVector.x = (float)currentMp / 200;
+
+            _mpSpellMask.localScale = spellMaskVector;
+
+            _mpSpellText.text = $"{currentMp} / {initMax}";
             _mpText.text = $"{currentMp} / {initMax}";
         }
-    	
-    	//_hpIndicator.SetText($"{newValue}/{_health.MaxHp}");
     }
 
     void ManaHandler() {
         var isbulletTime = TimeController.GetIsBulletTime();
 
-        var unit = 3;
+        var unit = 1;
         if (currentMp <= 0) {
             print("Stop BT");
             btController.EndBulletTime();
@@ -74,7 +78,7 @@ public class HealthBar : MonoBehaviour
         // print(isbulletTime);
         if (currentMp <= initMax && currentMp >= 0) {
             if (isbulletTime) {
-                currentMp -= (3 * unit);
+                currentMp -= (10 * unit);
                 if (currentMp <= 0) {
                     currentMp = 0;
                 }

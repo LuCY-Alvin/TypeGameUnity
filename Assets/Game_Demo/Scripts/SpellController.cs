@@ -14,7 +14,8 @@ public class SpellController : MonoBehaviour
     public Transform healPoint;
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
-    public string health;
+    public GameObject prefabBlast;
+
     public HealthBar _healthBar;
 
     void Start() {
@@ -120,6 +121,8 @@ public class SpellController : MonoBehaviour
             } else if (theSpell.name == "heal") {
                 thePrefab = prefabHeal;
                 theTransform = healPoint;
+            } else if (theSpell.name == "blast") {
+                thePrefab = prefabBlast;
             }
 
             // 施放區
@@ -128,7 +131,7 @@ public class SpellController : MonoBehaviour
                 spellCount = 3;
             }
             
-            float waitTime = 0.2f;
+            float waitTime = 0.3f;
             for (int i = 0; i < spellCount; i++) {
                 GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
 

@@ -17,6 +17,13 @@
             "cost": 20
         },
         {
+            "name": "blast",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 20
+        },
+        {
             "name": "multi",
             "type": "support",
             "effect": "buff",

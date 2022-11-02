@@ -68,4 +68,6 @@ public class EnemyPatrol : MonoBehaviour
     private void OnDisable() {
         anim.SetBool("moving", false);
     }
+
+    public bool IsFacingLeft(){ return movingLeft; }
 }

@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class RangeEnemy : MonoBehaviour
 {
     [Header ("Status Parameters")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private int atkDamage;
     [SerializeField] private float range;
+
+    [Header ("Ranged Attack")]
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject prefabRange;
 
     [Header("Collider Parameters")]
     [SerializeField] private BoxCollider2D boxCollider;
@@ -18,15 +22,11 @@ public class MeleeEnemy : MonoBehaviour
     private float cooldownTimer = Mathf.Infinity;
 
     private Animator anim;
-    private PlayerMovement player;
-
     private EnemyPatrol enemyPatrol;
-    private EnemyStatus enemyStatus;
 
     private void Awake() {
         anim = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
-        enemyStatus = GetComponent<EnemyStatus>();
     }
 
     private void Update(){
@@ -37,11 +37,14 @@ public class MeleeEnemy : MonoBehaviour
         // Attack
             cooldownTimer = 0;
             anim.SetTrigger("meleeAttack");
+
+            GameObject smoke = Instantiate(prefabRange, firePoint.position, firePoint.rotation) as GameObject;
+            smoke.GetComponent<EnemySmoke>().ShootInDirection( enemyPatrol.IsFacingLeft() ? -1 : 1 );
         }
 
         if(enemyPatrol != null){
-            enemyPatrol.enabled = !PlayerInSight() && 
-                                  (anim.GetCurrentAnimatorStateInfo(0).IsName("idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("move"));
+            enemyPatrol.enabled = (!PlayerInSight()) 
+                                && (anim.GetCurrentAnimatorStateInfo(0).IsName("idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("move"));
         }
     }
 
@@ -55,11 +58,6 @@ public class MeleeEnemy : MonoBehaviour
             playerLayer
         );
 
-    // get player health
-        if(hit.collider != null){
-            player = hit.transform.GetComponent<PlayerMovement>();
-        }
-
         return hit.collider != null;
     }
 
@@ -70,17 +68,4 @@ public class MeleeEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z)
         );
     }
-
-    private void DamagePlayer(){
-        // If player still in range damage him 
-        if( PlayerInSight() ){
-            player.TakeDamage(atkDamage);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Player")
-            collision.GetComponent<PlayerMovement>().TakeDamage(atkDamage);
-    }
-
 }

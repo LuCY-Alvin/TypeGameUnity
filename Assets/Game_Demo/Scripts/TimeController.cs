@@ -9,7 +9,7 @@ public class TimeController : MonoBehaviour
     private float defauleFixedDeltaTime;
 
     // [SerializeField, Range(0f, 1f)] float bulletTimeScale = 0.1f;
-
+    
     void Awake() {
         isBulletTime = false;
         defauleFixedDeltaTime = Time.fixedDeltaTime;

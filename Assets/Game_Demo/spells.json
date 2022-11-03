@@ -24,6 +24,20 @@
             "cost": 20
         },
         {
+            "name": "shield",
+            "type": "active",
+            "effect": "buff",
+            "point": 20,
+            "cost": 20
+        },
+        {
+            "name": "extend",
+            "type": "support",
+            "effect": "buff",
+            "point": 1,
+            "cost": 1
+        },
+        {
             "name": "multi",
             "type": "support",
             "effect": "buff",

@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour {
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 			if( Input.GetKeyDown(KeyCode.Space) ) // Bullet time and Start Cast
-			{	
+			{
+				animator.SetBool("IsTyping", true);
 				btController.StartBulletTime();
 				castController.StartCast();
 			}
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 				animator.SetBool("IsJumping", true);
 			}
 
-			if( Input.GetKeyDown(KeyCode.X))	// Cobbat
+			if( Input.GetKeyDown(KeyCode.X))	// Combat
 			{
 				animator.SetTrigger("Combat");
 			
@@ -72,6 +73,8 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				btController.EndBulletTime();
 				castController.EndCast();
+				animator.SetBool("IsTyping", false);
+				animator.SetTrigger("Combat");
 			}
 		}
 
@@ -83,6 +86,15 @@ public class PlayerMovement : MonoBehaviour {
 		// {
 		// 	crouch = false;
 		// }
+
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_dead"))
+		{
+			GetComponent<SpriteRenderer>().material.color = new Color(1f, 0f, 0f);
+		}
+		else
+		{
+			GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f);
+		}
 
 	}
 
@@ -98,8 +110,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		else{
 			controller.Move(horizontalMove * Time.fixedDeltaTime, false, false);
-		// TODO: casting animation
-		
+			// TODO: casting animation
+			animator.SetBool("IsTyping", true);
 		}
 		
 	}
@@ -115,11 +127,13 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void TakeDamage(int damage){
-		// TODO: hurt animation
+		//hurt animation
+		animator.SetTrigger("Injured");
+
 		Debug.Log("Player takes " + damage + " damage!\n");
         _healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
+
 	}
 
-	
 
 }

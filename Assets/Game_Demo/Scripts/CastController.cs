@@ -38,7 +38,7 @@ public class CastController : MonoBehaviour
 
         spellController.Spell(inputList);
 
-    // Finish Cast
+        // Finish Cast
         castPanel.SetActive(false);
     }
 

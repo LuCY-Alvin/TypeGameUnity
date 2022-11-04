@@ -24,6 +24,13 @@
             "cost": 20
         },
         {
+            "name": "teleport",
+            "type": "active",
+            "effect": "function",
+            "point": 1,
+            "cost": 1
+        },
+        {
             "name": "shield",
             "type": "active",
             "effect": "buff",

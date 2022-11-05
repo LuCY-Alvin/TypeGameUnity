@@ -15,6 +15,7 @@ public class SpellController : MonoBehaviour
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
     public GameObject prefabBlast;
+    public Shield _shield;
 
     public HealthBar _healthBar;
 
@@ -65,6 +66,11 @@ public class SpellController : MonoBehaviour
     }
 
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
+            if (theSpell.effect == "buff") {
+                _shield.CallShield(supportSpells);
+                yield break;
+            }
+            
             // 血魔，當下修改用
             var currentMp = _healthBar.GetCurrentMp();
             var currentHp = _healthBar.GetCurrentHp();

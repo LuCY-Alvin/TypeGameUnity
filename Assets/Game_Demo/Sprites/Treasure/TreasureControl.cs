@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class TreasureControl : MonoBehaviour
 {
-
     bool _canOpen = false;
     bool _isOpened = false;
     bool _isFired = false;
+    public GameObject prefabBook;
+    public Transform treasureTransform;
     TreasureKey Key;
     FireCollision Vine;
-    
+    BookControl Book;
+
     // Start is called before the first frame update
     void Start()
     {
         Key = GetComponentInChildren<TreasureKey>();
         Vine = GetComponentInChildren<FireCollision>();
+        Book = GetComponentInChildren<BookControl>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class TreasureControl : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("opened");
                 _isOpened = true;
                 Key._isCollide = false;
+                Book._isTaken = true;
             }
         } 
     }
@@ -62,7 +66,6 @@ public class TreasureControl : MonoBehaviour
         if (Vine)
         {
             _isFired = Vine._fireCollided;
-            Debug.Log(_isFired);
             if (c.gameObject.CompareTag("Player") && _isFired)
             {
                 if (_isOpened)

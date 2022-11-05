@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-			if( Input.GetKeyDown(KeyCode.Space) ) // Bullet time and Start Cast
+			if( Input.GetKeyDown(KeyCode.Return) ) // Bullet time and Start Cast
 			{
 				animator.SetBool("IsTyping", true);
 				btController.StartBulletTime();
@@ -71,9 +71,11 @@ public class PlayerMovement : MonoBehaviour {
 
 			if( Input.GetKeyDown(KeyCode.Return) ) // End Bullet time and Cast
 			{
+				animator.SetBool("IsTyping", false);
 				btController.EndBulletTime();
 				castController.EndCast();
-				animator.SetBool("IsTyping", false);
+				
+				
 				animator.SetTrigger("Combat");
 			}
 		}
@@ -126,14 +128,13 @@ public class PlayerMovement : MonoBehaviour {
 		Gizmos.DrawWireSphere(combatPoint.position, combatRange);
 	}
 
-	public void TakeDamage(int damage){
+	public void TakeDamage(int damage)
+	{
 		//hurt animation
 		animator.SetTrigger("Injured");
 
 		Debug.Log("Player takes " + damage + " damage!\n");
-        _healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
+		_healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
 
 	}
-
-
 }

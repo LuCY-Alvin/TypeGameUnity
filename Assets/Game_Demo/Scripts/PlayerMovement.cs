@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +28,6 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 		if( TimeController.GetIsBulletTime() == false){
 		// Movement
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -81,14 +82,6 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 
-		// if (Input.GetButtonDown("Crouch"))
-		// {
-		// 	crouch = true;
-		// } else if (Input.GetButtonUp("Crouch"))
-		// {
-		// 	crouch = false;
-		// }
-
 		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_dead"))
 		{
 			GetComponent<SpriteRenderer>().material.color = new Color(1f, 0f, 0f);
@@ -100,11 +93,46 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 
-	void FixedUpdate ()
-	{
-		//btController.BulletTime(isBTtime);
-		//Debug.Log(TimeController.GetIsBulletTime());		
+	public void CallTeleport (Spell[] supportSpells) {
+		StartCoroutine(Teleport(supportSpells));
+	}
+
+	IEnumerator Teleport(Spell[] supportSpells) {
+		Vector3 player = transform.position;
+
+		var leftSupport = Array.Find(
+			supportSpells,
+			item => item.name == "left"
+		);
+
+		int distant = 8;
+
+		if (leftSupport != null) {
+			distant = -distant;
+			if (player.x + distant >= leftSupport.point) {
+				player.x -= distant;
+			}
+		}
+
+		var rightSupport = Array.Find(
+			supportSpells,
+			item => item.name == "right"
+		);
+
+		if (rightSupport != null) {
+			if (player.x + distant <= rightSupport.point) {
+				player.x += distant;
+			}
+		}
 		
+		controller.Move(distant * Time.fixedDeltaTime, false, false);
+		yield return new WaitForSeconds(0.5f);
+
+		transform.position = player;
+	}
+
+	void FixedUpdate ()
+	{			
 		if(TimeController.GetIsBulletTime() == false){
 		// Move our character
 			controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);

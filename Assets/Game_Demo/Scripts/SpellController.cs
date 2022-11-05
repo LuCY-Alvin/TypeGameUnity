@@ -1,8 +1,8 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class SpellController : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class SpellController : MonoBehaviour
     public GameObject prefabHeal;
     public GameObject prefabBlast;
     public Shield _shield;
+    public PlayerMovement _playerMovement;
 
     public HealthBar _healthBar;
 
@@ -68,6 +69,11 @@ public class SpellController : MonoBehaviour
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
             if (theSpell.effect == "buff") {
                 _shield.CallShield(supportSpells);
+                yield break;
+            }
+
+            if (theSpell.name == "teleport") {
+                _playerMovement.CallTeleport(supportSpells);
                 yield break;
             }
             

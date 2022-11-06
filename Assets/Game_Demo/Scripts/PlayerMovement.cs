@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	IEnumerator Teleport(Spell[] supportSpells) {
 		Vector3 player = transform.position;
-
+		bool canTleport = false;
 		var leftSupport = Array.Find(
 			supportSpells,
 			item => item.name == "left"
@@ -110,8 +110,10 @@ public class PlayerMovement : MonoBehaviour {
 		if (leftSupport != null) {
 			distant = -distant;
 			if (player.x + distant >= leftSupport.point) {
-				player.x -= distant;
+				player.x += distant;
+				canTleport = true;
 			}
+			
 		}
 
 		var rightSupport = Array.Find(
@@ -122,13 +124,22 @@ public class PlayerMovement : MonoBehaviour {
 		if (rightSupport != null) {
 			if (player.x + distant <= rightSupport.point) {
 				player.x += distant;
+				canTleport = true;
 			}
 		}
 		
-		controller.Move(distant * Time.fixedDeltaTime, false, false);
-		yield return new WaitForSeconds(0.5f);
+		if (canTleport) {
+			controller.Move(distant * Time.fixedDeltaTime, false, false);
+			yield return new WaitForSeconds(0.5f);
+			transform.position = player;
+			yield return new WaitForSeconds(0.1f);
+			// controller.m_Rigidbody2D.AddForce(new Vector2((float)distant * 100, (float)distant * 100));
+		}
+		
+	}
 
-		transform.position = player;
+	void OnCollisionExit2D(Collision2D collisionInfo){
+		Debug.Log(collisionInfo.gameObject.tag);
 	}
 
 	void FixedUpdate ()

@@ -25015,7 +25015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 275.59998, y: -50}
+  m_AnchoredPosition: {x: 175, y: -50}
   m_SizeDelta: {x: 340, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &862518931
@@ -32346,7 +32346,7 @@ MonoBehaviour:
   prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
   prefabBlast: {fileID: 4043512819266818946, guid: 12020d8d3183c4101b8a6f075708dc97, type: 3}
   _shield: {fileID: 219285440}
-  _playerMovement: {fileID: 0}
+  _playerMovement: {fileID: 1621064064}
   _healthBar: {fileID: 836390122}
 --- !u!114 &1621064071
 MonoBehaviour:

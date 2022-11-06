@@ -34,14 +34,14 @@
             "name": "left",
             "type": "support",
             "effect": "function",
-            "point": -10,
+            "point": -4,
             "cost": 1
         },
         {
             "name": "right",
             "type": "support",
             "effect": "function",
-            "point": 107,
+            "point": 95,
             "cost": 1
         },
         {

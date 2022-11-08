@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Role
   - FireObject
+  - SkillBook
   layers:
   - Default
   - TransparentFX

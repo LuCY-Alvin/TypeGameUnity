@@ -6,5 +6,6 @@ public class Spell
     public string effect;
     public int point;
     public int cost;
+    public bool enabled;
 }
  

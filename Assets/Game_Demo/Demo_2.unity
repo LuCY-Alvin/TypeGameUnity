@@ -25325,7 +25325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 385, y: -50}
+  m_AnchoredPosition: {x: 175, y: -50}
   m_SizeDelta: {x: 340, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &862518931
@@ -32689,6 +32689,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2072734394153596955, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+      propertyPath: m_TagString
+      value: SkillBook
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072734395049719397, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+      propertyPath: m_TagString
+      value: SkillBook
+      objectReference: {fileID: 0}
+    - target: {fileID: 2072734395049719401, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 1027927731}
+    - target: {fileID: 2072734395049719401, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+      propertyPath: dialogBoxText
+      value: 
+      objectReference: {fileID: 1141947812}
+    - target: {fileID: 2072734395049719401, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+      propertyPath: _spellController
+      value: 
+      objectReference: {fileID: 1621064070}
     - target: {fileID: 2072734395455856806, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -33086,6 +33106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70792b9eecb9314fa97d368e04a3f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellList:
+    spells: []
   firePoint: {fileID: 681016602}
   healPoint: {fileID: 1809967401}
   prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}

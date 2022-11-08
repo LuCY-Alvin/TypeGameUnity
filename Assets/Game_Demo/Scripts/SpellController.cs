@@ -8,7 +8,7 @@ public class SpellController : MonoBehaviour
 {
     // Json data reader
     string loadData;
-    Spells spellList;
+    public Spells spellList;
 
     public Transform firePoint;
     public Transform healPoint;
@@ -72,7 +72,7 @@ public class SpellController : MonoBehaviour
                 yield break;
             }
 
-            if (theSpell.name == "teleport") {
+            if (theSpell.name == "teleport" && theSpell.enabled) {
                 _playerMovement.CallTeleport(supportSpells);
                 yield break;
             }

@@ -42,6 +42,10 @@ public class HealthBar : MonoBehaviour
 
     public void SetValue(int newValue, string type)
     {
+        if (newValue > initMax) {
+            return;
+        }
+
         if (type == "hp") {
             var padding =  _hpMask.padding;
             padding.z = initMax - newValue;

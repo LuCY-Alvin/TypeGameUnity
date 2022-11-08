@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 	public CharacterController2D controller;
@@ -11,8 +12,10 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animator;
 
 	public HealthBar _healthBar;
+	public GameObject dialogBox;
+    public Text dialogBoxText;
 
-// Status
+	// Status
 	[SerializeField] private int atkDamage;
 	public float runSpeed = 40f;
 
@@ -24,10 +27,19 @@ public class PlayerMovement : MonoBehaviour {
 	public Transform combatPoint;
 	public float combatRange = 1.5f;
 	public LayerMask enemyLayers;
-	
+	public bool isInvincible = false;
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.E)) {
+			dialogBoxText.text = "Skills \nfirebolt \nheal \nblast \nshield";
+			dialogBox.SetActive(true);
+		}
+
+		if (Input.GetKeyUp(KeyCode.E)) {
+			dialogBox.SetActive(false);
+		}
+		
 		if( TimeController.GetIsBulletTime() == false){
 		// Movement
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -75,7 +87,6 @@ public class PlayerMovement : MonoBehaviour {
 				animator.SetBool("IsTyping", false);
 				btController.EndBulletTime();
 				castController.EndCast();
-				
 				
 				animator.SetTrigger("Combat");
 			}
@@ -169,10 +180,14 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void TakeDamage(int damage)
 	{
+		if (isInvincible) {
+			return;
+		}
 		//hurt animation
 		animator.SetTrigger("Injured");
 
 		Debug.Log("Player takes " + damage + " damage!\n");
+
 		_healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
 
 	}

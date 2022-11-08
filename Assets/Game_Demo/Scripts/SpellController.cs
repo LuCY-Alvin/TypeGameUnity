@@ -15,6 +15,7 @@ public class SpellController : MonoBehaviour
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
     public GameObject prefabBlast;
+    public GameObject dialogBox;
     public Shield _shield;
     public PlayerMovement _playerMovement;
 
@@ -67,13 +68,19 @@ public class SpellController : MonoBehaviour
     }
 
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
+            // Reset dialogBox
+            dialogBox.SetActive(false);
+
             if (theSpell.effect == "buff") {
                 _shield.CallShield(supportSpells);
                 yield break;
             }
 
-            if (theSpell.name == "teleport" && theSpell.enabled) {
-                _playerMovement.CallTeleport(supportSpells);
+            if (theSpell.name == "teleport") {
+                if (theSpell.enabled) {
+                    _playerMovement.CallTeleport(supportSpells);
+                }
+                
                 yield break;
             }
             

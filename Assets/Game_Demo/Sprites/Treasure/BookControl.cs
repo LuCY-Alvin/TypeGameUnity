@@ -21,8 +21,6 @@ public class BookControl : MonoBehaviour
     {
         _isTaken = false;
         BookImage = GetComponent<SpriteRenderer>();
-        dialogBoxText.text = "Try to type left/right teleport";
-        dialogBox.SetActive(true);
     }
 
     // Update is called once per frame
@@ -31,7 +29,7 @@ public class BookControl : MonoBehaviour
         BookImage.enabled = _isTaken;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && _isTaken)
         {
@@ -45,9 +43,18 @@ public class BookControl : MonoBehaviour
 
             _spellController.spellList.spells[index].enabled = true;
 
-            dialogBoxText.text = "Try Right Teleport or Left teleport";
-            dialogBox.SetActive(true);
+            StartCoroutine(showDialog());
         }
+    }
+
+    IEnumerator showDialog() {
+        dialogBoxText.text = "Try to type left/right teleport";
+        dialogBox.SetActive(true);
+
+        // TODO: notworking
+        yield return new WaitForSeconds(3f);
+        
+        dialogBox.SetActive(false);
     }
 
 }

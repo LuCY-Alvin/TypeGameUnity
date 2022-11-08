@@ -6,6 +6,8 @@ using System.IO;
 
 public class Shield : MonoBehaviour
 {
+    public PlayerMovement _playerMovement;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class Shield : MonoBehaviour
     }
 
     IEnumerator showShield(Spell[] supportSpells) {
-        float time = 1f;
+        float time = 2f;
 
         var extendSupport = Array.Find(
             supportSpells,
@@ -39,14 +41,17 @@ public class Shield : MonoBehaviour
         );
 
         if (extendSupport != null) {
-            time = 3f;
+            time = 4f;
         }
 
         Vector3 vector = transform.localScale;
-        vector.x = 50;
+        vector.x = 100;
         transform.localScale = vector;
+        _playerMovement.isInvincible = true;
 
         yield return new WaitForSeconds(time);
+
+        _playerMovement.isInvincible = false;
 
         hiddenShield();
     }

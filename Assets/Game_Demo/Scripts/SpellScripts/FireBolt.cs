@@ -15,11 +15,16 @@ public class FireBolt : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-     void OnTriggerEnter2D(Collider2D hitInfo) // when hit something
+    void OnTriggerEnter2D(Collider2D hitInfo) // when hit something
     {
-        if(hitInfo.gameObject.layer != playerLayers){
-            Debug.Log("hit: " + hitInfo.name);
-            Destroy(gameObject);
+        if (hitInfo.gameObject.tag == "Enemy") {
+            hitInfo.GetComponent<EnemyStatus>().TakeDamage(20);
         }
+
+        // if(hitInfo.gameObject.layer != playerLayers){
+        //     Debug.Log("hit: " + hitInfo.name);
+        // }
+        
+        Destroy(gameObject);
     }
 }

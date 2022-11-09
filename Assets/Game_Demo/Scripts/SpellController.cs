@@ -23,8 +23,10 @@ public class SpellController : MonoBehaviour
 
     void Start() {
         //讀取指定路徑的Json檔案並轉成字串
-        loadData = File.ReadAllText("./Assets/Game_Demo/spells.json");
-        
+        // loadData = File.ReadAllText("./Assets/Game_Demo/spells.json");
+        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
+
+
         //把字串轉換成Data物件
         spellList = JsonUtility.FromJson<Spells>(loadData);
     }

@@ -31,17 +31,17 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.E)) {
-			dialogBoxText.text = "Skills \nfirebolt \nheal \nblast \nshield";
-			dialogBox.SetActive(true);
-		}
-
-		if (Input.GetKeyUp(KeyCode.E)) {
-			dialogBox.SetActive(false);
-		}
-		
 		if( TimeController.GetIsBulletTime() == false){
-		// Movement
+			if (Input.GetKeyDown(KeyCode.E)) {
+				dialogBoxText.text = "Skills \nfirebolt \nheal \nblast \nshield";
+				dialogBox.SetActive(true);
+			}
+
+			if (Input.GetKeyUp(KeyCode.E)) {
+				dialogBox.SetActive(false);
+			}
+			
+			// Movement
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 

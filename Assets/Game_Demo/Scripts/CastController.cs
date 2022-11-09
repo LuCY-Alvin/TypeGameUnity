@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CastController : MonoBehaviour
 {
     public SpellController spellController;
+    public HealthBar _healthBar;
 
     public GameObject castPanel;
     public GameObject textBox;
@@ -25,6 +26,8 @@ public class CastController : MonoBehaviour
         input = "";
         textBox.GetComponent<Text>().text = input;
         castPanel.SetActive(true);
+
+        _healthBar.changeInvoke(true);
     }
 
     public void EndCast()
@@ -40,6 +43,7 @@ public class CastController : MonoBehaviour
 
         // Finish Cast
         castPanel.SetActive(false);
+        _healthBar.changeInvoke(false);
     }
 
     public void ReadingInput()

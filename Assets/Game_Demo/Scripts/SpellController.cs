@@ -122,7 +122,7 @@ public class SpellController : MonoBehaviour
             // 耗魔許可檢查
             if (theSpell.cost * nCost >= (currentMp - 3)) {
                 Debug.Log("Spell Fail!");
-                yield return new WaitForSeconds(0.2f);
+                yield break;
             }
 
             if (theSpell.effect == "heal") {

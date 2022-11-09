@@ -33045,6 +33045,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isInvincible: 0
+  isStiffness: 0
 --- !u!114 &1621064065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33069,6 +33070,7 @@ MonoBehaviour:
   m_CeilingCheck: {fileID: 2103687149}
   m_CrouchDisableCollider: {fileID: 1621064060}
   m_Rigidbody2D: {fileID: 0}
+  _playerMovement: {fileID: 1621064064}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -33171,6 +33173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellController: {fileID: 1621064070}
+  _healthBar: {fileID: 836390122}
   castPanel: {fileID: 234963636}
   textBox: {fileID: 224044688}
 --- !u!95 &1707887752 stripped

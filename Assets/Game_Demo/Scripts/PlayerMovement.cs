@@ -29,10 +29,15 @@ public class PlayerMovement : MonoBehaviour {
 	public float combatRange = 1.5f;
 	public LayerMask enemyLayers;
 	public bool isInvincible = false;
-	
+	public bool isStiffness = false;
+
 	// Update is called once per frame
 	void Update () {
-		if( TimeController.GetIsBulletTime() == false){
+		if (isStiffness) {
+			return;
+		}
+
+		if(TimeController.GetIsBulletTime() == false){
 			if (Input.GetKeyDown(KeyCode.E)) {
 				dialogBoxText.text = "Skills \n-------";
 
@@ -67,17 +72,17 @@ public class PlayerMovement : MonoBehaviour {
 				animator.SetBool("IsJumping", true);
 			}
 
-			if( Input.GetKeyDown(KeyCode.X))	// Combat
+			if(Input.GetKeyDown(KeyCode.X))	// Combat
 			{
 				animator.SetTrigger("Combat");
-			
+				StartCoroutine(SetStiffness(0.5f));
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
 				// TODO: hit reaction 
 					Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
-            		_healthBar.SetValue(currentMp + 6, "mp");
+            		_healthBar.SetValue(currentMp + 20, "mp");
 
 					enemy.GetComponent<EnemyStatus>().TakeDamage(atkDamage);
 				}
@@ -111,6 +116,14 @@ public class PlayerMovement : MonoBehaviour {
 			GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f);
 		}
 
+	}
+	
+
+	public IEnumerator SetStiffness(float time) {
+		isStiffness = true;
+		yield return new WaitForSeconds(time);
+
+		isStiffness = false;
 	}
 
 	public void CallTeleport (Spell[] supportSpells) {
@@ -189,6 +202,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void TakeDamage(int damage)
 	{
+		StartCoroutine(SetStiffness(0.8f));
+
 		if (isInvincible) {
 			return;
 		}

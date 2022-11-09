@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 	public HealthBar _healthBar;
 	public GameObject dialogBox;
     public Text dialogBoxText;
+	public SpellController _spellController;
 
 	// Status
 	[SerializeField] private int atkDamage;
@@ -33,14 +34,22 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 		if( TimeController.GetIsBulletTime() == false){
 			if (Input.GetKeyDown(KeyCode.E)) {
-				dialogBoxText.text = "Skills \nfirebolt \nheal \nblast \nshield";
+				dialogBoxText.text = "Skills \n-------";
+
+				foreach (Spell spell in _spellController.spellList.spells)
+				{
+					if (spell.enabled && spell.type == "active")
+					dialogBoxText.text += ("\n" + spell.name);
+				}
+
+				// "Skills \nfirebolt \nheal \nblast \nshield";
 				dialogBox.SetActive(true);
 			}
 
 			if (Input.GetKeyUp(KeyCode.E)) {
 				dialogBox.SetActive(false);
 			}
-			
+
 			// Movement
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));

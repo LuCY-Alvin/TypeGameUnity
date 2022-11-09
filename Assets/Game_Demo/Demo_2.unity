@@ -33036,7 +33036,8 @@ MonoBehaviour:
   _healthBar: {fileID: 836390122}
   dialogBox: {fileID: 1027927731}
   dialogBoxText: {fileID: 1141947812}
-  atkDamage: 10
+  _spellController: {fileID: 1621064070}
+  atkDamage: 3
   runSpeed: 50
   combatPoint: {fileID: 681016602}
   combatRange: 1.5

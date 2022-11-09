@@ -152,7 +152,7 @@ public class SpellController : MonoBehaviour
                 spellCount = 3;
             }
             
-            float waitTime = 0.3f;
+            float waitTime = 0.4f;
             for (int i = 0; i < spellCount; i++) {
                 GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
 

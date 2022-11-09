@@ -21,10 +21,9 @@ public class FireBolt : MonoBehaviour
             hitInfo.GetComponent<EnemyStatus>().TakeDamage(20);
         }
 
-        // if(hitInfo.gameObject.layer != playerLayers){
-        //     Debug.Log("hit: " + hitInfo.name);
-        // }
-        
-        Destroy(gameObject);
+        if(hitInfo.gameObject.layer != playerLayers){
+            Debug.Log("hit: " + hitInfo.name);
+            Destroy(gameObject);
+        }
     }
 }

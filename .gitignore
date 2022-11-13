@@ -6,6 +6,10 @@
 Library/
 Logs/
 Temp/
+WebGL Builds/
+UserSettings/
+ProjectSettings/
+obj/
 
 # Node artifact files
 node_modules/
@@ -51,4 +55,9 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+UserSettings/Layouts/
+Assembly-CSharp.csproj
+webgl_sharing
+ProjectSettings/EditorBuildSettings.asset
 

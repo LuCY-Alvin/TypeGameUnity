@@ -12,8 +12,11 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animator;
 
 	public HealthBar _healthBar;
-	public GameObject dialogBox;
-    public Text dialogBoxText;
+	public GameObject bookBox;
+    public Text bookBoxCast;
+	public Text bookBoxAffix;
+	public Button bookBoxBackBtn;
+	public Button bookBoxNextBtn;
 	public SpellController _spellController;
 
 	// Status
@@ -22,6 +25,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
+	bool _BookOpened = false;
+	int pages = 0;
 	// bool crouch = false;
 
 	/* combat related */
@@ -38,21 +43,66 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		if(TimeController.GetIsBulletTime() == false){
-			if (Input.GetKeyDown(KeyCode.E)) {
-				dialogBoxText.text = "Skills \n-------";
 
-				foreach (Spell spell in _spellController.spellList.spells)
+			// CastBook
+			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
+
+				bookBoxCast.text = "Skills\n";
+				bookBoxAffix.text = "Affix\n";
+
+				Spell spell = _spellController.spellList.spells[pages];
+				bookBoxCast.text += ("\n" + spell.name);
+				bookBoxBackBtn.gameObject.SetActive(false);
+				
+
+				bookBoxBackBtn.onClick.AddListener(back);
+				bookBoxNextBtn.onClick.AddListener(next);
+
+				void back()
+                {
+					if (pages>=1)
+					{
+						bookBoxBackBtn.gameObject.SetActive(true);
+						bookBoxCast.text = "Skills\n";
+						
+						pages -= 1;
+						Spell backspell = _spellController.spellList.spells[pages];
+
+						if (backspell.type != "active")
+							bookBoxBackBtn.onClick.AddListener(back);
+						else bookBoxCast.text += ("\n" + backspell.name);
+							
+						if (pages == 0)
+							bookBoxBackBtn.gameObject.SetActive(false);
+					}
+                }
+
+				void next()
 				{
-					if (spell.enabled && spell.type == "active")
-					dialogBoxText.text += ("\n" + spell.name);
+					if (pages <= _spellController.spellList.spells.Length)
+					{
+						bookBoxBackBtn.gameObject.SetActive(true);
+						bookBoxCast.text = "Skills\n";
+						pages += 1;
+						Spell nextspell = _spellController.spellList.spells[pages];
+
+						if (nextspell.type != "active")
+							bookBoxNextBtn.onClick.AddListener(next);
+						else bookBoxCast.text += ("\n" + nextspell.name);
+
+
+						if (pages == _spellController.spellList.spells.Length-1)
+							bookBoxNextBtn.gameObject.SetActive(false);
+					}
 				}
 
 				// "Skills \nfirebolt \nheal \nblast \nshield";
-				dialogBox.SetActive(true);
-			}
-
-			if (Input.GetKeyUp(KeyCode.E)) {
-				dialogBox.SetActive(false);
+				bookBox.SetActive(true);
+				_BookOpened = true;
+			} else if (Input.GetKeyDown(KeyCode.E) && _BookOpened)
+            {
+				_BookOpened = false;
+				bookBox.SetActive(false);
 			}
 
 			// Movement
@@ -61,6 +111,7 @@ public class PlayerMovement : MonoBehaviour {
 
 			if( Input.GetKeyDown(KeyCode.Return) ) // Bullet time and Start Cast
 			{
+				bookBox.SetActive(false);
 				animator.SetBool("IsTyping", true);
 				btController.StartBulletTime();
 				castController.StartCast();
@@ -92,8 +143,8 @@ public class PlayerMovement : MonoBehaviour {
 		// set idle
 			horizontalMove = 0; 
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-			
-		// Reading cast input
+
+			// Reading cast input
 			castController.ReadingInput();		
 
 			if( Input.GetKeyDown(KeyCode.Return) ) // End Bullet time and Cast

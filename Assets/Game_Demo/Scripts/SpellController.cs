@@ -15,7 +15,7 @@ public class SpellController : MonoBehaviour
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
     public GameObject prefabBlast;
-    public GameObject dialogBox;
+    public GameObject bookBox;
     public Shield _shield;
     public PlayerMovement _playerMovement;
 
@@ -71,7 +71,7 @@ public class SpellController : MonoBehaviour
 
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
             // Reset dialogBox
-            dialogBox.SetActive(false);
+            bookBox.SetActive(false);
 
             if (theSpell.effect == "buff") {
                 _shield.CallShield(supportSpells);

@@ -28,8 +28,18 @@ public class HealthBar : MonoBehaviour
     {
         SetValue(currentHp, "hp");
         SetValue(currentMp, "mp");
+        
+        changeInvoke(false);
+    }
 
-        InvokeRepeating ("ManaHandler", 0.5f, 0.1f); 
+    public void changeInvoke(bool isbulletTime) {
+        CancelInvoke("ManaHandler");
+
+        if (isbulletTime) {
+            InvokeRepeating ("ManaHandler", 0f, 0.01f); 
+        } else {
+            InvokeRepeating ("ManaHandler", 0f, 0.5f); 
+        }
     }
 
     public int GetCurrentHp() {
@@ -82,7 +92,7 @@ public class HealthBar : MonoBehaviour
         // print(isbulletTime);
         if (currentMp <= initMax && currentMp >= 0) {
             if (isbulletTime) {
-                currentMp -= (10 * unit);
+                currentMp -= (2 * unit);
                 if (currentMp <= 0) {
                     currentMp = 0;
                 }

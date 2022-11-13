@@ -12,8 +12,12 @@ public class PlayerMovement : MonoBehaviour {
 	public Animator animator;
 
 	public HealthBar _healthBar;
-	public GameObject dialogBox;
-    public Text dialogBoxText;
+	public GameObject bookBox;
+    public Text bookBoxCast;
+	public Text bookBoxAffix;
+	public Button bookBoxBackBtn;
+	public Button bookBoxNextBtn;
+	public SpellController _spellController;
 
 	// Status
 	[SerializeField] private int atkDamage;
@@ -21,6 +25,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	float horizontalMove = 0f;
 	bool jump = false;
+	bool _BookOpened = false;
+	int pages = 0;
 	// bool crouch = false;
 
 	/* combat related */
@@ -28,25 +34,84 @@ public class PlayerMovement : MonoBehaviour {
 	public float combatRange = 1.5f;
 	public LayerMask enemyLayers;
 	public bool isInvincible = false;
-	
+	public bool isStiffness = false;
+
 	// Update is called once per frame
 	void Update () {
-		if( TimeController.GetIsBulletTime() == false){
-			if (Input.GetKeyDown(KeyCode.E)) {
-				dialogBoxText.text = "Skills \nfirebolt \nheal \nblast \nshield";
-				dialogBox.SetActive(true);
+		if (isStiffness) {
+			return;
+		}
+
+		if(TimeController.GetIsBulletTime() == false){
+
+			// CastBook
+			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
+
+				bookBoxCast.text = "Skills\n";
+				bookBoxAffix.text = "Affix\n";
+
+				Spell spell = _spellController.spellList.spells[pages];
+				bookBoxCast.text += ("\n" + spell.name);
+				bookBoxBackBtn.gameObject.SetActive(false);
+				
+
+				bookBoxBackBtn.onClick.AddListener(back);
+				bookBoxNextBtn.onClick.AddListener(next);
+
+				void back()
+                {
+					if (pages>=1)
+					{
+						bookBoxBackBtn.gameObject.SetActive(true);
+						bookBoxCast.text = "Skills\n";
+						
+						pages -= 1;
+						Spell backspell = _spellController.spellList.spells[pages];
+
+						if (backspell.type != "active")
+							bookBoxBackBtn.onClick.AddListener(back);
+						else bookBoxCast.text += ("\n" + backspell.name);
+							
+						if (pages == 0)
+							bookBoxBackBtn.gameObject.SetActive(false);
+					}
+                }
+
+				void next()
+				{
+					if (pages <= _spellController.spellList.spells.Length)
+					{
+						bookBoxBackBtn.gameObject.SetActive(true);
+						bookBoxCast.text = "Skills\n";
+						pages += 1;
+						Spell nextspell = _spellController.spellList.spells[pages];
+
+						if (nextspell.type != "active")
+							bookBoxNextBtn.onClick.AddListener(next);
+						else bookBoxCast.text += ("\n" + nextspell.name);
+
+
+						if (pages == _spellController.spellList.spells.Length-1)
+							bookBoxNextBtn.gameObject.SetActive(false);
+					}
+				}
+
+				// "Skills \nfirebolt \nheal \nblast \nshield";
+				bookBox.SetActive(true);
+				_BookOpened = true;
+			} else if (Input.GetKeyDown(KeyCode.E) && _BookOpened)
+            {
+				_BookOpened = false;
+				bookBox.SetActive(false);
 			}
 
-			if (Input.GetKeyUp(KeyCode.E)) {
-				dialogBox.SetActive(false);
-			}
-			
 			// Movement
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 			if( Input.GetKeyDown(KeyCode.Return) ) // Bullet time and Start Cast
 			{
+				bookBox.SetActive(false);
 				animator.SetBool("IsTyping", true);
 				btController.StartBulletTime();
 				castController.StartCast();
@@ -58,17 +123,17 @@ public class PlayerMovement : MonoBehaviour {
 				animator.SetBool("IsJumping", true);
 			}
 
-			if( Input.GetKeyDown(KeyCode.X))	// Combat
+			if(Input.GetKeyDown(KeyCode.X))	// Combat
 			{
 				animator.SetTrigger("Combat");
-			
+				StartCoroutine(SetStiffness(0.5f));
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
 				// TODO: hit reaction 
 					Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
-            		_healthBar.SetValue(currentMp + 6, "mp");
+            		_healthBar.SetValue(currentMp + 20, "mp");
 
 					enemy.GetComponent<EnemyStatus>().TakeDamage(atkDamage);
 				}
@@ -78,8 +143,8 @@ public class PlayerMovement : MonoBehaviour {
 		// set idle
 			horizontalMove = 0; 
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-			
-		// Reading cast input
+
+			// Reading cast input
 			castController.ReadingInput();		
 
 			if( Input.GetKeyDown(KeyCode.Return) ) // End Bullet time and Cast
@@ -102,6 +167,14 @@ public class PlayerMovement : MonoBehaviour {
 			GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f);
 		}
 
+	}
+	
+
+	public IEnumerator SetStiffness(float time) {
+		isStiffness = true;
+		yield return new WaitForSeconds(time);
+
+		isStiffness = false;
 	}
 
 	public void CallTeleport (Spell[] supportSpells) {
@@ -180,6 +253,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void TakeDamage(int damage)
 	{
+		StartCoroutine(SetStiffness(0.8f));
+
 		if (isInvincible) {
 			return;
 		}

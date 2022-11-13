@@ -20,6 +20,7 @@ public class CharacterController2D : MonoBehaviour
 	public Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+	public PlayerMovement _playerMovement;
 
 	[Header("Events")]
 	[Space]
@@ -66,6 +67,11 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
+		if (_playerMovement.isStiffness) {
+			Vector3 targetVelocity = new Vector2(0, m_Rigidbody2D.velocity.y);
+			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+			return;
+		}
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{

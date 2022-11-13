@@ -15,7 +15,7 @@ public class SpellController : MonoBehaviour
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
     public GameObject prefabBlast;
-    public GameObject dialogBox;
+    public GameObject bookBox;
     public Shield _shield;
     public PlayerMovement _playerMovement;
 
@@ -71,7 +71,7 @@ public class SpellController : MonoBehaviour
 
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
             // Reset dialogBox
-            dialogBox.SetActive(false);
+            bookBox.SetActive(false);
 
             if (theSpell.effect == "buff") {
                 _shield.CallShield(supportSpells);
@@ -122,7 +122,7 @@ public class SpellController : MonoBehaviour
             // 耗魔許可檢查
             if (theSpell.cost * nCost >= (currentMp - 3)) {
                 Debug.Log("Spell Fail!");
-                yield return new WaitForSeconds(0.2f);
+                yield break;
             }
 
             if (theSpell.effect == "heal") {
@@ -152,7 +152,7 @@ public class SpellController : MonoBehaviour
                 spellCount = 3;
             }
             
-            float waitTime = 0.3f;
+            float waitTime = 0.4f;
             for (int i = 0; i < spellCount; i++) {
                 GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
 

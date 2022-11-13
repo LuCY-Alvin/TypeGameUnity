@@ -20,19 +20,26 @@ public class EnemyStatus : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private void Deactivate(){
+        gameObject.SetActive(false);
+    }
+
     public void TakeDamage(int damage){
     // if last hurting animation not end, wont nurt
-        if( anim.GetCurrentAnimatorStateInfo(0).IsName("hurt") ) return;
+        AnimatorStateInfo animState = anim.GetCurrentAnimatorStateInfo(0);
+        if( animState.IsTag("Inv") ) return;
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
 
         if (currentHealth > 0) {
+            anim.SetBool("moving", false);
             anim.SetTrigger("hurt");
         }
         else{
             if(!isDead){
+                anim.SetBool("moving", false);
                 anim.SetTrigger("die");
-
+    
                 foreach (Behaviour component in components)
                     component.enabled = false;
 
@@ -41,7 +48,6 @@ public class EnemyStatus : MonoBehaviour
         }
     }
 
-    private void Deactivate(){
-        gameObject.SetActive(false);
-    }
+    public float GetStartingHealth(){ return startingHealth; }
+    public float GetCurrentHealth(){ return currentHealth; }
 }

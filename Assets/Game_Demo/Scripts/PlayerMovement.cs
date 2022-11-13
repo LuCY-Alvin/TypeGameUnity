@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionExit2D(Collision2D collisionInfo){
-		Debug.Log(collisionInfo.gameObject.tag);
+		// Debug.Log(collisionInfo.gameObject.tag);
 	}
 
 	void FixedUpdate ()

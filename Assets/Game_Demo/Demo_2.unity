@@ -33439,7 +33439,7 @@ MonoBehaviour:
   prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}
   prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
   prefabBlast: {fileID: 4043512819266818946, guid: 12020d8d3183c4101b8a6f075708dc97, type: 3}
-  bookBox: {fileID: 0}
+  bookBox: {fileID: 213476659}
   _shield: {fileID: 219285440}
   _playerMovement: {fileID: 1621064064}
   _healthBar: {fileID: 836390122}

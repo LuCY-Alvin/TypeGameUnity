@@ -19,6 +19,14 @@
             "enabled": true
         },
         {
+            "name": "earthbump",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 20,
+            "enabled": true
+        },
+        {
             "name": "heal",
             "type": "active",
             "effect": "heal",

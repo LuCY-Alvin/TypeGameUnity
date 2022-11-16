@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour {
 	public Button bookBoxNextBtn;
 	public SpellController _spellController;
 
+	List<Spell> activeSpells = new() { };
+	List<Spell> supportSpells = new() { };
+	List<Spell> functionSpells = new() { };
+
 	// Status
 	[SerializeField] private int atkDamage;
 	public float runSpeed = 40f;
@@ -35,9 +39,11 @@ public class PlayerMovement : MonoBehaviour {
 	public LayerMask enemyLayers;
 	public bool isInvincible = false;
 	public bool isStiffness = false;
+	public bool isInjured = false;
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
+
 		if (isStiffness) {
 			return;
 		}
@@ -47,13 +53,38 @@ public class PlayerMovement : MonoBehaviour {
 			// CastBook
 			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
 
+				foreach (Spell spells in _spellController.spellList.spells)
+					if (spells.type == "active")
+						activeSpells.Add(spells);
+					else if (spells.type == "support" && spells.effect != "function")
+						supportSpells.Add(spells);
+					else if (spells.type == "support" && spells.effect == "function")
+						functionSpells.Add(spells);
+
 				bookBoxCast.text = "Skills\n";
 				bookBoxAffix.text = "Affix\n";
 
-				Spell spell = _spellController.spellList.spells[pages];
-				bookBoxCast.text += ("\n" + spell.name);
+				var spell = activeSpells[pages];
+				if (spell.effect == "function")
+				{
+					foreach (Spell functionCast in functionSpells)
+						bookBoxAffix.text += "\n" + functionCast.name;
+				}
+				else if (spell.effect == "buff")
+				{
+					foreach (Spell buffCast in supportSpells)
+						if (buffCast.name == "extend")
+							bookBoxAffix.text += "\n" + buffCast.name;
+				}
+				else if (spell.effect == "attack" || spell.effect == "heal")
+				{
+					foreach (Spell supportCast in supportSpells)
+						if (supportCast.name != "extend")
+							bookBoxAffix.text += "\n" + supportCast.name;
+				}
+
+				bookBoxCast.text += "\n" + spell.name;
 				bookBoxBackBtn.gameObject.SetActive(false);
-				
 
 				bookBoxBackBtn.onClick.AddListener(back);
 				bookBoxNextBtn.onClick.AddListener(next);
@@ -62,16 +93,32 @@ public class PlayerMovement : MonoBehaviour {
                 {
 					if (pages>=1)
 					{
-						bookBoxBackBtn.gameObject.SetActive(true);
+						bookBoxNextBtn.gameObject.SetActive(true);
 						bookBoxCast.text = "Skills\n";
-						
-						pages -= 1;
-						Spell backspell = _spellController.spellList.spells[pages];
+						bookBoxAffix.text = "Affix\n";
 
-						if (backspell.type != "active")
-							bookBoxBackBtn.onClick.AddListener(back);
-						else bookBoxCast.text += ("\n" + backspell.name);
-							
+						pages -= 1;
+						spell = activeSpells[pages];
+						bookBoxCast.text += "\n" + spell.name;
+
+						if (spell.effect == "function")
+						{
+							foreach (Spell functionCast in functionSpells)
+								bookBoxAffix.text += "\n" + functionCast.name;
+						}
+						else if (spell.effect == "buff")
+						{
+							foreach (Spell buffCast in supportSpells)
+								if (buffCast.name == "extend")
+									bookBoxAffix.text += "\n" + buffCast.name;
+						}
+						else if (spell.effect == "attack" || spell.effect == "heal")
+						{
+							foreach (Spell supportCast in supportSpells)
+								if (supportCast.name != "extend")
+									bookBoxAffix.text += "\n" + supportCast.name;
+						}
+
 						if (pages == 0)
 							bookBoxBackBtn.gameObject.SetActive(false);
 					}
@@ -79,26 +126,42 @@ public class PlayerMovement : MonoBehaviour {
 
 				void next()
 				{
-					if (pages <= _spellController.spellList.spells.Length)
+					if (pages <= activeSpells.Count)
 					{
 						bookBoxBackBtn.gameObject.SetActive(true);
 						bookBoxCast.text = "Skills\n";
+						bookBoxAffix.text = "Affix\n";
+
 						pages += 1;
-						Spell nextspell = _spellController.spellList.spells[pages];
+						spell = activeSpells[pages];
+						bookBoxCast.text += "\n" + spell.name;
 
-						if (nextspell.type != "active")
-							bookBoxNextBtn.onClick.AddListener(next);
-						else bookBoxCast.text += ("\n" + nextspell.name);
+						if (spell.effect == "function")
+						{
+							foreach (Spell functionCast in functionSpells)
+								bookBoxAffix.text += "\n" + functionCast.name;
+						}
+						else if (spell.effect == "buff")
+						{
+							foreach (Spell buffCast in supportSpells)
+								if (buffCast.name == "extend")
+									bookBoxAffix.text += "\n" + buffCast.name;
+						}
+						else if (spell.effect == "attack" || spell.effect == "heal")
+						{
+							foreach (Spell supportCast in supportSpells)
+								if (supportCast.name != "extend")
+									bookBoxAffix.text += "\n" + supportCast.name;
+						}
 
-
-						if (pages == _spellController.spellList.spells.Length-1)
+						if (pages == activeSpells.Count - 1)
 							bookBoxNextBtn.gameObject.SetActive(false);
 					}
 				}
 
-				// "Skills \nfirebolt \nheal \nblast \nshield";
 				bookBox.SetActive(true);
 				_BookOpened = true;
+
 			} else if (Input.GetKeyDown(KeyCode.E) && _BookOpened)
             {
 				_BookOpened = false;
@@ -152,8 +215,8 @@ public class PlayerMovement : MonoBehaviour {
 				animator.SetBool("IsTyping", false);
 				btController.EndBulletTime();
 				castController.EndCast();
-				
-				animator.SetTrigger("Combat");
+
+				StartCoroutine(SetStiffness(0.6f));
 			}
 		}
 
@@ -175,6 +238,13 @@ public class PlayerMovement : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 
 		isStiffness = false;
+	}
+
+	public IEnumerator SetInjured(float time) {
+		isInjured = true;
+		yield return new WaitForSeconds(time);
+
+		isInjured = false;
 	}
 
 	public void CallTeleport (Spell[] supportSpells) {
@@ -217,7 +287,6 @@ public class PlayerMovement : MonoBehaviour {
 			yield return new WaitForSeconds(0.5f);
 			transform.position = player;
 			yield return new WaitForSeconds(0.1f);
-			// controller.m_Rigidbody2D.AddForce(new Vector2((float)distant * 100, (float)distant * 100));
 		}
 		
 	}
@@ -242,6 +311,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void OnLanding(){
+		
 		animator.SetBool("IsJumping", false);
 	}
 
@@ -251,19 +321,34 @@ public class PlayerMovement : MonoBehaviour {
 		Gizmos.DrawWireSphere(combatPoint.position, combatRange);
 	}
 
-	public void TakeDamage(int damage)
-	{
-		StartCoroutine(SetStiffness(0.8f));
 
-		if (isInvincible) {
+
+	public void TakeDamage(int damage, Transform source)
+	{
+		if (isInvincible || isInjured) {
 			return;
 		}
+
+		SetInjured(0.5f);
+
+		float f = 5;
+
+		if (transform.position.x < source.position.x) {
+			// On left
+			f = -5;
+		}
+
+		float constR = 400;
+
+		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 500f));
+
+		StartCoroutine(SetStiffness(0.8f));
+		
 		//hurt animation
 		animator.SetTrigger("Injured");
 
 		Debug.Log("Player takes " + damage + " damage!\n");
 
 		_healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
-
 	}
 }

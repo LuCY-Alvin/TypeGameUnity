@@ -49,7 +49,7 @@ public class EnemySmoke : MonoBehaviour
             if(hurtTimer >= hurtDuration){
                 Debug.Log("Smoke hurt player!");
                 hurtTimer = 0;
-                hit.GetComponent<PlayerMovement>().TakeDamage(damage);
+                hit.GetComponent<PlayerMovement>().TakeDamage(damage, this.transform);
             }
         }
         

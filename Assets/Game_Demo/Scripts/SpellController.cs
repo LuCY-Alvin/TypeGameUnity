@@ -9,12 +9,14 @@ public class SpellController : MonoBehaviour
     // Json data reader
     string loadData;
     public Spells spellList;
+    public Animator animator;
 
     public Transform firePoint;
     public Transform healPoint;
     public GameObject prefabFirebolt;
     public GameObject prefabHeal;
     public GameObject prefabBlast;
+    public GameObject prefabIcespear;
     public GameObject bookBox;
     public Shield _shield;
     public PlayerMovement _playerMovement;
@@ -24,8 +26,7 @@ public class SpellController : MonoBehaviour
     void Start() {
         //讀取指定路徑的Json檔案並轉成字串
         // loadData = File.ReadAllText("./Assets/Game_Demo/spells.json");
-        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
-
+        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"icespear\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
 
         //把字串轉換成Data物件
         spellList = JsonUtility.FromJson<Spells>(loadData);
@@ -144,6 +145,8 @@ public class SpellController : MonoBehaviour
                 theTransform = healPoint;
             } else if (theSpell.name == "blast") {
                 thePrefab = prefabBlast;
+            } else if (theSpell.name == "icespear") {
+                thePrefab = prefabIcespear;
             }
 
             // 施放區
@@ -152,10 +155,12 @@ public class SpellController : MonoBehaviour
                 spellCount = 3;
             }
             
-            float waitTime = 0.4f;
+            float waitTime = 0.6f;
             for (int i = 0; i < spellCount; i++) {
                 GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
 
+                animator.SetTrigger("Combat");
+                
                 // 有 Super 時會放大
                 if (superSupport != null) {
                     newObject.transform.localScale += new Vector3(1,1,0);

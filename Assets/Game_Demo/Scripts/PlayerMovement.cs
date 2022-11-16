@@ -214,8 +214,8 @@ public class PlayerMovement : MonoBehaviour {
 				animator.SetBool("IsTyping", false);
 				btController.EndBulletTime();
 				castController.EndCast();
-				
-				animator.SetTrigger("Combat");
+
+				StartCoroutine(SetStiffness(0.6f));
 			}
 		}
 

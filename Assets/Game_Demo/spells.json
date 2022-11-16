@@ -11,6 +11,14 @@
             "enabled": true
         },
         {
+            "name": "icespear",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 20,
+            "enabled": true
+        },
+        {
             "name": "heal",
             "type": "active",
             "effect": "heal",

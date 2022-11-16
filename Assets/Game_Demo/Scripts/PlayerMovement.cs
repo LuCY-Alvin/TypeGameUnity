@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 	public LayerMask enemyLayers;
 	public bool isInvincible = false;
 	public bool isStiffness = false;
+	public bool isInjured = false;
 
     // Update is called once per frame
     void Update () {
@@ -239,6 +240,13 @@ public class PlayerMovement : MonoBehaviour {
 		isStiffness = false;
 	}
 
+	public IEnumerator SetInjured(float time) {
+		isInjured = true;
+		yield return new WaitForSeconds(time);
+
+		isInjured = false;
+	}
+
 	public void CallTeleport (Spell[] supportSpells) {
 		StartCoroutine(Teleport(supportSpells));
 	}
@@ -279,7 +287,6 @@ public class PlayerMovement : MonoBehaviour {
 			yield return new WaitForSeconds(0.5f);
 			transform.position = player;
 			yield return new WaitForSeconds(0.1f);
-			// controller.m_Rigidbody2D.AddForce(new Vector2((float)distant * 100, (float)distant * 100));
 		}
 		
 	}
@@ -304,6 +311,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void OnLanding(){
+		
 		animator.SetBool("IsJumping", false);
 	}
 
@@ -313,19 +321,34 @@ public class PlayerMovement : MonoBehaviour {
 		Gizmos.DrawWireSphere(combatPoint.position, combatRange);
 	}
 
-	public void TakeDamage(int damage)
-	{
-		StartCoroutine(SetStiffness(0.8f));
 
-		if (isInvincible) {
+
+	public void TakeDamage(int damage, Transform source)
+	{
+		if (isInvincible || isInjured) {
 			return;
 		}
+
+		SetInjured(0.5f);
+
+		float f = 5;
+
+		if (transform.position.x < source.position.x) {
+			// On left
+			f = -5;
+		}
+
+		float constR = 400;
+
+		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 500f));
+
+		StartCoroutine(SetStiffness(0.8f));
+		
 		//hurt animation
 		animator.SetTrigger("Injured");
 
 		Debug.Log("Player takes " + damage + " damage!\n");
 
 		_healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
-
 	}
 }

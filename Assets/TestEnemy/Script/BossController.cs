@@ -160,13 +160,13 @@ public class BossController : MonoBehaviour
     private void DamagePlayer(){
         // If player still in range damage him 
         if( PlayerInSight() ){
-            player.GetComponent<PlayerMovement>().TakeDamage(atkDamage);
+            player.GetComponent<PlayerMovement>().TakeDamage(atkDamage, this.transform);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player")
-            collision.GetComponent<PlayerMovement>().TakeDamage(atkDamage);
+            collision.GetComponent<PlayerMovement>().TakeDamage(atkDamage, this.transform);
     }
 
     public bool IsFacingLeft(){ return movingLeft; }

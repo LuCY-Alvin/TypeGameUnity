@@ -20,6 +20,10 @@ public class EarthBump : MonoBehaviour
     IEnumerator Handler() {
         yield return new WaitForSeconds(0.6f);
 
+        Vector3 vector = transform.position;
+        vector.y += 0.3f;
+        transform.position = vector;
+
         Destroy(gameObject);
         Instantiate(prefab, transform.position, transform.rotation);
     }

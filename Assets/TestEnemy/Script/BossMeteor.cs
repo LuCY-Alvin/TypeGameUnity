@@ -24,7 +24,7 @@ public class BossMeteor : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo) // when hit something
     {
         if (hitInfo.gameObject.tag == "Player") {
-            hitInfo.GetComponent<PlayerMovement>().TakeDamage(damage);
+            hitInfo.GetComponent<PlayerMovement>().TakeDamage(damage, transform);
             Destroy(gameObject);
         }
     }

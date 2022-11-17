@@ -1,0 +1,9 @@
+[name=???]Hi!
+my friend.
+[name=player]...
+Where am i?
+Who are you?
+[name=???]I'm you.
+Your're in a dream.
+Please go in there, and you will know.
+EndQueue

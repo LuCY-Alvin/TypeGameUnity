@@ -68,7 +68,8 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool crouch, bool jump)
 	{
 		if (_playerMovement.isStiffness) {
-			Vector3 targetVelocity = new Vector2(0, m_Rigidbody2D.velocity.y);
+			float v = 2f;
+			Vector3 targetVelocity = new Vector2(move * v, m_Rigidbody2D.velocity.y);
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 			return;
 		}

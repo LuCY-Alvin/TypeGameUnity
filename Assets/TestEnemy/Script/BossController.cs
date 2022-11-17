@@ -20,6 +20,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private float ultCastingTime;
     [SerializeField] private float ultSpellingTime;
     [SerializeField] private float ultHealthPercentage;
+    [SerializeField] private Transform[] firePoint = new Transform[2];
+    [SerializeField] private GameObject prefabMeteor;
     
     private float ultTimer = Mathf.Infinity;
     private string ultName = "METEOR SHOWER";
@@ -54,14 +56,12 @@ public class BossController : MonoBehaviour
             if( ultTimer >= ultCooldown && !animState.IsTag("Inv")){
                 ultTimer = 0;
                 CastUlt();
-                Debug.Log("f cast");
             }
         }
 
         if(animState.IsName("cast")) { CastUlt(); }
 
         if(animState.IsName("spell")) { 
-            //anim.SetBool("casting", false);
             SpellUlt(); 
         }
         
@@ -120,10 +120,18 @@ public class BossController : MonoBehaviour
    
         if(ultTimer >= ultSpellingTime){
             anim.SetBool("spelling", false);
-            
-        // TODO: 施法做在這裡
             ultTimer = 0;
         }
+    }
+
+    private void CallMeteor(){
+        Vector3 tar = new Vector3(
+            Random.Range(firePoint[0].position.x, firePoint[1].position.x),
+            firePoint[0].position.y,
+            firePoint[0].position.z
+        );
+
+        Instantiate(prefabMeteor, tar, firePoint[0].rotation);
     }
 
 
@@ -160,13 +168,13 @@ public class BossController : MonoBehaviour
     private void DamagePlayer(){
         // If player still in range damage him 
         if( PlayerInSight() ){
-            player.GetComponent<PlayerMovement>().TakeDamage(atkDamage);
+            player.GetComponent<PlayerMovement>().TakeDamage(atkDamage, this.transform);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Player")
-            collision.GetComponent<PlayerMovement>().TakeDamage(atkDamage);
+            collision.GetComponent<PlayerMovement>().TakeDamage(atkDamage, this.transform);
     }
 
     public bool IsFacingLeft(){ return movingLeft; }

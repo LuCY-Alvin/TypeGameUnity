@@ -25,7 +25,7 @@ public class Spike : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerMovement>().TakeDamage(3);
+            collision.gameObject.GetComponent<PlayerMovement>().TakeDamage(3, this.transform);
         }
     }
 

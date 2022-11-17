@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -8,8 +9,15 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private float startingHealth;
     [SerializeField] private float currentHealth;
 
-    [Header("Components")]
+    [Header ("Components")]
     [SerializeField] private Behaviour[] components;
+
+    [Header ("Health Bar")]
+    [SerializeField] private GameObject prefabHealthBar;
+    [SerializeField] private Canvas bossCanvas;
+    [SerializeField] private Transform barPoint;
+    private Image healthSlider;
+    private GameObject UIbar;
 
     private Animator anim;
     private bool isDead;
@@ -18,6 +26,14 @@ public class EnemyStatus : MonoBehaviour
         currentHealth = startingHealth;
         isDead = false;
         anim = GetComponent<Animator>();
+
+        if(prefabHealthBar != null){
+            UIbar = Instantiate(prefabHealthBar, bossCanvas.transform) as GameObject;
+            UIbar.transform.position = barPoint.position;
+            healthSlider = UIbar.transform.GetChild(0).GetComponent<Image>();
+            UpdateHealthBar();
+        }
+
     }
 
     private void Deactivate(){
@@ -46,6 +62,22 @@ public class EnemyStatus : MonoBehaviour
                 isDead = true;
             }
         }
+
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar(){
+        if(prefabHealthBar == null) return;
+
+        if(currentHealth <= 0){
+            Destroy(UIbar);
+        }
+
+        Debug.Log("update health");
+        Debug.Log(currentHealth / startingHealth);
+        Debug.Log(healthSlider.fillAmount);
+
+        healthSlider.fillAmount = currentHealth / startingHealth;
     }
 
     public float GetStartingHealth(){ return startingHealth; }

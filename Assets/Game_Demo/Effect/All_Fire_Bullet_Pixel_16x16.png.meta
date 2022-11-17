@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -11768,17 +11768,17 @@ TextureImporter:
       All_Fire_Bullet_Pixel_16x16_113: -1918421568
       All_Fire_Bullet_Pixel_16x16_46: -832315608
       All_Fire_Bullet_Pixel_16x16_43: -1787882523
+      All_Fire_Bullet_Pixel_16x16_503: 2046502562
       All_Fire_Bullet_Pixel_16x16_193: 671738333
-      All_Fire_Bullet_Pixel_16x16_276: -718634654
       All_Fire_Bullet_Pixel_16x16_397: 1749791528
-      All_Fire_Bullet_Pixel_16x16_400: 1975292820
+      All_Fire_Bullet_Pixel_16x16_276: -718634654
       All_Fire_Bullet_Pixel_16x16_222: 324045374
       All_Fire_Bullet_Pixel_16x16_336: -744725350
       All_Fire_Bullet_Pixel_16x16_462: -1209775046
       All_Fire_Bullet_Pixel_16x16_461: -931348254
       All_Fire_Bullet_Pixel_16x16_467: -826390095
       All_Fire_Bullet_Pixel_16x16_530: -1976865833
-      All_Fire_Bullet_Pixel_16x16_503: 2046502562
+      All_Fire_Bullet_Pixel_16x16_400: 1975292820
       All_Fire_Bullet_Pixel_16x16_205: -1566142567
       All_Fire_Bullet_Pixel_16x16_320: 1775269211
       All_Fire_Bullet_Pixel_16x16_144: -568744913
@@ -11802,10 +11802,11 @@ TextureImporter:
       All_Fire_Bullet_Pixel_16x16_152: 991694689
       All_Fire_Bullet_Pixel_16x16_431: 809227802
       All_Fire_Bullet_Pixel_16x16_292: 541883859
+      All_Fire_Bullet_Pixel_16x16_380: 384975038
       All_Fire_Bullet_Pixel_16x16_138: 296994765
-      All_Fire_Bullet_Pixel_16x16_123: 1214296651
-      All_Fire_Bullet_Pixel_16x16_82: 1329529255
       All_Fire_Bullet_Pixel_16x16_173: -8529782
+      All_Fire_Bullet_Pixel_16x16_82: 1329529255
+      All_Fire_Bullet_Pixel_16x16_123: 1214296651
       All_Fire_Bullet_Pixel_16x16_326: 1718502804
       All_Fire_Bullet_Pixel_16x16_341: -499087913
       All_Fire_Bullet_Pixel_16x16_167: -53001368
@@ -11818,7 +11819,6 @@ TextureImporter:
       All_Fire_Bullet_Pixel_16x16_544: -1235313969
       All_Fire_Bullet_Pixel_16x16_473: 899078501
       All_Fire_Bullet_Pixel_16x16_245: 1487235877
-      All_Fire_Bullet_Pixel_16x16_380: 384975038
       All_Fire_Bullet_Pixel_16x16_73: -1531481035
       All_Fire_Bullet_Pixel_16x16_210: -399557753
       All_Fire_Bullet_Pixel_16x16_430: -1082678283
@@ -11893,9 +11893,9 @@ TextureImporter:
       All_Fire_Bullet_Pixel_16x16_278: 686822502
       All_Fire_Bullet_Pixel_16x16_5: 1550630664
       All_Fire_Bullet_Pixel_16x16_215: -1311942158
+      All_Fire_Bullet_Pixel_16x16_366: 1864690131
       All_Fire_Bullet_Pixel_16x16_226: -560690723
       All_Fire_Bullet_Pixel_16x16_289: -1120075067
-      All_Fire_Bullet_Pixel_16x16_366: 1864690131
       All_Fire_Bullet_Pixel_16x16_91: -1911386974
       All_Fire_Bullet_Pixel_16x16_213: -2041681593
       All_Fire_Bullet_Pixel_16x16_396: -1569679577
@@ -12043,8 +12043,8 @@ TextureImporter:
       All_Fire_Bullet_Pixel_16x16_62: 1549830789
       All_Fire_Bullet_Pixel_16x16_301: 1494206403
       All_Fire_Bullet_Pixel_16x16_450: 837148555
-      All_Fire_Bullet_Pixel_16x16_156: 1762226222
       All_Fire_Bullet_Pixel_16x16_306: 1824182882
+      All_Fire_Bullet_Pixel_16x16_156: 1762226222
       All_Fire_Bullet_Pixel_16x16_70: 1196925024
       All_Fire_Bullet_Pixel_16x16_29: 1109525117
       All_Fire_Bullet_Pixel_16x16_89: -1686318804
@@ -12069,8 +12069,8 @@ TextureImporter:
       All_Fire_Bullet_Pixel_16x16_35: -340526350
       All_Fire_Bullet_Pixel_16x16_191: 986821432
       All_Fire_Bullet_Pixel_16x16_102: 1135043979
-      All_Fire_Bullet_Pixel_16x16_112: 171324021
       All_Fire_Bullet_Pixel_16x16_383: 970371339
+      All_Fire_Bullet_Pixel_16x16_112: 171324021
       All_Fire_Bullet_Pixel_16x16_259: -936826477
       All_Fire_Bullet_Pixel_16x16_108: -1393285837
       All_Fire_Bullet_Pixel_16x16_13: -2034382875

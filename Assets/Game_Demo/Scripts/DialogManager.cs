@@ -9,6 +9,8 @@ public class DialogManager : MonoBehaviour
     public Text dialogBoxTitle;
     public Text dialogBoxContent;
     public Image dialogImage;
+    public Sprite playerImage;
+    public Sprite guideImage;
     public GameObject player;
     public bool freezePlayerOnDialogue = false;
     private Queue<string> inputStream = new Queue<string>();
@@ -31,13 +33,13 @@ public class DialogManager : MonoBehaviour
         dialogBox.SetActive(true);
         inputStream = dialogue;
         PrintDialogue();
-        //showImage(dialogBoxTitle.text);
+        showImage(dialogBoxTitle.text);
     }
 
     public void AdvanceDialogue()
     {
         PrintDialogue();
-        //showImage(dialogBoxTitle.text);
+        showImage(dialogBoxTitle.text);
     }
 
     private void PrintDialogue()
@@ -60,17 +62,17 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    //private void showImage(string name)
-    //{
-    //    if (name == "???")
-    //    {
-    //        dialogImage.image = ;
-    //    }
-    //    else
-    //    {
-    //        dialogImage.image =;
-    //    }
-    //}
+    private void showImage(string name)
+    {
+        if (name == "???")
+        {
+            dialogImage.sprite = guideImage;
+        }
+        else
+        {
+            dialogImage.sprite = playerImage;
+        }
+    }
 
     public void EndDialogue()
     {

@@ -7,12 +7,15 @@ public class EntryController : MonoBehaviour
 {
     private bool isInBox = false;
     public string levelName;
+    //public Animator crossFadeAnim;
+    public GameObject crossFade;
 
     void Update()
     {
         if (isInBox && Input.GetKeyDown(KeyCode.Space))
         {
-            enterLevel(levelName);
+            crossFade.SetActive(true);
+            StartCoroutine(enterLevel(levelName));
         }
     }
 
@@ -31,8 +34,10 @@ public class EntryController : MonoBehaviour
         }
     }
 
-    public void enterLevel(string levelName)
+    IEnumerator enterLevel(string levelName)
     {
+        //crossFadeAnim.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
     }
 

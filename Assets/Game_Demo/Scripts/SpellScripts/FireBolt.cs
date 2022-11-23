@@ -18,7 +18,7 @@ public class FireBolt : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo) // when hit something
     {
         if (hitInfo.gameObject.tag == "Enemy") {
-            hitInfo.GetComponent<EnemyStatus>().TakeDamage(20);
+            hitInfo.GetComponent<EnemyStatus>().TakeDamage(15);
         }
 
         if(hitInfo.gameObject.layer != playerLayers){

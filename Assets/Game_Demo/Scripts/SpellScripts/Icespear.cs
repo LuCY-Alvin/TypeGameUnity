@@ -18,7 +18,7 @@ public class Icespear : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo) // when hit something
     {
         if (hitInfo.gameObject.tag == "Enemy") {
-            hitInfo.GetComponent<EnemyStatus>().TakeDamage(15);
+            hitInfo.GetComponent<EnemyStatus>().TakeDamage(10);
         }
 
         if(hitInfo.gameObject.layer != playerLayers){

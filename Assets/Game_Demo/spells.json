@@ -27,6 +27,22 @@
             "enabled": true
         },
         {
+            "name": "thunder",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 20,
+            "enabled": true
+        },
+        {
+            "name": "tornado",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 20,
+            "enabled": true
+        },
+        {
             "name": "heal",
             "type": "active",
             "effect": "heal",

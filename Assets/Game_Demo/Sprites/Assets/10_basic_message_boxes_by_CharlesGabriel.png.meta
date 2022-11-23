@@ -1,0 +1,1090 @@
+fileFormatVersion: 2
+guid: 8ff213f073ea7e44d9772c9323311689
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 954.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61b82fa00a5b5ee43973781e18d1ef96
+      internalID: -1559542096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_1
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 954.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6812575e49fb7df4c99146e5614bbe47
+      internalID: 497987744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 909.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead67ea450efe594b9e8daa2531c4ebc
+      internalID: 1873729161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_3
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 909.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf98718307463d4c9a3ba39f5f3036e
+      internalID: -1883262478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f08a6b00d53b24c81746c426a122b6
+      internalID: 527324419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_5
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 864.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7966972717f5e0d49b5f2f96b383c311
+      internalID: -848903788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 819.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ef878357e1218489fecd6ac6117a8c
+      internalID: -1213955393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_7
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 819.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bcf510ba961d9a48aab98ceddb812c0
+      internalID: -1741740862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 774.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07bf46082e299342a9da2db4ad5b70d
+      internalID: -2011474012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_9
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 774.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a47e5f9b0efbe4e8804c35ac2ea306
+      internalID: 264527245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 729.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d243b636c1bea9488bfdc964d707226
+      internalID: 1647072258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_11
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 729.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10677c4831c5dfb47b6f39385d354344
+      internalID: 195135400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 684.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b8ce4167a005b4b80607b70ed01c5a
+      internalID: 1656581029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_13
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 684.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e642a1e8360a87498031e9b8dc67663
+      internalID: 1103496051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 639.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ed78f8ef073af49b93a3e4b204ecb2
+      internalID: -381914022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_15
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 639.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77747d78d662ba48b64472938df7864
+      internalID: -1054866140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 594.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e453676ebbf1414cabe34d3e6d36019
+      internalID: 1795784283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_17
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 601
+        width: 318
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2201e29a1b648540ab675015e624690
+      internalID: 1210223273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 549.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13554bfba5b40554389ef6a7b842b030
+      internalID: 1354615443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_19
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 549.5455
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6acdcc0129b98b40a4493d11e28f344
+      internalID: 334693284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 504.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399b3da715370264496772bc4ce6c4f9
+      internalID: -766840970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_21
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 504.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f66f2a77f5e299e4c8b04f07d3bead31
+      internalID: -33720323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 459.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78824c5485de6fd44bcef064e8d13493
+      internalID: 1610321145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_23
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 459.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99cc49e04e479ad4a945a43e9a461a8c
+      internalID: 1629292514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 414.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c467e01696938449868561e8e9e428e
+      internalID: -1052859969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_25
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 414.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7a213a4d0f4bb42a60943a9196be6d
+      internalID: 92231464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 369.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07db493873fa5cb42b754bc39de20059
+      internalID: 430311564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_27
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 369.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2bdc6fa510bc38409cc2ac0e160f53e
+      internalID: 417635684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 324.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95f4337686ba88047bbec58b8c36e364
+      internalID: -2100194962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_29
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 324.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc4cdf7201bab8478a68db4256b0817
+      internalID: 1896595441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 279.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070a46d22fb4ef94bbc31b47ee5c237a
+      internalID: 1846411523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_31
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 279.54547
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c6eac76e2e1ed24caf05023f4ef8729
+      internalID: -1722400800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 234.54546
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f4abfe72ebbcea409f0b895e3be89bf
+      internalID: 931705689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_33
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 234.54546
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cae1e22b294bec4496f8222a1a70bb8
+      internalID: -915618960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 189.54546
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b75cf1dabf1ba0247b4d2075ac57ee86
+      internalID: -1405089619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_35
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 189.54546
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ceecd95ef3d3b4591a2710fec21023
+      internalID: 1629996775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 280
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99bd468d53b98fd4d89663e985ee2947
+      internalID: 1815393729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_37
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 144.54546
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb0c991971e0e4d4c805ab307411cbf8
+      internalID: 1601447999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_38
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 100
+        width: 325
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cc9d960d603054aafdb8adf4143bc8
+      internalID: 782792798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_39
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 215
+        width: 325
+        height: 45
+      alignment: 9
+      pivot: {x: 0.509309, y: 0.89217734}
+      border: {x: 0, y: 45, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ef9cce512446c4586167c01cc9bc69
+      internalID: 2085160884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_40
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 25
+        width: 236
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c06affdbce951e44b296dfdf6132eb9
+      internalID: 1561447227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_41
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 122
+        width: 316
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 3, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a343c208aab5e4784bf0f92f3dda97
+      internalID: -348450511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9.545456
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e9a7774c4b9a6443b0fdc08595d48a8
+      internalID: 2109073952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10_basic_message_boxes_by_CharlesGabriel_43
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 9.545456
+        width: 325
+        height: 45.454544
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e7b600adb5637841b75d80606310446
+      internalID: 1962939853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      10_basic_message_boxes_by_CharlesGabriel_43: 1962939853
+      10_basic_message_boxes_by_CharlesGabriel_26: 430311564
+      10_basic_message_boxes_by_CharlesGabriel_22: 1610321145
+      10_basic_message_boxes_by_CharlesGabriel_12: 1656581029
+      10_basic_message_boxes_by_CharlesGabriel_5: -848903788
+      10_basic_message_boxes_by_CharlesGabriel_19: 334693284
+      10_basic_message_boxes_by_CharlesGabriel_39: 2085160884
+      10_basic_message_boxes_by_CharlesGabriel_1: 497987744
+      10_basic_message_boxes_by_CharlesGabriel_7: -1741740862
+      10_basic_message_boxes_by_CharlesGabriel_18: 1354615443
+      10_basic_message_boxes_by_CharlesGabriel_40: 1561447227
+      10_basic_message_boxes_by_CharlesGabriel_25: 92231464
+      10_basic_message_boxes_by_CharlesGabriel_6: -1213955393
+      10_basic_message_boxes_by_CharlesGabriel_20: -766840970
+      10_basic_message_boxes_by_CharlesGabriel_24: -1052859969
+      10_basic_message_boxes_by_CharlesGabriel_21: -33720323
+      10_basic_message_boxes_by_CharlesGabriel_14: -381914022
+      10_basic_message_boxes_by_CharlesGabriel_3: -1883262478
+      10_basic_message_boxes_by_CharlesGabriel_23: 1629292514
+      10_basic_message_boxes_by_CharlesGabriel_42: 2109073952
+      10_basic_message_boxes_by_CharlesGabriel_33: -915618960
+      10_basic_message_boxes_by_CharlesGabriel_0: -1559542096
+      10_basic_message_boxes_by_CharlesGabriel_4: 527324419
+      10_basic_message_boxes_by_CharlesGabriel_32: 931705689
+      10_basic_message_boxes_by_CharlesGabriel_37: 1601447999
+      10_basic_message_boxes_by_CharlesGabriel_38: 782792798
+      10_basic_message_boxes_by_CharlesGabriel_27: 417635684
+      10_basic_message_boxes_by_CharlesGabriel_2: 1873729161
+      10_basic_message_boxes_by_CharlesGabriel_34: -1405089619
+      10_basic_message_boxes_by_CharlesGabriel_8: -2011474012
+      10_basic_message_boxes_by_CharlesGabriel_28: -2100194962
+      10_basic_message_boxes_by_CharlesGabriel_35: 1629996775
+      10_basic_message_boxes_by_CharlesGabriel_9: 264527245
+      10_basic_message_boxes_by_CharlesGabriel_30: 1846411523
+      10_basic_message_boxes_by_CharlesGabriel_17: 1210223273
+      10_basic_message_boxes_by_CharlesGabriel_11: 195135400
+      10_basic_message_boxes_by_CharlesGabriel_36: 1815393729
+      10_basic_message_boxes_by_CharlesGabriel_13: 1103496051
+      10_basic_message_boxes_by_CharlesGabriel_10: 1647072258
+      10_basic_message_boxes_by_CharlesGabriel_31: -1722400800
+      10_basic_message_boxes_by_CharlesGabriel_15: -1054866140
+      10_basic_message_boxes_by_CharlesGabriel_41: -348450511
+      10_basic_message_boxes_by_CharlesGabriel_16: 1795784283
+      10_basic_message_boxes_by_CharlesGabriel_29: 1896595441
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

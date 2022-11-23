@@ -321,8 +321,6 @@ public class PlayerMovement : MonoBehaviour {
 		Gizmos.DrawWireSphere(combatPoint.position, combatRange);
 	}
 
-
-
 	public void TakeDamage(int damage, Transform source)
 	{
 		if (isInvincible || isInjured) {
@@ -338,9 +336,9 @@ public class PlayerMovement : MonoBehaviour {
 			f = -5;
 		}
 
-		float constR = 400;
+		float constR = 300;
 
-		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 500f));
+		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 20f));
 
 		StartCoroutine(SetStiffness(0.8f));
 		

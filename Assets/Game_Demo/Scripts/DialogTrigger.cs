@@ -59,6 +59,7 @@ public class DialogTrigger : MonoBehaviour
         Canvas canvas;
         canvas = canvasGO.GetComponent<Canvas>();
         canvas.renderMode = RenderMode.WorldSpace;
+        canvas.sortingLayerName = "tilemap";
 
         GameObject textGO = new GameObject();
         textGO.transform.parent = canvasGO.transform;
@@ -89,6 +90,18 @@ public class DialogTrigger : MonoBehaviour
             }
             canChat = true;
             
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (GameObject.Find("Canvas_text") == null &&¡@canChat)
+            {
+                generateTextObject();
+                isFirstTime = true;
+            }
         }
     }
 

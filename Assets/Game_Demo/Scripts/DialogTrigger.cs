@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,25 +8,29 @@ using UnityEngine.UI;
 public class DialogTrigger : MonoBehaviour
 {
     public TextAsset TextFile;
-    private Queue<string> dialogue = new Queue<string>();
+    public Queue<string> dialogue = new Queue<string>();
     private Text text;
     private bool canChat = false;
     private bool isFirstTime = true;
+    public string phase = "1-1";
 
     void TriggerDialogue()
     {
-        readTextFile();
+        readTextFile(phase);
         FindObjectOfType<DialogManager>().StartDialogue(dialogue);
     }
-    
-    private void readTextFile()
+
+    private void readTextFile(string phase)
     {
         string txt = TextFile.text;
         string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
 
+        int[] idx_arr = lines.Select((b, i) => b == phase ? i : -1).Where(i => i != -1).ToArray();
+        lines = lines[idx_arr[0]..idx_arr[1]];
+
         foreach (string line in lines)
         {
-            if (!string.IsNullOrEmpty(line))
+            if (!string.IsNullOrEmpty(line) && !line.Contains("-"))
             {
                 if (line.StartsWith("["))
                 {
@@ -39,7 +45,7 @@ public class DialogTrigger : MonoBehaviour
                 }
             }
         }
-        dialogue.Enqueue("EndQuene");
+        dialogue.Enqueue("EndQueue");
     }
 
     void generateTextObject()
@@ -111,7 +117,6 @@ public class DialogTrigger : MonoBehaviour
         {
             canChat = false;
             Destroy(GameObject.Find("Canvas_text"));
-            FindObjectOfType<DialogManager>().EndDialogue();
             isFirstTime = true;
         }
     }

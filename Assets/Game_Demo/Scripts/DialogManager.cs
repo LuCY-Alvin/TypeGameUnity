@@ -15,6 +15,13 @@ public class DialogManager : MonoBehaviour
     public bool freezePlayerOnDialogue = false;
     private Queue<string> inputStream = new Queue<string>();
 
+    DialogTrigger dialogTrigger;
+
+    void Start()
+    {
+        dialogTrigger = gameObject.GetComponent<DialogTrigger>();
+    }
+
     private void disablePlayerController()
     {
         player.GetComponent<PlayerMovement>().enabled = false;
@@ -82,5 +89,6 @@ public class DialogManager : MonoBehaviour
         {
             enablePlayerController();
         }
+        dialogTrigger.phase = dialogTrigger.phase[0]+"-2";
     }
 }

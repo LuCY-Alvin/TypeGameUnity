@@ -12290,6 +12290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextFile: {fileID: 4900000, guid: a305124303e3674489f3a3f7365e48b6, type: 3}
+  phase: 1-1
 --- !u!61 &804244053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13012,7 +13013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1167321754
 RectTransform:
   m_ObjectHideFlags: 0

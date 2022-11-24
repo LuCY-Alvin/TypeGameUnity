@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class DialogManager : MonoBehaviour
 {
     public GameObject dialogBox;
-    public Text dialogBoxTitle;
-    public Text dialogBoxContent;
+    public TMP_Text dialogBoxTitle;
+    public TMP_Text dialogBoxContent;
     public Image dialogImage;
     public Sprite playerImage;
     public Sprite guideImage;
@@ -71,7 +73,7 @@ public class DialogManager : MonoBehaviour
 
     private void showImage(string name)
     {
-        if (name == "???")
+        if (name == "???" || name == "®J­}¬|")
         {
             dialogImage.sprite = guideImage;
         }

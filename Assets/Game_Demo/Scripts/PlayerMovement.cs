@@ -19,10 +19,6 @@ public class PlayerMovement : MonoBehaviour {
 	public Button bookBoxNextBtn;
 	public SpellController _spellController;
 
-	List<Spell> activeSpells = new() { };
-	List<Spell> supportSpells = new() { };
-	List<Spell> functionSpells = new() { };
-
 	// Status
 	[SerializeField] private int atkDamage;
 	public float runSpeed = 40f;
@@ -53,13 +49,19 @@ public class PlayerMovement : MonoBehaviour {
 			// CastBook
 			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
 
+				List<Spell> activeSpells = new() { };
+				List<Spell> supportSpells = new() { };
+				List<Spell> functionSpells = new() { };
+
 				foreach (Spell spells in _spellController.spellList.spells)
+				{
 					if (spells.type == "active")
 						activeSpells.Add(spells);
-					else if (spells.type == "support" && spells.effect != "function")
+					else if (spells.type == "support" && spells.effect != "function" && !supportSpells.Contains(spells))
 						supportSpells.Add(spells);
-					else if (spells.type == "support" && spells.effect == "function")
+					else if (spells.type == "support" && spells.effect == "function" && !functionSpells.Contains(spells))
 						functionSpells.Add(spells);
+				}
 
 				bookBoxCast.text = "Skills\n";
 				bookBoxAffix.text = "Affix\n";
@@ -85,6 +87,7 @@ public class PlayerMovement : MonoBehaviour {
 
 				bookBoxCast.text += "\n" + spell.name;
 				bookBoxBackBtn.gameObject.SetActive(false);
+				bookBoxNextBtn.gameObject.SetActive(true);
 
 				bookBoxBackBtn.onClick.AddListener(back);
 				bookBoxNextBtn.onClick.AddListener(next);
@@ -126,7 +129,7 @@ public class PlayerMovement : MonoBehaviour {
 
 				void next()
 				{
-					if (pages <= activeSpells.Count)
+					if (pages <= activeSpells.Count-2)
 					{
 						bookBoxBackBtn.gameObject.SetActive(true);
 						bookBoxCast.text = "Skills\n";
@@ -154,16 +157,17 @@ public class PlayerMovement : MonoBehaviour {
 									bookBoxAffix.text += "\n" + supportCast.name;
 						}
 
-						if (pages == activeSpells.Count - 1)
+						if (pages == activeSpells.Count-1)
 							bookBoxNextBtn.gameObject.SetActive(false);
 					}
 				}
 
-				bookBox.SetActive(true);
 				_BookOpened = true;
+				bookBox.SetActive(true);
 
 			} else if (Input.GetKeyDown(KeyCode.E) && _BookOpened)
             {
+				pages = 0;
 				_BookOpened = false;
 				bookBox.SetActive(false);
 			}

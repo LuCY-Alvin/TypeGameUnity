@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ public class EnemyStatus : MonoBehaviour
 
     private Animator anim;
     private bool isDead;
+    public GameObject exit;
 
     private void Awake() {
         currentHealth = startingHealth;
@@ -38,6 +40,14 @@ public class EnemyStatus : MonoBehaviour
 
     private void Deactivate(){
         gameObject.SetActive(false);
+    }
+
+    private void updatePhase(string bossTag)
+    {
+        StreamWriter writer = new StreamWriter(Application.dataPath + "/Game_Demo/Phase.txt", true);
+        writer.WriteLine();
+        writer.Write(bossTag[^1] + "-1");
+        writer.Close();
     }
 
     public void TakeDamage(int damage){
@@ -60,6 +70,11 @@ public class EnemyStatus : MonoBehaviour
                     component.enabled = false;
 
                 isDead = true;
+                if (gameObject.name.Contains("Boss"))
+                {
+                    exit.SetActive(true);
+                    updatePhase(gameObject.name);
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,27 @@ using UnityEngine.UI;
 public class DialogTrigger : MonoBehaviour
 {
     public TextAsset TextFile;
+    public TextAsset phaseTxt;
     public Queue<string> dialogue = new Queue<string>();
     private Text text;
     private bool canChat = false;
     private bool isFirstTime = true;
-    public string phase = "1-1";
+    public string phase;
 
     void TriggerDialogue()
     {
+        getPhase();
         readTextFile(phase);
         FindObjectOfType<DialogManager>().StartDialogue(dialogue);
+    }
+
+    private void getPhase()
+    {
+        StreamReader stream = new StreamReader(Application.dataPath + "/Game_Demo/Phase.txt");
+        string txt = stream.ReadToEnd();
+        string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
+        phase = lines[^1];
+        stream.Close();
     }
 
     private void readTextFile(string phase)

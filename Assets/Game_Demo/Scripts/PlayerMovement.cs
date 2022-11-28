@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour {
 		if(TimeController.GetIsBulletTime() == false){
 
 			// CastBook
-			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
+				if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
 
 				List<Spell> activeSpells = new() { };
 				List<Spell> supportSpells = new() { };

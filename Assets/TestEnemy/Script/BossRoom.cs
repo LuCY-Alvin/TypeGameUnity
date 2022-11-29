@@ -12,7 +12,8 @@ public class BossRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D hit) {
         if(hit.gameObject.tag == "Player" && !isPlayerIn){
             isPlayerIn = true;
-            Instantiate(prefabBoss, bossPoint.position, bossPoint.rotation);
+            GameObject boss = Instantiate(prefabBoss, bossPoint.position, bossPoint.rotation);
+            boss.name = "Boss";
             Destroy(gameObject);
         }
     }

@@ -79,14 +79,6 @@ public class DialogManager : MonoBehaviour
 
     private string getPhase()
     {
-        //string txt = phaseTxt.text;
-        //string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
-        //foreach (string line in lines)
-        //{
-        //    Debug.Log(line);
-        //}
-        //string phase = lines[^1];
-
         StreamReader stream = new StreamReader(Application.dataPath + "/Game_Demo/Phase.txt");
         string txt = stream.ReadToEnd();
         string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
@@ -106,7 +98,6 @@ public class DialogManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        Debug.Log("end dialog");
         inputStream.Clear();
         dialogBox.SetActive(false);
         if (freezePlayerOnDialogue)

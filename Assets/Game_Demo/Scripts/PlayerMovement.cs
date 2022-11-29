@@ -349,7 +349,7 @@ public class PlayerMovement : MonoBehaviour {
 		//hurt animation
 		animator.SetTrigger("Injured");
 
-		Debug.Log("Player takes " + damage + " damage!\n");
+		// Debug.Log("Player takes " + damage + " damage!\n");
 
 		_healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
 	}

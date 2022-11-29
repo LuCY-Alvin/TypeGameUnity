@@ -115,7 +115,7 @@ public class DialogTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (GameObject.Find("Canvas_text") == null &&¡@canChat)
+            if (GameObject.Find("Canvas_text") == null && canChat)
             {
                 generateTextObject();
                 isFirstTime = true;

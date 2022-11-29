@@ -70,10 +70,17 @@ public class EnemyStatus : MonoBehaviour
                     component.enabled = false;
 
                 isDead = true;
+
+                if(UIbar != null)
+                    Destroy(UIbar);
+                
                 if (gameObject.name.Contains("Boss"))
                 {
                     exit.SetActive(true);
                     updatePhase(gameObject.name);
+                    string nextLevel = "Level" + (char.GetNumericValue(gameObject.name[^1]) + 1).ToString();
+                    PlayerPrefs.SetString("next level", nextLevel);
+                    PlayerPrefs.Save();
                 }
             }
         }

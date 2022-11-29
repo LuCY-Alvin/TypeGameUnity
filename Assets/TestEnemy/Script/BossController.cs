@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BossController : MonoBehaviour
 {
@@ -33,6 +34,13 @@ public class BossController : MonoBehaviour
     [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
     
+    [Header ("Ult Name")]
+    [SerializeField] private GameObject prefabUltName;
+    [SerializeField] private Canvas bossCanvas;
+    [SerializeField] private Transform namePoint;
+    private bool isNameShow = false;
+    private GameObject ultNameObject;
+
     private Animator anim;
     private AnimatorStateInfo animState;
     private GameObject player;
@@ -53,13 +61,32 @@ public class BossController : MonoBehaviour
         
         if( status.GetCurrentHealth() <= status.GetStartingHealth() * ultHealthPercentage ){
         // TODO: cast
+                Debug.Log("uc: " + ultCooldown + " ut: " + ultTimer);
+
             if( ultTimer >= ultCooldown && !animState.IsTag("Inv")){
                 ultTimer = 0;
                 CastUlt();
             }
         }
 
-        if(animState.IsName("cast")) { CastUlt(); }
+        if(animState.IsName("cast")) { 
+            CastUlt(); 
+
+            if( !isNameShow ){
+                ultNameObject = Instantiate(prefabUltName, bossCanvas.transform) as GameObject;
+                ultNameObject.transform.position = namePoint.position;
+                ultNameObject.GetComponent<TMP_Text>().text = ultName;
+                isNameShow = true;
+            }
+        } 
+        else {
+            if(isNameShow){
+                Destroy(ultNameObject);
+                isNameShow = false;
+                anim.SetBool("casting", false);
+            }
+        }
+
 
         if(animState.IsName("spell")) { 
             SpellUlt(); 
@@ -112,6 +139,7 @@ public class BossController : MonoBehaviour
             ultTimer = 0;
             SpellUlt();
         }
+
     }
 
     private void SpellUlt(){
@@ -180,12 +208,11 @@ public class BossController : MonoBehaviour
     public bool IsFacingLeft(){ return movingLeft; }
 
     public bool CancelUlt(string spell){
-        if(spell == ultName){
+        if(animState.IsName("cast") && spell.Equals(ultName, System.StringComparison.OrdinalIgnoreCase)) {
             anim.SetTrigger("hurt");
             anim.SetBool("casting", false);
             ultTimer = 0;
-        }
-
-        return spell == ultName;
+            return true;
+        } else return false;
     }
 }

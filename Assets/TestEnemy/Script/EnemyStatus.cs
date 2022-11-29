@@ -71,6 +71,10 @@ public class EnemyStatus : MonoBehaviour
                     component.enabled = false;
 
                 isDead = true;
+
+                if(UIbar != null)
+                    Destroy(UIbar);
+                
                 if (gameObject.name.Contains("Boss"))
                 {
                     exit.SetActive(true);

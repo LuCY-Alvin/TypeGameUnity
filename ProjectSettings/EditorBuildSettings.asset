@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Game_Demo/Entryway.unity
     guid: 9f8e86ab967e09947b13b5cf4da968a5
   - enabled: 1
-    path: Assets/Game_Demo/Demo_2.unity
+    path: Assets/Game_Demo/Level1.unity
     guid: d524634825bcc7a4fadab84a8bbec549
   m_configObjects: {}

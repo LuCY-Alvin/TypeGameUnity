@@ -12330,7 +12330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f36f447f2781e8418299ecf64d8d0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseTxt: {fileID: 4900000, guid: 460ce80c86950d84e90795c5a99c86af, type: 3}
   dialogBox: {fileID: 1167321753}
   dialogBoxTitle: {fileID: 2049320170}
   dialogBoxContent: {fileID: 1262365934}
@@ -15034,7 +15033,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

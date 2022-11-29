@@ -67,7 +67,7 @@ public class DialogManager : MonoBehaviour
 
     private void showImage(string name)
     {
-        if (name == "???" || name == "®J­}¬|")
+        if (name == "???" || name == "ï¿½Jï¿½}ï¿½|")
         {
             dialogImage.sprite = guideImage;
         }

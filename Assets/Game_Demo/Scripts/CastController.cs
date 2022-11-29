@@ -12,7 +12,7 @@ public class CastController : MonoBehaviour
     public GameObject castPanel;
     public GameObject textBox;
 
-    public BossController boss;
+    public BossController bossController;
     
     private string input;
 
@@ -39,11 +39,11 @@ public class CastController : MonoBehaviour
 
         // Cast spell
         // TODO: Spell system
-        boss = GameObject.Find("Boss").GetComponent<BossController>();
-        if( boss != null && boss.CancelUlt(input) ){}
+        GameObject boss = GameObject.Find("Boss");
+
+        if( boss != null && boss.GetComponent<BossController>().CancelUlt(input) ){}
         else{
             string[] inputList = input.Split(' ');
-
             spellController.Spell(inputList);
         }
 

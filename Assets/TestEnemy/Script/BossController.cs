@@ -61,7 +61,6 @@ public class BossController : MonoBehaviour
         
         if( status.GetCurrentHealth() <= status.GetStartingHealth() * ultHealthPercentage ){
         // TODO: cast
-                Debug.Log("uc: " + ultCooldown + " ut: " + ultTimer);
 
             if( ultTimer >= ultCooldown && !animState.IsTag("Inv")){
                 ultTimer = 0;

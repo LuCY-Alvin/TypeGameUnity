@@ -34801,8 +34801,8 @@ MonoBehaviour:
   prefabBlast: {fileID: 4043512819266818946, guid: 12020d8d3183c4101b8a6f075708dc97, type: 3}
   prefabIcespear: {fileID: 7303847182734845614, guid: 86972aefcd06642dfb6db56da2d3526e, type: 3}
   prefabEarthbump: {fileID: 4187405547745874571, guid: cf347d2c0fb30452fb023c48f172982a, type: 3}
-  prefabThunder: {fileID: 0}
-  prefabTornado: {fileID: 0}
+  prefabThunder: {fileID: 3697553311490424280, guid: 649fd5754dd534f7ea3b0dbebf56520c, type: 3}
+  prefabTornado: {fileID: 5128206107764105091, guid: e91c558d6fc634e9399b3d944bc8fc6b, type: 3}
   bookBox: {fileID: 213476659}
   _shield: {fileID: 219285440}
   _playerMovement: {fileID: 1621064064}
@@ -34823,6 +34823,7 @@ MonoBehaviour:
   _healthBar: {fileID: 836390122}
   castPanel: {fileID: 234963636}
   textBox: {fileID: 224044688}
+  bossController: {fileID: 0}
 --- !u!114 &1621064072
 MonoBehaviour:
   m_ObjectHideFlags: 0

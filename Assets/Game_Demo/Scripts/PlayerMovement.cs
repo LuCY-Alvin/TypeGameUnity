@@ -224,16 +224,6 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 
-
-		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Player_dead"))
-		{
-			GetComponent<SpriteRenderer>().material.color = new Color(1f, 0f, 0f);
-		}
-		else
-		{
-			GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f);
-		}
-
 	}
 	
 

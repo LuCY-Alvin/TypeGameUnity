@@ -23,10 +23,12 @@ public class RangeEnemy : MonoBehaviour
 
     private Animator anim;
     private EnemyPatrol enemyPatrol;
+    private EnemyStatus enemyStatus;
 
     private void Awake() {
         anim = GetComponent<Animator>();
         enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        enemyStatus = GetComponent<EnemyStatus>();
     }
 
     private void Update(){

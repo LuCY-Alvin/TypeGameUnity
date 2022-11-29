@@ -20,8 +20,6 @@ public class EntryController : MonoBehaviour
 
     void Update()
     {
-        nextLevel = PlayerPrefs.GetString("next level");
-        Debug.Log(nextLevel + " " + gameObject.name.Substring(gameObject.name.Length - 6));
         
         if (gameObject.scene.name == "Entryway" && gameObject.name != "EntranceLevel1")
         {

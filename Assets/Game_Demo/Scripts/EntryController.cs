@@ -9,7 +9,7 @@ public class EntryController : MonoBehaviour
     private bool isInBox = false;
     private string levelName;
     private string nextLevel;
-
+    //public Animator crossFadeAnim;
     public GameObject crossFade;
 
     //如果破過第一關，則以下在每次重新debug前需跑一次，不然一開始去其他關的出口會露出來
@@ -20,8 +20,6 @@ public class EntryController : MonoBehaviour
 
     void Update()
     {
-        nextLevel = PlayerPrefs.GetString("next level");
-        // Debug.Log(nextLevel + " " + gameObject.name.Substring(gameObject.name.Length - 6));
         
         if (gameObject.scene.name == "Entryway" && gameObject.name != "EntranceLevel1")
         {

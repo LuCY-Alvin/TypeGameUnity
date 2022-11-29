@@ -23,6 +23,7 @@ public class EnemyStatus : MonoBehaviour
     private Animator anim;
     private bool isDead;
     public GameObject exit;
+    public GameObject player;
 
     private void Awake() {
         currentHealth = startingHealth;
@@ -81,6 +82,8 @@ public class EnemyStatus : MonoBehaviour
                     string nextLevel = "Level" + (char.GetNumericValue(gameObject.name[^1]) + 1).ToString();
                     PlayerPrefs.SetString("next level", nextLevel);
                     PlayerPrefs.Save();
+
+                    player.GetComponent<OSManager>().StartDialogue();
                 }
             }
         }

@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour {
 				castController.StartCast();
 			}
 
-			if (Input.GetKeyDown(KeyCode.Space))	// Jump
+			if (Input.GetKeyDown(KeyCode.Space)) // Jump
 			{
 				jump = true;
 				animator.SetBool("IsJumping", true);

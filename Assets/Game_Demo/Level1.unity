@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f6f759479822e458639dc837c9ecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1621064059}
 --- !u!114 &102103782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26342,7 +26343,7 @@ MonoBehaviour:
   _hpMask: {fileID: 1034187906}
   _mpMask: {fileID: 1135512207}
   _mpSpellMask: {fileID: 853796936}
-  _gameOver: {fileID: 0}
+  _gameOver: {fileID: 102103781}
   currentHp: 100
   currentMp: 100
   initMax: 200
@@ -34465,7 +34466,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002918005, y: 5.5628004}
+  m_Offset: {x: 0.002918005, y: 5.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -34476,7 +34477,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.2418303, y: 7.070582}
+  m_Size: {x: 3.2418303, y: 7.62}
   m_EdgeRadius: 0
 --- !u!50 &1621064061
 Rigidbody2D:
@@ -34662,7 +34663,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.17428079, y: 1.6140244}
+  m_Offset: {x: 0.17428079, y: 1.58}
   serializedVersion: 2
   m_Radius: 1.5948237
 --- !u!95 &1621064067

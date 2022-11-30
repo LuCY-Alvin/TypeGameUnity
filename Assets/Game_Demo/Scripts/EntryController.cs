@@ -12,11 +12,11 @@ public class EntryController : MonoBehaviour
     //public Animator crossFadeAnim;
     public GameObject crossFade;
 
-    //�p�G�}�L�Ĥ@���A�h�H�U�b�C�����sdebug�e�ݶ]�@���A���M�@�}�l�h��L�����X�f�|�S�X��
-    //void Start()
-    //{
-    //    PlayerPrefs.SetString("next level", "level1");
-    //}
+    void Start()
+    {
+        string nextLevel = "Level" + (char.GetNumericValue(getPhase()[0]) + 1).ToString();
+        PlayerPrefs.SetString("next level", nextLevel);
+    }
 
     void Update()
     {
@@ -63,5 +63,15 @@ public class EntryController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
+    }
+
+    private string getPhase()
+    {
+        StreamReader stream = new StreamReader(Application.dataPath + "/Game_Demo/Phase.txt");
+        string txt = stream.ReadToEnd();
+        string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
+        string phase = lines[^1];
+        stream.Close();
+        return phase;
     }
 }

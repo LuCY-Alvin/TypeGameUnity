@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -45,8 +46,11 @@ public class EnemyStatus : MonoBehaviour
         
         exit = entrance.transform.Find("ExitLevel1").gameObject;
         exit.SetActive(true);
-        updatePhase(gameObject.name);
-        string nextLevel = "Level" + (char.GetNumericValue(gameObject.name[^1]) + 1).ToString();
+        
+        Debug.Log(SceneManager.GetActiveScene().name);
+        string fininshedLevel = SceneManager.GetActiveScene().name;
+        string nextLevel = "Level" + (char.GetNumericValue(fininshedLevel[^1]) + 1).ToString();
+        updatePhase(fininshedLevel);
         PlayerPrefs.SetString("next level", nextLevel);
         PlayerPrefs.Save();
 

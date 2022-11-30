@@ -59,8 +59,8 @@ public class HealthBar : MonoBehaviour
         }
 
         if (newValue <= 0) {
-            // TODO: Die here
             _gameOver.Setup();
+            newValue = 100;
         }
 
         if (type == "hp") {

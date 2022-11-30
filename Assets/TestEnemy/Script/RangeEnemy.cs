@@ -70,4 +70,6 @@ public class RangeEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z)
         );
     }
+
+    public void DamagePlayer(){}
 }

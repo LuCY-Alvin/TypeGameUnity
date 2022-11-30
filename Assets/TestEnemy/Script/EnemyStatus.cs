@@ -75,7 +75,7 @@ public class EnemyStatus : MonoBehaviour
         else{
             if(!isDead){
                 anim.SetBool("moving", false);
-                anim.SetTrigger("die");
+                StartCoroutine(Die());
     
                 foreach (Behaviour component in components)
                     component.enabled = false;
@@ -90,6 +90,11 @@ public class EnemyStatus : MonoBehaviour
         }
 
         UpdateHealthBar();
+    }
+
+    IEnumerator Die() {
+        yield return new WaitForSeconds(0.1f);
+        anim.SetTrigger("die");
     }
 
     private void UpdateHealthBar(){

@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour
     public RectMask2D _hpMask;
     public RectMask2D _mpMask;
     public RectTransform _mpSpellMask;
+    public GameOver _gameOver;
 
     private float _maxRightMask;
     private float _initRightMask;
@@ -23,6 +24,7 @@ public class HealthBar : MonoBehaviour
     public TMP_Text _hpText;
     public TMP_Text _mpText;
     public TMP_Text _mpSpellText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +34,10 @@ public class HealthBar : MonoBehaviour
         changeInvoke(false);
     }
 
-    public void changeInvoke(bool isbulletTime) {
+    public void changeInvoke(bool isBulletTime) {
         CancelInvoke("ManaHandler");
 
-        if (isbulletTime) {
+        if (isBulletTime) {
             InvokeRepeating ("ManaHandler", 0f, 0.01f); 
         } else {
             InvokeRepeating ("ManaHandler", 0f, 0.5f); 
@@ -54,6 +56,11 @@ public class HealthBar : MonoBehaviour
     {
         if (newValue > initMax) {
             return;
+        }
+
+        if (newValue <= 0) {
+            // TODO: Die here
+            _gameOver.Setup();
         }
 
         if (type == "hp") {
@@ -80,7 +87,7 @@ public class HealthBar : MonoBehaviour
     }
 
     void ManaHandler() {
-        var isbulletTime = TimeController.GetIsBulletTime();
+        var isBulletTime = TimeController.GetIsBulletTime();
 
         var unit = 1;
         if (currentMp <= 0) {
@@ -89,9 +96,9 @@ public class HealthBar : MonoBehaviour
             castController.EndCast();
             //btController.BulletTime(false);
         }
-        // print(isbulletTime);
+
         if (currentMp <= initMax && currentMp >= 0) {
-            if (isbulletTime) {
+            if (isBulletTime) {
                 currentMp -= (2 * unit);
                 if (currentMp <= 0) {
                     currentMp = 0;

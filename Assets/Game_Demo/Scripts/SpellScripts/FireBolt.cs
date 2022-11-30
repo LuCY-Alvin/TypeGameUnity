@@ -6,6 +6,7 @@ public class FireBolt : MonoBehaviour
 {
     public float speed = 20f;
     public Rigidbody2D rb;
+    public GameObject prefabExplosion;
 
     private int playerLayers; 
 
@@ -23,7 +24,13 @@ public class FireBolt : MonoBehaviour
 
         if(hitInfo.gameObject.layer != playerLayers){
             Debug.Log("hit: " + hitInfo.name);
-            Destroy(gameObject);
+            StartCoroutine(HitHandler());
         }
+    }
+
+    IEnumerator HitHandler() {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+        Instantiate(prefabExplosion, transform.position, transform.rotation);
     }
 }

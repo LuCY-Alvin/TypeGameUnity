@@ -35,6 +35,14 @@
             "enabled": true
         },
         {
+            "name": "speedup",
+            "type": "active",
+            "effect": "attack",
+            "point": 20,
+            "cost": 10,
+            "enabled": true
+        },
+        {
             "name": "tornado",
             "type": "active",
             "effect": "attack",

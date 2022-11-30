@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Status
 	[SerializeField] private int atkDamage;
-	public float runSpeed = 40f;
+	public float runSpeed = 30f;
 
 	float horizontalMove = 0f;
 	bool jump = false;
@@ -226,6 +226,24 @@ public class PlayerMovement : MonoBehaviour {
 
 	}
 	
+	public void CallSpeedUp (Spell[] supportSpells) {
+		StartCoroutine(SpeedUp(supportSpells));
+	}
+
+	public IEnumerator SpeedUp(Spell[] supportSpells) {
+		Debug.Log("SpeedUp");
+		var superSupport = Array.Find(
+			supportSpells,
+			item => item.name == "super"
+		);
+		
+		runSpeed = 60f;
+		if (superSupport != null) {
+			runSpeed = 90f;
+		}
+		yield return new WaitForSeconds(3f);
+		runSpeed = 30f;
+	}
 
 	public IEnumerator SetStiffness(float time) {
 		isStiffness = true;

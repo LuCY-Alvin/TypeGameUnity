@@ -4,11 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blast : MonoBehaviour
+public class Holybuff : MonoBehaviour
 {
+    // Start is called before the first frame update
     void Start()
-    {
-        Destroy(gameObject, 0.5f);
+    {   
         Spell[] supportSpells = SpellController.supportSpellsList;
 
         var superSupport = Array.Find(
@@ -17,15 +17,14 @@ public class Blast : MonoBehaviour
         );
 
         if (superSupport != null) {
-            transform.localScale += new Vector3(2,2,0);
+            transform.localScale += new Vector3(1,1,0);
         }
+        Destroy(gameObject, 0.35f);
     }
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log(hitInfo.gameObject.tag);
-        if (hitInfo.gameObject.tag == "Enemy") {
-            hitInfo.GetComponent<EnemyStatus>().TakeDamage(20);
-        }
+        
     }
 }

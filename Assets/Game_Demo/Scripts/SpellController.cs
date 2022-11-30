@@ -10,6 +10,7 @@ public class SpellController : MonoBehaviour
     string loadData;
     public Spells spellList;
     public Animator animator;
+    public static Spell[] supportSpellsList;
 
     public Transform firePoint;
     public Transform healPoint;
@@ -22,6 +23,7 @@ public class SpellController : MonoBehaviour
     public GameObject prefabEarthbump;
     public GameObject prefabThunder;
     public GameObject prefabTornado;
+    public GameObject prefabHolyBuff;
     
     public GameObject bookBox;
     public Shield _shield;
@@ -32,10 +34,14 @@ public class SpellController : MonoBehaviour
     void Start() {
         //讀取指定路徑的Json檔案並轉成字串
         // loadData = File.ReadAllText("./Assets/Game_Demo/spells.json");
-        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"icespear\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"earthbump\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"thunder\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"tornado\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
+        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"icespear\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"earthbump\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"thunder\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"speedup\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":10,\"enabled\":true},{\"name\":\"tornado\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
 
         //把字串轉換成Data物件
         spellList = JsonUtility.FromJson<Spells>(loadData);
+    }
+
+    public static Spell[] getSupportSpells() {
+        return supportSpellsList;
     }
 
     public void Spell(string[] inputList) {
@@ -77,6 +83,8 @@ public class SpellController : MonoBehaviour
     }
 
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
+            supportSpellsList = supportSpells;
+
             // Reset dialogBox
             bookBox.SetActive(false);
 
@@ -92,6 +100,13 @@ public class SpellController : MonoBehaviour
                 
                 yield break;
             }
+
+            if (theSpell.name == "speedup") {
+                if (theSpell.enabled) {
+                    _playerMovement.CallSpeedUp(supportSpells);
+                }
+            }
+
             
             // 血魔，當下修改用
             var currentMp = _healthBar.GetCurrentMp();
@@ -148,7 +163,9 @@ public class SpellController : MonoBehaviour
 
             if (theSpell.name == "firebolt") {
                 thePrefab = prefabFirebolt;
-                theTransform = firePoint;
+            } else if (theSpell.name == "speedup") {
+                thePrefab = prefabHolyBuff;
+                theTransform.position = new Vector3(firePoint.position.x, firePoint.position.y - 0.2f, firePoint.position.z);
             } else if (theSpell.name == "heal") {
                 thePrefab = prefabHeal;
                 theTransform = healPoint;

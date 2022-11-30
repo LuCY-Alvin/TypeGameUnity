@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Status
 	[SerializeField] private int atkDamage;
-	public float runSpeed = 30f;
+	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
 	bool jump = false;
@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
 		if (isStiffness) {
 			return;
 		}
@@ -184,7 +183,7 @@ public class PlayerMovement : MonoBehaviour {
 				castController.StartCast();
 			}
 
-			if (Input.GetKeyDown(KeyCode.Z))	// Jump
+			if (Input.GetKeyDown(KeyCode.Space))	// Jump
 			{
 				jump = true;
 				animator.SetBool("IsJumping", true);
@@ -207,7 +206,7 @@ public class PlayerMovement : MonoBehaviour {
             }
 		}
 		else{
-		// set idle
+			// set idle
 			horizontalMove = 0; 
 			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -237,12 +236,12 @@ public class PlayerMovement : MonoBehaviour {
 			item => item.name == "super"
 		);
 		
-		runSpeed = 60f;
+		runSpeed = 80f;
 		if (superSupport != null) {
-			runSpeed = 90f;
+			runSpeed = 120f;
 		}
-		yield return new WaitForSeconds(3f);
-		runSpeed = 30f;
+		yield return new WaitForSeconds(4f);
+		runSpeed = 80f;
 	}
 
 	public IEnumerator SetStiffness(float time) {
@@ -265,7 +264,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	IEnumerator Teleport(Spell[] supportSpells) {
 		Vector3 player = transform.position;
-		bool canTleport = false;
+		bool canTeleport = false;
 		var leftSupport = Array.Find(
 			supportSpells,
 			item => item.name == "left"
@@ -277,7 +276,7 @@ public class PlayerMovement : MonoBehaviour {
 			distant = -distant;
 			if (player.x + distant >= leftSupport.point) {
 				player.x += distant;
-				canTleport = true;
+				canTeleport = true;
 			}
 			
 		}
@@ -290,11 +289,11 @@ public class PlayerMovement : MonoBehaviour {
 		if (rightSupport != null) {
 			if (player.x + distant <= rightSupport.point) {
 				player.x += distant;
-				canTleport = true;
+				canTeleport = true;
 			}
 		}
 		
-		if (canTleport) {
+		if (canTeleport) {
 			controller.Move(distant * Time.fixedDeltaTime, false, false);
 			yield return new WaitForSeconds(0.5f);
 			transform.position = player;
@@ -323,7 +322,6 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void OnLanding(){
-		
 		animator.SetBool("IsJumping", false);
 	}
 

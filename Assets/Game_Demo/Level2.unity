@@ -4198,6 +4198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f6f759479822e458639dc837c9ecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &788451388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4868,8 +4869,8 @@ MonoBehaviour:
   prefabEarthbump: {fileID: 4187405547745874571, guid: cf347d2c0fb30452fb023c48f172982a, type: 3}
   prefabThunder: {fileID: 3697553311490424280, guid: 649fd5754dd534f7ea3b0dbebf56520c, type: 3}
   prefabTornado: {fileID: 5128206107764105091, guid: e91c558d6fc634e9399b3d944bc8fc6b, type: 3}
-  prefabHolyBuff: {fileID: 0}
-  bookBox: {fileID: 1893235743126255762, guid: fbd8554fffa474a32b5f7be0a9f8e4e5, type: 3}
+  prefabHolyBuff: {fileID: 1893235743126255762, guid: fbd8554fffa474a32b5f7be0a9f8e4e5, type: 3}
+  bookBox: {fileID: 1408871545}
   _shield: {fileID: 1297638712}
   _playerMovement: {fileID: 1168657319}
   _healthBar: {fileID: 637925725}

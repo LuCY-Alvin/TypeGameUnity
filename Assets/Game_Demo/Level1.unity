@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f6f759479822e458639dc837c9ecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1621064059}
 --- !u!114 &102103782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26343,7 +26343,7 @@ MonoBehaviour:
   _hpMask: {fileID: 1034187906}
   _mpMask: {fileID: 1135512207}
   _mpSpellMask: {fileID: 853796936}
-  _gameOver: {fileID: 0}
+  _gameOver: {fileID: 102103781}
   currentHp: 100
   currentMp: 100
   initMax: 200
@@ -34297,6 +34297,10 @@ PrefabInstance:
       propertyPath: _spellController
       value: 
       objectReference: {fileID: 1621064070}
+    - target: {fileID: 2072734395455856802, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+      propertyPath: prefabBook
+      value: 
+      objectReference: {fileID: 1653529328}
     - target: {fileID: 2072734395455856806, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -34760,6 +34764,11 @@ MonoBehaviour:
   OSBox: {fileID: 371507031}
   OSBoxContent: {fileID: 1302153152}
   TextFile: {fileID: 4900000, guid: 3edad122983efdb4eb9196de9a452a6d, type: 3}
+--- !u!1 &1653529328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2072734395049719397, guid: e23b0b2e1b4f87642b13053e67d85591, type: 3}
+  m_PrefabInstance: {fileID: 1557678337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1707887752 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 119466860597560828, guid: 423eb9d5b0f5f014e9087d16849e180d, type: 3}

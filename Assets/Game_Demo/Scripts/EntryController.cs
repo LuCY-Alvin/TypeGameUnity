@@ -12,7 +12,7 @@ public class EntryController : MonoBehaviour
     //public Animator crossFadeAnim;
     public GameObject crossFade;
 
-    //¦pªG¯}¹L²Ä¤@Ãö¡A«h¥H¤U¦b¨C¦¸­«·sdebug«e»Ý¶]¤@¦¸¡A¤£µM¤@¶}©l¥h¨ä¥LÃöªº¥X¤f·|ÅS¥X¨Ó
+    //ï¿½pï¿½Gï¿½}ï¿½Lï¿½Ä¤@ï¿½ï¿½ï¿½Aï¿½hï¿½Hï¿½Uï¿½bï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½sdebugï¿½eï¿½Ý¶]ï¿½@ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Mï¿½@ï¿½}ï¿½lï¿½hï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½fï¿½|ï¿½Sï¿½Xï¿½ï¿½
     //void Start()
     //{
     //    PlayerPrefs.SetString("next level", "level1");

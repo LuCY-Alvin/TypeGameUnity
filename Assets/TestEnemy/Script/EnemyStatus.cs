@@ -20,10 +20,11 @@ public class EnemyStatus : MonoBehaviour
     private Image healthSlider;
     private GameObject UIbar;
 
+    [Header ("Exit")]
+    [SerializeField] private GameObject exit;
+
     private Animator anim;
     private bool isDead;
-    public GameObject exit;
-    public GameObject player;
 
     private void Awake() {
         currentHealth = startingHealth;
@@ -39,8 +40,17 @@ public class EnemyStatus : MonoBehaviour
 
     }
 
-    private void Deactivate(){
-        gameObject.SetActive(false);
+    public void openExit() {
+        GameObject entrance = GameObject.Find("Entrance");
+        
+        exit = entrance.transform.Find("ExitLevel1").gameObject;
+        exit.SetActive(true);
+        updatePhase(gameObject.name);
+        string nextLevel = "Level" + (char.GetNumericValue(gameObject.name[^1]) + 1).ToString();
+        PlayerPrefs.SetString("next level", nextLevel);
+        PlayerPrefs.Save();
+
+        GameObject.Find("Player").GetComponent<OSManager>().StartDialogue();
     }
 
     private void updatePhase(string bossTag)
@@ -75,16 +85,7 @@ public class EnemyStatus : MonoBehaviour
                 if(UIbar != null)
                     Destroy(UIbar);
                 
-                if (gameObject.name.Contains("Boss"))
-                {
-                    exit.SetActive(true);
-                    updatePhase(gameObject.name);
-                    string nextLevel = "Level" + (char.GetNumericValue(gameObject.name[^1]) + 1).ToString();
-                    PlayerPrefs.SetString("next level", nextLevel);
-                    PlayerPrefs.Save();
-
-                    player.GetComponent<OSManager>().StartDialogue();
-                }
+                if (gameObject.name.Contains("Boss")) openExit();
             }
         }
 
@@ -98,9 +99,9 @@ public class EnemyStatus : MonoBehaviour
             Destroy(UIbar);
         }
 
-        Debug.Log("update health");
-        Debug.Log(currentHealth / startingHealth);
-        Debug.Log(healthSlider.fillAmount);
+        // Debug.Log("update health");
+        // Debug.Log(currentHealth / startingHealth);
+        // Debug.Log(healthSlider.fillAmount);
 
         healthSlider.fillAmount = currentHealth / startingHealth;
     }

@@ -139,7 +139,7 @@ MonoBehaviour:
   prefabHealthBar: {fileID: 965322799685002296, guid: 12b12c344b618cc418f2434446cd4b3d, type: 3}
   bossCanvas: {fileID: 5266580193357195921}
   barPoint: {fileID: 5765409570766323338}
-  exit: {fileID: 0}
+  prefabExit: {fileID: 8915747375917963034, guid: 307eb3288a89d7b4fb87787635739f75, type: 3}
 --- !u!114 &3291500665262415284
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,15 +7,21 @@ using UnityEngine.SceneManagement;
 public class EntryController : MonoBehaviour
 {
     private bool isInBox = false;
+    private string level;
     private string levelName;
-    private string nextLevel;
-    //public Animator crossFadeAnim;
     public GameObject crossFade;
 
     void Start()
     {
-        string nextLevel = "Level" + (char.GetNumericValue(getPhase()[0]) + 1).ToString();
-        PlayerPrefs.SetString("next level", nextLevel);
+        if (PlayerPrefs.HasKey("next level"))
+        {
+            level = PlayerPrefs.GetString("next level");
+        }
+        else
+        {
+            PlayerPrefs.SetString("next level", "Level1");
+            level = "Level1";
+        }
     }
 
     void Update()
@@ -23,13 +29,12 @@ public class EntryController : MonoBehaviour
         
         if (gameObject.scene.name == "Entryway" && gameObject.name != "EntranceLevel1")
         {
-            nextLevel = PlayerPrefs.GetString("next level");
-            gameObject.SetActive(nextLevel == gameObject.name.Substring(gameObject.name.Length - 6));
+            gameObject.SetActive(level == gameObject.name.Substring(gameObject.name.Length - 6));
             
         }
         
 
-        if (isInBox && Input.GetKeyDown(KeyCode.Space))
+        if (isInBox && Input.GetKeyDown(KeyCode.Z))
         {
             if (gameObject.name.Contains("Exit"))
             {
@@ -63,15 +68,5 @@ public class EntryController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
-    }
-
-    private string getPhase()
-    {
-        StreamReader stream = new StreamReader(Application.dataPath + "/Game_Demo/Phase.txt");
-        string txt = stream.ReadToEnd();
-        string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
-        string phase = lines[^1];
-        stream.Close();
-        return phase;
     }
 }

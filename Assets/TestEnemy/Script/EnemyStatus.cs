@@ -49,9 +49,11 @@ public class EnemyStatus : MonoBehaviour
         
         Debug.Log(SceneManager.GetActiveScene().name);
         string fininshedLevel = SceneManager.GetActiveScene().name;
+        string nextPhase = fininshedLevel[^1]+ "-1";
         string nextLevel = "Level" + (char.GetNumericValue(fininshedLevel[^1]) + 1).ToString();
-        updatePhase(fininshedLevel);
+        //updatePhase(fininshedLevel);
         PlayerPrefs.SetString("next level", nextLevel);
+        PlayerPrefs.SetString("next phase", nextPhase);
         PlayerPrefs.Save();
 
         GameObject.Find("Player").GetComponent<OSManager>().StartDialogue();

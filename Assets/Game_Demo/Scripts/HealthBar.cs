@@ -61,6 +61,8 @@ public class HealthBar : MonoBehaviour
         if (newValue <= 0) {
             _gameOver.Setup();
             newValue = 100;
+            PlayerPrefs.SetString("next level", "Level1");
+            PlayerPrefs.SetString("next phase", "0-1");
         }
 
         if (type == "hp") {

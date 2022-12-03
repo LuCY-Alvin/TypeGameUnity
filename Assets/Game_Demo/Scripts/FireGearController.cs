@@ -5,7 +5,8 @@ using UnityEngine;
 public class FireGearController : MonoBehaviour
 {
     public GameObject prefabFlame;
-    public Transform firePoint;
+    public Transform firePoint1;
+    public Transform firePoint2;
     private Coroutine startFlaming;
 
     // Start is called before the first frame update
@@ -20,7 +21,8 @@ public class FireGearController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);
-            GameObject newObject = Instantiate(prefabFlame, firePoint.position + new Vector3((float) -1.5, (float) 0.45, 0), firePoint.rotation) as GameObject;
+            GameObject newObject1 = Instantiate(prefabFlame, firePoint1.position + new Vector3((float) -1.3, (float) 0.3, 0), firePoint1.rotation) as GameObject;
+            GameObject newObject2 = Instantiate(prefabFlame, firePoint2.position + new Vector3((float) 1.3, (float) 0.3, 0), firePoint2.rotation) as GameObject;
         }
            
     }

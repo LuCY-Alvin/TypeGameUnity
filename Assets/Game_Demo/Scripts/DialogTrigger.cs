@@ -25,11 +25,15 @@ public class DialogTrigger : MonoBehaviour
 
     private void getPhase()
     {
-        StreamReader stream = new StreamReader(Application.dataPath + "/Game_Demo/Phase.txt");
-        string txt = stream.ReadToEnd();
-        string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
-        phase = lines[^1];
-        stream.Close();
+        if (PlayerPrefs.HasKey("next phase"))
+        {
+            phase = PlayerPrefs.GetString("next phase");
+        }
+        else
+        {
+            PlayerPrefs.SetString("next phase", "0-1");
+            phase = "0-1";
+        }
     }
 
     private void readTextFile(string phase)

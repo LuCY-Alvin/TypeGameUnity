@@ -77,23 +77,10 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    private string getPhase()
-    {
-        StreamReader stream = new StreamReader(Application.dataPath + "/Game_Demo/Phase.txt");
-        string txt = stream.ReadToEnd();
-        string[] lines = txt.Split(System.Environment.NewLine.ToCharArray());
-        string phase = lines[^1];
-        stream.Close();
-        return phase;
-    }
-
     private void updatePhase()
     {
-        string phase = getPhase();
-        StreamWriter writer = new StreamWriter(Application.dataPath + "/Game_Demo/Phase.txt", true);
-        writer.WriteLine();
-        writer.Write(phase[0]+"-2");
-        writer.Close();
+        string phase = PlayerPrefs.GetString("next phase");
+        PlayerPrefs.SetString("next phase", phase[0] + "-2");
     }
 
     public void EndDialogue()

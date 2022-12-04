@@ -8,6 +8,8 @@ public class FireBolt : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject prefabExplosion;
 
+    public int damage = 15;
+
     private int playerLayers; 
 
     void Start()
@@ -19,7 +21,13 @@ public class FireBolt : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo) // when hit something
     {
         if (hitInfo.gameObject.tag == "Enemy") {
-            hitInfo.GetComponent<EnemyStatus>().TakeDamage(15);
+            if (hitInfo.GetComponent<EnemyStatus>() != null) {
+                hitInfo.GetComponent<EnemyStatus>().TakeDamage(damage);
+            }
+            
+            if (hitInfo.GetComponent<MonsterStatus>() != null) {
+                hitInfo.GetComponent<MonsterStatus>().TakeDamage(damage);
+            }
         }
 
         if(hitInfo.gameObject.layer != playerLayers){

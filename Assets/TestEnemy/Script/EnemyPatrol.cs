@@ -16,9 +16,9 @@ public class EnemyPatrol : MonoBehaviour
     private Vector3 initScale;
     private bool movingLeft;
     
-    [Header ("Idel Behavior")]
+    [Header ("Idle Behavior")]
     [SerializeField] private float idleDuration;
-    private float idelTimer;
+    private float idleTimer;
 
     [Header ("Enemy Animator")]
     [SerializeField] private Animator anim;
@@ -43,7 +43,7 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     private void MoveInDirection(int dir){
-        idelTimer = 0;
+        idleTimer = 0;
         anim.SetBool("moving", true);
 
     // Make enemy face direction
@@ -59,9 +59,9 @@ public class EnemyPatrol : MonoBehaviour
 
     private void DirectionChange(){
         anim.SetBool("moving", false);
-        idelTimer += Time.deltaTime;
+        idleTimer += Time.deltaTime;
 
-        if(idelTimer > idleDuration)
+        if(idleTimer > idleDuration)
             movingLeft = !movingLeft;
     }
 

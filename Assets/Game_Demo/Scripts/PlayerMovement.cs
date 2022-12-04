@@ -37,11 +37,14 @@ public class PlayerMovement : MonoBehaviour {
 	public bool isStiffness = false;
 	public bool isInjured = false;
 
+	public static Transform _playerTransform;
     // Update is called once per frame
     void Update () {
 		if (isStiffness) {
 			return;
 		}
+
+		_playerTransform = transform;
 
 		if(TimeController.GetIsBulletTime() == false){
 
@@ -196,12 +199,17 @@ public class PlayerMovement : MonoBehaviour {
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
-				// TODO: hit reaction 
 					Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
             		_healthBar.SetValue(currentMp + 20, "mp");
 
-					enemy.GetComponent<EnemyStatus>().TakeDamage(atkDamage);
+					if (enemy.GetComponent<EnemyStatus>() != null) {
+						enemy.GetComponent<EnemyStatus>().TakeDamage(atkDamage);
+					}
+					
+					if (enemy.GetComponent<MonsterStatus>() != null) {
+						enemy.GetComponent<MonsterStatus>().TakeDamage(atkDamage);
+					}
 				}
             }
 		}

@@ -58,7 +58,7 @@ public class HealthBar : MonoBehaviour
             return;
         }
 
-        if (newValue <= 0) {
+        if (newValue <= 0 && type == "hp") {
             _gameOver.Setup();
             newValue = 100;
             PlayerPrefs.SetString("next level", "Level1");

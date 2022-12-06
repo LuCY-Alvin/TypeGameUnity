@@ -29,7 +29,6 @@ public class Mushroom_Attack : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log(collision.tag);
         if(collision.tag == "Player") {
             collision.GetComponent<PlayerMovement>().TakeDamage(10, transform);
             Destroy(gameObject);

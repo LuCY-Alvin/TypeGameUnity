@@ -40,7 +40,7 @@ public class TreasureControl : MonoBehaviour
         if (Vine)
         {
             _isFired = Vine._fireCollided;
-            Debug.Log(_isFired);
+            // Debug.Log(_isFired);
             if (c.gameObject.CompareTag("Player") && _isFired)
             {
                 if (_isOpened)

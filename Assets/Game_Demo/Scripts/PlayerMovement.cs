@@ -199,7 +199,7 @@ public class PlayerMovement : MonoBehaviour {
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
-					Debug.Log("hit " + enemy.name);
+					// Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
             		_healthBar.SetValue(currentMp + 20, "mp");
 

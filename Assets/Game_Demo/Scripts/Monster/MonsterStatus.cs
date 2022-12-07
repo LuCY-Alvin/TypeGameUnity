@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterStatus : MonoBehaviour
 {
-    public Rigidbody2D _this;
+    private Rigidbody2D _this;
     private bool isDie;
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,9 @@ public class MonsterStatus : MonoBehaviour
     }
 
     public void TakeDamage(int damage){
-        int v = -5;
+        int v = -2;
         if (transform.position.x > PlayerMovement._playerTransform.position.x) {
-            v = 5;
+            v = 2;
         }
 
         _this.AddForce(new Vector2(v, 0), ForceMode2D.Impulse);

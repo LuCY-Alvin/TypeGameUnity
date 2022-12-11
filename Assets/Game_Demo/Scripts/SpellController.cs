@@ -34,7 +34,7 @@ public class SpellController : MonoBehaviour
     void Start() {
         //讀取指定路徑的Json檔案並轉成字串
         // loadData = File.ReadAllText("./Assets/Game_Demo/spells.json");
-        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"icespear\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"earthbump\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"thunder\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"speedup\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":10,\"enabled\":true},{\"name\":\"tornado\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
+        string loadData = "{\"spells\":[{\"name\":\"firebolt\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"icespear\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"earthbump\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"thunder\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"speedup\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":10,\"enabled\":true},{\"name\":\"tornado\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"heal\",\"type\":\"active\",\"effect\":\"heal\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"blast\",\"type\":\"active\",\"effect\":\"attack\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"teleport\",\"type\":\"active\",\"effect\":\"function\",\"point\":1,\"cost\":1,\"enabled\":false},{\"name\":\"left\",\"type\":\"support\",\"effect\":\"function\",\"point\":-4,\"cost\":1,\"enabled\":true},{\"name\":\"right\",\"type\":\"support\",\"effect\":\"function\",\"point\":95,\"cost\":1,\"enabled\":true},{\"name\":\"shield\",\"type\":\"active\",\"effect\":\"buff\",\"point\":20,\"cost\":20,\"enabled\":true},{\"name\":\"extend\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multi\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"snapshot\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"multiple\",\"type\":\"support\",\"effect\":\"buff\",\"point\":1,\"cost\":1,\"enabled\":true},{\"name\":\"intensify\",\"type\":\"support\",\"effect\":\"buff\",\"point\":50,\"cost\":50,\"enabled\":true},{\"name\":\"super\",\"type\":\"support\",\"effect\":\"buff\",\"point\":2,\"cost\":3,\"enabled\":true}]}";
 
         //把字串轉換成Data物件
         spellList = JsonUtility.FromJson<Spells>(loadData);
@@ -134,21 +134,30 @@ public class SpellController : MonoBehaviour
             }
 
             // Multi Spell 處理
-            var multipleSupport = Array.Find(
+            var multiSupport = Array.Find(
                 supportSpells,
                 item => checkSpell(item, "multi", "support")
+            );
+
+            if (multiSupport != null) {
+                nCost *= multiSupport.cost;
+            }
+
+            // multiple
+            var multipleSupport = Array.Find(
+                supportSpells,
+                item => checkSpell(item, "multiple", "support")
             );
 
             if (multipleSupport != null) {
                 nCost *= multipleSupport.cost;
             }
-
             
             // 耗魔許可檢查
-            if (theSpell.cost * nCost >= (currentMp - 3)) {
-                Debug.Log("Spell Fail!");
-                yield break;
-            }
+            // if (theSpell.cost * nCost >= (currentMp - 3)) {
+            //     Debug.Log("Spell Fail!");
+            //     yield break;
+            // }
 
             if (theSpell.effect == "heal") {
                 _healthBar.SetValue(currentHp + (theSpell.point * nPoint), "hp");
@@ -187,11 +196,17 @@ public class SpellController : MonoBehaviour
 
             // 施放區
             int spellCount = 1;
-            if (multipleSupport != null) {
+            float waitTime = 0.6f;
+
+            if (multiSupport != null) {
                 spellCount = 3;
             }
+
+            if (multipleSupport != null) {
+                spellCount = 6;
+                waitTime = 0.3f;
+            }
             
-            float waitTime = 0.6f;
             for (int i = 0; i < spellCount; i++) {
                 GameObject newObject = Instantiate(thePrefab, theTransform.position, theTransform.rotation) as GameObject;
 

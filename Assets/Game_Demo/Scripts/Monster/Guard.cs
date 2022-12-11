@@ -100,7 +100,7 @@ public class Guard : MonoBehaviour
 
     public IEnumerator BreakHalfSecond() {
         inAttack = true;
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         inAttack = false;
     }
 

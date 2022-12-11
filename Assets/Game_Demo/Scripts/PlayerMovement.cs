@@ -199,7 +199,8 @@ public class PlayerMovement : MonoBehaviour {
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
-					// Debug.Log("hit " + enemy.name);
+
+					Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
             		_healthBar.SetValue(currentMp + 20, "mp");
 
@@ -239,7 +240,6 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public IEnumerator SpeedUp(Spell[] supportSpells) {
-		Debug.Log("SpeedUp");
 		var superSupport = Array.Find(
 			supportSpells,
 			item => item.name == "super"
@@ -355,9 +355,9 @@ public class PlayerMovement : MonoBehaviour {
 			f = -5;
 		}
 
-		float constR = 300;
+		float constR = 100;
 
-		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 20f));
+		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 10f));
 
 		StartCoroutine(SetStiffness(0.8f));
 		

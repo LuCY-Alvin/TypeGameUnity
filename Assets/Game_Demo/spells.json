@@ -115,6 +115,22 @@
             "enabled": true
         },
         {
+            "name": "snapshot",
+            "type": "support",
+            "effect": "buff",
+            "point": 1,
+            "cost": 1,
+            "enabled": true
+        },
+        {
+            "name": "multiple",
+            "type": "support",
+            "effect": "buff",
+            "point": 1,
+            "cost": 1,
+            "enabled": true
+        },
+        {
             "name": "intensify",
             "type": "support",
             "effect": "buff",

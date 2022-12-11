@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,7 +67,13 @@ public class EnemyStatus : MonoBehaviour
     }
 
     public void TakeDamage(int damage){
-    // if last hurting animation not end, wont nurt
+    // if last hurting animation not end, wont hurt
+        EnemyCollider bossCollider = GetComponent<EnemyCollider>();
+        if(bossCollider != null){
+            bossCollider.TakeDamage(damage);
+            return;
+        }
+
         AnimatorStateInfo animState = anim.GetCurrentAnimatorStateInfo(0);
         if( animState.IsTag("Inv") ) return;
 
@@ -82,20 +87,23 @@ public class EnemyStatus : MonoBehaviour
             if(!isDead){
                 anim.SetBool("moving", false);
                 StartCoroutine(Die());
-    
-                foreach (Behaviour component in components)
-                    component.enabled = false;
-
                 isDead = true;
 
-                if(UIbar != null)
-                    Destroy(UIbar);
-                
-                if (gameObject.name.Contains("Boss")) openExit();
+                EnabledEnymy();
             }
         }
 
         UpdateHealthBar();
+    }
+
+    public void EnabledEnymy(){
+        foreach (Behaviour component in components)
+            component.enabled = false;
+
+        if(UIbar != null)
+            Destroy(UIbar);
+        
+        if (gameObject.name.Contains("Boss")) openExit();
     }
 
     IEnumerator Die() {
@@ -103,7 +111,7 @@ public class EnemyStatus : MonoBehaviour
         anim.SetTrigger("die");
     }
 
-    private void UpdateHealthBar(){
+    public void UpdateHealthBar(){
         if(prefabHealthBar == null) return;
 
         if(currentHealth <= 0){
@@ -119,4 +127,6 @@ public class EnemyStatus : MonoBehaviour
 
     public float GetStartingHealth(){ return startingHealth; }
     public float GetCurrentHealth(){ return currentHealth; }
+    public void SetCurrentHealth(float health){ currentHealth = health; } 
+    public bool IsDead() { return isDead; }
 }

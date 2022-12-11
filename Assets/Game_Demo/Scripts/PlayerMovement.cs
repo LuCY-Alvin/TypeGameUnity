@@ -210,6 +210,7 @@ public class PlayerMovement : MonoBehaviour {
 					if (enemy.GetComponent<MonsterStatus>() != null) {
 						enemy.GetComponent<MonsterStatus>().TakeDamage(atkDamage);
 					}
+                    // Debug.Log(enemy.name);
 				}
             }
 		}

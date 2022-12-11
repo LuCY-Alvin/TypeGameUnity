@@ -37,11 +37,7 @@ public class CastController : MonoBehaviour
         input = input.TrimStart();
         input = input.TrimEnd();
 
-        // Cast spell
-        // TODO: Spell system
-        GameObject boss = GameObject.Find("Boss");
-
-        if( boss != null && boss.GetComponent<BossController>().CancelUlt(input) ){}
+        if( CheckBossSpell(input) ){}
         else{
             string[] inputList = input.Split(' ');
             spellController.Spell(inputList);
@@ -50,6 +46,20 @@ public class CastController : MonoBehaviour
         // Finish Cast
         castPanel.SetActive(false);
         _healthBar.changeInvoke(false);
+    }
+
+    private bool CheckBossSpell(string input) {
+        GameObject boss = GameObject.Find("FinalBoss");
+        if(boss != null){
+            return boss.GetComponent<FinalBoss>().CancelSpell(input);
+        };
+
+        boss = GameObject.Find("FirstBoss");
+        if(boss != null){
+            return boss.GetComponent<FirstBoss>().CancelSpell(input);
+        };
+
+        return false;
     }
 
     public void ReadingInput()

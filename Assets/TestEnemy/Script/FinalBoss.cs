@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FinalBoss : MonoBehaviour
 {
     enum Task { Inactive, Running, Success, Failed }
-    enum Status { Idle, Move, Jump }
+    enum Status { Idle, Jump, Firebolt }
     
     private Status status;
     private Task task;
@@ -16,11 +15,22 @@ public class FinalBoss : MonoBehaviour
     [SerializeField] private float idelTime = 1.0f;
     private float idleTimer = Mathf.Infinity;
     
-    [Header("Jump")]
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForceX;
     [SerializeField] private float jumpForceY;
     private bool isGround;
+    private bool isMovingLeft;
 
+    [Header("Spell")]
+    [SerializeField] private GameObject prefabUltName;
+    [SerializeField] private Canvas bossCanvas;
+    [SerializeField] private Transform namePoint;
+    private bool isNameShow = false;
+    private GameObject ultNameObject;
+
+    private String spellBuffer = "";
+    private float spellTimer = 0;
 
     private float baseScaleX;
     private Rigidbody2D body;
@@ -40,11 +50,12 @@ public class FinalBoss : MonoBehaviour
     }
 
     private void Update(){
+    // TODO: Add Skills
     /* Behaviour */
         switch (status){
             case Status.Idle: Idle(); break;
-            case Status.Move: Idle(); break;
             case Status.Jump: JumpSequence(); break;
+            case Status.Firebolt: FireboltSequence(); break;
         }
 
     /* Task Check */
@@ -71,13 +82,6 @@ public class FinalBoss : MonoBehaviour
         idleTimer = 0;
     }
 
-    private void MoveSequence(){
-
-    }
-    private void Move(){
-
-    }
-
     private float jumpTimer = 0;
     private float jumpTime = 0.1f;
     private void JumpSequence(){
@@ -87,6 +91,7 @@ public class FinalBoss : MonoBehaviour
                 task = Task.Running;
 
                 int direction = (player.transform.position.x < transform.position.x) ? -1 : 1;
+                anim.SetTrigger("Jump");
                 Jump(direction);
                 return;
             } else {
@@ -102,7 +107,7 @@ public class FinalBoss : MonoBehaviour
         }
         else{
             task = isGround ? Task.Success : Task.Running;
-            CheckFace();
+            CheckFace(player.transform);
         }
 
         if(task == Task.Success) jumpTimer = 0;
@@ -113,16 +118,133 @@ public class FinalBoss : MonoBehaviour
         if(isGround == false) return;
 
         body.AddForce(new Vector2(jumpForceX * dir, jumpForceY));
-        anim.SetTrigger("Jump");
     }
     
+    private void Move(int dir){
+        transform.position = new Vector3(
+            transform.position.x + Time.deltaTime * dir * moveSpeed,
+            transform.position.y,
+            transform.position.z
+        );
+    }
+
+// TODO: Firebolt: move to position and spell three huge Firebolt
+    [Header("Firebolt")]
+    [SerializeField] private GameObject fireboltPrefab;
+    [SerializeField] private Transform fireboltLeftPoint;
+    [SerializeField] private Transform fireboltRightPoint;
+    [SerializeField] private Transform fireboltFirePoint;
+    [SerializeField] private float fireBoltSpellingTime;
+    private float fireboltCastCount = 0;
+    private float fireboltCastTimes = 3;
+    private String fireboltName = "DarkFirebolt";
+    
+    private void FireboltSequence() {
+        if( task == Task.Inactive ){
+            float nowX = transform.position.x; 
+            isMovingLeft = Mathf.Abs(fireboltLeftPoint.position.x - nowX) < Mathf.Abs(fireboltRightPoint.position.x - nowX);
+
+            task = Task.Running; 
+            
+            return;
+        }
+
+    /* Running */
+    // move to spell position 
+        if(isMovingLeft && transform.position.x >= fireboltLeftPoint.position.x){
+            anim.SetBool("IsRunning", true);
+            CheckFace(fireboltLeftPoint);
+            Move(-1);
+            return;
+        }
+
+        if(!isMovingLeft && transform.position.x <= fireboltRightPoint.position.x){
+            anim.SetBool("IsRunning", true);
+            CheckFace(fireboltRightPoint);
+            Move(1);
+            return;
+        }
+
+        anim.SetBool("IsRunning", false);
+
+    // spelling
+        CheckFace(player.transform);
+        spellTimer += Time.deltaTime;
+
+        if( spellTimer <= fireBoltSpellingTime ){
+            anim.SetBool("IsSpelling", true);
+            spellBuffer = fireboltName;
+            ShowSpellName();
+            return;
+        }
+
+    // cast
+        anim.SetBool("IsSpelling", false);
+        HideSpellName();
+
+        if(fireboltCastCount < fireboltCastTimes){
+            anim.SetBool("IsCastingFirebolt", true);
+            return;
+        } else {
+            anim.SetBool("IsCastingFirebolt", false);
+            spellTimer = 0;
+            spellBuffer = "";
+            fireboltCastCount = 0;
+
+            task = Task.Success;
+            return;
+        }
+    }
+    
+    public void CastFirebolt(){
+        GameObject firebolt = Instantiate(fireboltPrefab, fireboltFirePoint.position, fireboltFirePoint.rotation);
+        if(player.transform.position.x < transform.position.x) 
+            firebolt.transform.Rotate(0f, 180f, 0f);
+
+        fireboltCastCount += 1;
+        // Debug.Log("CastFb " + fireboltCastCount + "/" + fireboltCastTimes );
+    }
+
+    private void ShowSpellName(){
+        if( !isNameShow ){
+            ultNameObject = Instantiate(prefabUltName, bossCanvas.transform) as GameObject;
+            if(player.transform.position.x < transform.position.x) ultNameObject.transform.Rotate(0, 180, 0);
+            ultNameObject.transform.position = namePoint.position;
+            ultNameObject.GetComponent<TMP_Text>().text = spellBuffer;
+            isNameShow = true;
+        }
+    }
+
+    private void HideSpellName(){
+        if(isNameShow){
+            Destroy(ultNameObject);
+            isNameShow = false;
+            anim.SetBool("casting", false);
+        }
+    }
+
     private void CheckGround(){
         isGround = baseColl.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
-    private void CheckFace(){
+    private void CheckFace(Transform target){
         var scale = transform.localScale;
-        scale.x = player.transform.position.x < transform.position.x ? -baseScaleX : baseScaleX;
+        scale.x = target.position.x < transform.position.x ? -baseScaleX : baseScaleX;
         transform.localScale = scale;
     }
+
+    public bool CancelSpell(string spell){
+        if(spell.Equals( spellBuffer, System.StringComparison.OrdinalIgnoreCase) ) {
+            anim.SetBool("IsSpelling", false);
+            anim.SetTrigger("Hurt");
+            HideSpellName();
+            spellTimer = 0;
+            spellBuffer = "";
+            task = Task.Failed;
+            status = Status.Idle;
+            return true;
+        } else return false;
+    }
+    
 }
+

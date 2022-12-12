@@ -91,7 +91,7 @@ public class HealthBar : MonoBehaviour
     void ManaHandler() {
         var isBulletTime = TimeController.GetIsBulletTime();
 
-        var unit = 1;
+        var unit = 2;
         if (currentMp <= 0) {
             print("Stop BT");
             btController.EndBulletTime();
@@ -101,7 +101,7 @@ public class HealthBar : MonoBehaviour
 
         if (currentMp <= initMax && currentMp >= 0) {
             if (isBulletTime) {
-                currentMp -= (2 * unit);
+                currentMp -= (unit);
                 if (currentMp <= 0) {
                     currentMp = 0;
                 }

@@ -13,7 +13,6 @@ public class BossRoom : MonoBehaviour
         if(hit.gameObject.tag == "Player" && !isPlayerIn){
             isPlayerIn = true;
             GameObject boss = Instantiate(prefabBoss, bossPoint.position, bossPoint.rotation);
-            boss.name = "Boss";
             Destroy(gameObject);
         }
     }

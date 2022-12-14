@@ -22,18 +22,16 @@ public class PlayerCamera : MonoBehaviour
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y+5, transform.position.z);
         if (isBlurredBackground==false)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (GameObject.Find("CastPanel") != null)
             {
-                Debug.Log("start typing");
                 StartCoroutine(changeCamera(false, true, true));
             }
             
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (GameObject.Find("CastPanel") == null)
             {
-                Debug.Log("end of typing");
                 StartCoroutine(changeCamera(true, false, false));
             }
         }

@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.72156864}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -70820,7 +70820,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6039103799065860566, guid: d888e73fdd5a2ee4bbb0101ee70d0d50, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6039103799065860566, guid: d888e73fdd5a2ee4bbb0101ee70d0d50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -100224,7 +100224,7 @@ Transform:
   - {fileID: 1809967401}
   - {fileID: 526143927}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1621064064
 MonoBehaviour:

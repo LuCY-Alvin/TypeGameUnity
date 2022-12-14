@@ -11,6 +11,7 @@ public class StartSceneControl : MonoBehaviour
     public Button startBtn;
     public Button tutorialBtn;
     public Canvas TutorCanvas;
+    public Canvas StoryCanvas;
 
     void Start()
     {
@@ -20,7 +21,8 @@ public class StartSceneControl : MonoBehaviour
 
     void startGame()
     {
-        SceneManager.LoadScene("Entryway");
+        this.gameObject.SetActive(false);
+        StoryCanvas.gameObject.SetActive(true);
     }
 
     void tutorialCanvas()

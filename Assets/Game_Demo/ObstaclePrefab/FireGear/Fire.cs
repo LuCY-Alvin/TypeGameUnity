@@ -11,7 +11,7 @@ public class Fire : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log(hitInfo.gameObject.tag);
+        // Debug.Log(hitInfo.gameObject.tag);
         if (hitInfo.gameObject.tag == "Player")
         {
             hitInfo.GetComponent<PlayerMovement>().TakeDamage(5, this.transform);

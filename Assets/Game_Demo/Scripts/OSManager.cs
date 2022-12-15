@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -43,7 +44,20 @@ public class OSManager : MonoBehaviour
     void Start()
     {
         readTextFile();
-        StartDialogue();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "Entryway")
+        {
+            if (PlayerPrefs.GetString("next level") == "Level3")
+            {
+                StartDialogue();
+            }
+        }
+        if (sceneName == "Level1")
+        {
+            StartDialogue();
+        }
+        
     }
 
     void Update()

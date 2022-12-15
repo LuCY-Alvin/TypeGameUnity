@@ -55,7 +55,7 @@ public class Icespear : MonoBehaviour
             }
             
             if (hitInfo.GetComponent<MonsterStatus>() != null) {
-                hitInfo.GetComponent<MonsterStatus>().TakeDamage(10);
+                StartCoroutine(hitInfo.GetComponent<MonsterStatus>().TakeDamage(10));
             }
         }
 

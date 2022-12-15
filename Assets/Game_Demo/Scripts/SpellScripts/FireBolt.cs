@@ -14,6 +14,8 @@ public class FireBolt : MonoBehaviour
     private int playerLayers; 
     float randomY;
 
+    public bool hit = false;
+
     void Start()
     {
         _this = this.gameObject.GetComponent<Rigidbody2D>();
@@ -44,7 +46,10 @@ public class FireBolt : MonoBehaviour
             }
             
             if (hitInfo.GetComponent<MonsterStatus>() != null) {
-                hitInfo.GetComponent<MonsterStatus>().TakeDamage(damage);
+                if (hit == false) {
+                    StartCoroutine(hitInfo.GetComponent<MonsterStatus>().TakeDamage(10));
+                    hit = true;
+                }
             }
         }
 
@@ -56,7 +61,8 @@ public class FireBolt : MonoBehaviour
 
     IEnumerator HitHandler() {
         yield return new WaitForSeconds(0.1f);
-        Destroy(gameObject);
         Instantiate(prefabExplosion, transform.position, transform.rotation);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }

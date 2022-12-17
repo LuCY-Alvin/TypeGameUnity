@@ -40,16 +40,14 @@ public class PlayerMovement : MonoBehaviour {
 	public static Transform _playerTransform;
     // Update is called once per frame
     void Update () {
-		if (isStiffness) {
-			return;
-		}
-
 		_playerTransform = transform;
 
 		if(TimeController.GetIsBulletTime() == false){
-
+			if (isStiffness) {
+				return;
+			}
 			// CastBook
-				if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
+			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
 
 				List<Spell> activeSpells = new() { };
 				List<Spell> supportSpells = new() { };

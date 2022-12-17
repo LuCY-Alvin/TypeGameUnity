@@ -6,26 +6,34 @@ using UnityEngine;
 
 public class Blast : MonoBehaviour
 {
+    public Collider2D hitObjectInfo;
+    private bool hit = false;
     void Start()
     {
-        Destroy(gameObject, 0.5f);
-        Spell[] supportSpells = SpellController.supportSpellsList;
-
-        var superSupport = Array.Find(
-            supportSpells,
-            item => item.name == "super"
-        );
-
-        if (superSupport != null) {
-            transform.localScale += new Vector3(2,2,0);
-        }
+        Destroy(gameObject, 1.5f);
+        InvokeRepeating ("HitHandler", 0.5f, 1f); 
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log(hitInfo.gameObject.tag);
         if (hitInfo.gameObject.tag == "Enemy") {
-            hitInfo.GetComponent<EnemyStatus>().TakeDamage(20);
+            hitObjectInfo = hitInfo;
+            hit = true;
+        }
+    }
+
+    void HitHandler() {
+        if (hit) {
+            hit = false;
+            if (hitObjectInfo != null) {
+                if (hitObjectInfo.GetComponent<EnemyStatus>() != null) {
+                    hitObjectInfo.GetComponent<EnemyStatus>().TakeDamage(20);
+                }
+                
+                if (hitObjectInfo.GetComponent<MonsterStatus>() != null) {
+                    StartCoroutine(hitObjectInfo.GetComponent<MonsterStatus>().TakeDamage(20));
+                }
+            }
         }
     }
 }

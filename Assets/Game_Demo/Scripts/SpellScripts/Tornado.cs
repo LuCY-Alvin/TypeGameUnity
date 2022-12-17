@@ -30,14 +30,18 @@ public class Tornado : MonoBehaviour
         } else {
             transform.position -= new Vector3(0.01f, 0, 0);
         }
-        
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Debug.Log(hitInfo.gameObject.tag);
         if (hitInfo.gameObject.tag == "Enemy") {
-            hitInfo.GetComponent<EnemyStatus>().TakeDamage(10);
+            if (hitInfo.GetComponent<EnemyStatus>() != null) {
+                hitInfo.GetComponent<EnemyStatus>().TakeDamage(5);
+            }
+            
+            if (hitInfo.GetComponent<MonsterStatus>() != null) {
+                StartCoroutine(hitInfo.GetComponent<MonsterStatus>().TakeDamage(5));
+            }
         }
     }
 

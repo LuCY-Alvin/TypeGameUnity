@@ -32,7 +32,6 @@ public class DialogManager : MonoBehaviour
     {
         freezePlayerOnDialogue = true;
         disablePlayerController();
-
         dialogBox.SetActive(true);
         inputStream = dialogue;
         PrintDialogue();

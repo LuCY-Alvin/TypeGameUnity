@@ -93,10 +93,8 @@ public class HealthBar : MonoBehaviour
 
         var unit = 2;
         if (currentMp <= 0) {
-            print("Stop BT");
             btController.EndBulletTime();
             castController.EndCast();
-            //btController.BulletTime(false);
         }
 
         if (currentMp <= initMax && currentMp >= 0) {

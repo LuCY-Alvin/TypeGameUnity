@@ -45,7 +45,7 @@ public class Shield : MonoBehaviour
         }
 
         Vector3 vector = transform.localScale;
-        vector.x = 15;
+        vector.x = 1.67f;
         transform.localScale = vector;
         _playerMovement.isInvincible = true;
 

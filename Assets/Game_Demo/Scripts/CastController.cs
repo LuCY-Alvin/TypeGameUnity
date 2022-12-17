@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CastController : MonoBehaviour
 {
     public SpellController spellController;
     public HealthBar _healthBar;
+    public Animator animator;
 
     public GameObject castPanel;
-    public GameObject textBox;
+    public TMP_Text textBox;
 
     public BossController bossController;
     
@@ -19,14 +21,15 @@ public class CastController : MonoBehaviour
     void Start()
     {
         input = "";
-        textBox.GetComponent<Text>().text = input;        
+        textBox.GetComponent<TextMeshProUGUI>().text = input;    
+        animator = this.gameObject.GetComponent<Animator>();    
         castPanel.SetActive(false);
     }
 
     public void StartCast()
     {
         input = "";
-        textBox.GetComponent<Text>().text = input;
+        textBox.GetComponent<TextMeshProUGUI>().text = input;
         castPanel.SetActive(true);
 
         _healthBar.changeInvoke(true);
@@ -37,7 +40,9 @@ public class CastController : MonoBehaviour
         input = input.TrimStart();
         input = input.TrimEnd();
 
-        if( CheckBossSpell(input) ){}
+        if( CheckBossSpell(input) ){
+
+        }
         else{
             string[] inputList = input.Split(' ');
             spellController.Spell(inputList);
@@ -46,6 +51,7 @@ public class CastController : MonoBehaviour
         // Finish Cast
         castPanel.SetActive(false);
         _healthBar.changeInvoke(false);
+        animator.SetBool("IsTyping", false);
     }
 
     private bool CheckBossSpell(string input) {
@@ -76,13 +82,13 @@ public class CastController : MonoBehaviour
                 if (input.Length != 0)
                 {
                     input = input.Substring(0, input.Length - 1);
-                    textBox.GetComponent<Text>().text = input;
+                    textBox.GetComponent<TextMeshProUGUI>().text = input;
                 }
             }
             else
             {
                 input += c;
-                textBox.GetComponent<Text>().text = input;
+                textBox.GetComponent<TextMeshProUGUI>().text = input;
             }
         }
 

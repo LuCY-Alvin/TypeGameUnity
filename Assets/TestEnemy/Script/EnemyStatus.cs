@@ -41,29 +41,20 @@ public class EnemyStatus : MonoBehaviour
     }
 
     public void openExit() {
-        GameObject entrance = GameObject.Find("Entrance");
-        
-        exit = entrance.transform.Find("ExitLevel1").gameObject;
-        exit.SetActive(true);
-        
-        Debug.Log(SceneManager.GetActiveScene().name);
+        SpriteRenderer[] allSpriteRenderer = GameObject.FindObjectsOfType<SpriteRenderer>(true);
+        foreach (SpriteRenderer sr in allSpriteRenderer)
+        {
+            if (sr.gameObject.name.Contains("Exit")) sr.gameObject.SetActive(true);
+        }
+
         string fininshedLevel = SceneManager.GetActiveScene().name;
         string nextPhase = fininshedLevel[^1]+ "-1";
         string nextLevel = "Level" + (char.GetNumericValue(fininshedLevel[^1]) + 1).ToString();
-        //updatePhase(fininshedLevel);
         PlayerPrefs.SetString("next level", nextLevel);
         PlayerPrefs.SetString("next phase", nextPhase);
         PlayerPrefs.Save();
 
         GameObject.Find("Player").GetComponent<OSManager>().StartDialogue();
-    }
-
-    private void updatePhase(string bossTag)
-    {
-        StreamWriter writer = new StreamWriter(Application.dataPath + "/Game_Demo/Phase.txt", true);
-        writer.WriteLine();
-        writer.Write(bossTag[^1] + "-1");
-        writer.Close();
     }
 
     public void TakeDamage(int damage){
@@ -103,7 +94,7 @@ public class EnemyStatus : MonoBehaviour
         if(UIbar != null)
             Destroy(UIbar);
         
-        if (gameObject.name.Contains("Boss")) openExit();
+        if (transform.parent.name.Contains("Boss")) openExit();
     }
 
     IEnumerator Die() {

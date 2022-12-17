@@ -9,12 +9,11 @@ using UnityEngine.UI;
 public class DialogTrigger : MonoBehaviour
 {
     public TextAsset TextFile;
-    public TextAsset phaseTxt;
     public Queue<string> dialogue = new Queue<string>();
     private Text text;
     private bool canChat = false;
     private bool isFirstTime = true;
-    public string phase;
+    private string phase;
 
     void TriggerDialogue()
     {

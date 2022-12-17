@@ -7,20 +7,28 @@ using UnityEngine.SceneManagement;
 public class EntryController : MonoBehaviour
 {
     private bool isInBox = false;
-    private string level;
+    private string next_level;
     private string levelName;
     public GameObject crossFade;
 
+    SceneTransition sceneTransition;
+
     void Start()
     {
+        sceneTransition = crossFade.GetComponent<SceneTransition>();
         if (PlayerPrefs.HasKey("next level"))
         {
-            level = PlayerPrefs.GetString("next level");
+            next_level = PlayerPrefs.GetString("next level");
+            string previous_level = "Level" + (char.GetNumericValue(next_level[^1]) - 1).ToString();
+            if (gameObject.name.Contains(previous_level))
+            {
+                gameObject.SetActive(false);
+            }
         }
         else
         {
             PlayerPrefs.SetString("next level", "Level1");
-            level = "Level1";
+            next_level = "Level1";
         }
     }
 
@@ -29,7 +37,7 @@ public class EntryController : MonoBehaviour
         
         if (gameObject.scene.name == "Entryway" && gameObject.name != "EntranceLevel1")
         {
-            gameObject.SetActive(level == gameObject.name.Substring(gameObject.name.Length - 6));
+            gameObject.SetActive(next_level == gameObject.name.Substring(gameObject.name.Length - 6));
             
         }
         
@@ -45,6 +53,7 @@ public class EntryController : MonoBehaviour
                 levelName = "Level" + gameObject.name[^1];
             } 
             crossFade.SetActive(true);
+            
             StartCoroutine(enterLevel(levelName));
         }
     }
@@ -66,7 +75,9 @@ public class EntryController : MonoBehaviour
 
     IEnumerator enterLevel(string levelName)
     {
+        
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(levelName);
+        sceneTransition.LoadLevel(levelName);
+        //SceneManager.LoadScene(levelName);
     }
 }

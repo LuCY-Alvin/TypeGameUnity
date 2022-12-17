@@ -1,4 +1,11 @@
+Level1
+這是哪裡?我還得繼續趕稿唉...
+那裡好像有個人，不然問問看他好了
+EndQueue
+Level1
+Level3
 ......Ideals人呢?
 奇怪，之前有這個電機關嗎?
 是要對它做什麼嗎?
 EndQueue
+Level3

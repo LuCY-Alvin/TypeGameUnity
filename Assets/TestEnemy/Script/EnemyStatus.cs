@@ -103,7 +103,7 @@ public class EnemyStatus : MonoBehaviour
         if(UIbar != null)
             Destroy(UIbar);
         
-        if (gameObject.name.Contains("Boss")) openExit();
+        if (transform.parent.name.Contains("Boss")) openExit();
     }
 
     IEnumerator Die() {

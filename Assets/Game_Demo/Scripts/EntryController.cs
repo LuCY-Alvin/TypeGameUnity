@@ -9,6 +9,7 @@ public class EntryController : MonoBehaviour
     private bool isInBox = false;
     private string next_level;
     private string levelName;
+    private string previous_level;
     public GameObject crossFade;
 
     SceneTransition sceneTransition;
@@ -16,31 +17,26 @@ public class EntryController : MonoBehaviour
     void Start()
     {
         sceneTransition = crossFade.GetComponent<SceneTransition>();
-        if (PlayerPrefs.HasKey("next level"))
-        {
-            next_level = PlayerPrefs.GetString("next level");
-            string previous_level = "Level" + (char.GetNumericValue(next_level[^1]) - 1).ToString();
-            if (gameObject.name.Contains(previous_level))
-            {
-                gameObject.SetActive(false);
-            }
-        }
-        else
+        if (!PlayerPrefs.HasKey("next level"))
         {
             PlayerPrefs.SetString("next level", "Level1");
             next_level = "Level1";
         }
+        next_level = PlayerPrefs.GetString("next level");
+        previous_level = "Level" + (char.GetNumericValue(next_level[^1]) - 1).ToString();
     }
 
     void Update()
-    {
-        
-        if (gameObject.scene.name == "Entryway" && gameObject.name != "EntranceLevel1")
+    {  
+        // open entrance to next level & close entrance to previous level when in entryway
+        if (gameObject.scene.name == "Entryway") 
         {
+            if (gameObject.name.Contains(previous_level))
+            {
+                gameObject.SetActive(false);
+            }
             gameObject.SetActive(next_level == gameObject.name.Substring(gameObject.name.Length - 6));
-            
         }
-        
 
         if (isInBox && Input.GetKeyDown(KeyCode.Z))
         {
@@ -52,8 +48,7 @@ public class EntryController : MonoBehaviour
             {
                 levelName = "Level" + gameObject.name[^1];
             } 
-            crossFade.SetActive(true);
-            
+            crossFade.SetActive(true);   
             StartCoroutine(enterLevel(levelName));
         }
     }
@@ -75,9 +70,8 @@ public class EntryController : MonoBehaviour
 
     IEnumerator enterLevel(string levelName)
     {
-        
         yield return new WaitForSeconds(1f);
         sceneTransition.LoadLevel(levelName);
-        //SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(levelName);
     }
 }

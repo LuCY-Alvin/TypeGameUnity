@@ -12983,8 +12983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TextFile: {fileID: 4900000, guid: a305124303e3674489f3a3f7365e48b6, type: 3}
-  phaseTxt: {fileID: 4900000, guid: 460ce80c86950d84e90795c5a99c86af, type: 3}
-  phase: 1-1
 --- !u!61 &804244053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33508,8 +33506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765778200a5123840b89e162031d2c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  transitionDelayTime: 0.5
 --- !u!1 &1942733914
 GameObject:
   m_ObjectHideFlags: 0

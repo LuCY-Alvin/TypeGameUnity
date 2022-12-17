@@ -100408,7 +100408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765778200a5123840b89e162031d2c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDelayTime: 0.5
 --- !u!95 &1680218800
 Animator:
   serializedVersion: 4
@@ -120336,19 +120335,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4231357788186285580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4231357788186285582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc60ea915d4cd0468d8b6299218be01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crossFade: {fileID: 0}
 --- !u!212 &4231357788186285581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -120411,8 +120397,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4231357788186286066}
   - component: {fileID: 4231357788186285581}
-  - component: {fileID: 4231357788186285580}
   - component: {fileID: 4231357788186285583}
+  - component: {fileID: 4231357788186286067}
   m_Layer: 0
   m_Name: ExitLevel1
   m_TagString: Untagged
@@ -120451,6 +120437,19 @@ Transform:
   m_Father: {fileID: 986805182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4231357788186286067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4231357788186285582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc60ea915d4cd0468d8b6299218be01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossFade: {fileID: 1680218797}
 --- !u!1 &6522940136663172558
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class ElectroGearController : MonoBehaviour
         }
         else
         {
-            return;
+            gameObject.SetActive(false);
         }
     }
     

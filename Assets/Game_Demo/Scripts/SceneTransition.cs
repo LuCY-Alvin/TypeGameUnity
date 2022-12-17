@@ -20,7 +20,7 @@ public class SceneTransition : MonoBehaviour
     IEnumerator DelayLoadLevel(string levelName)
     {      
         animator.SetTrigger("TriggerTransition");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
     }
 }

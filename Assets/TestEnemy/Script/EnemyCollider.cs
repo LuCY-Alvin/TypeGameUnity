@@ -8,8 +8,10 @@ public class EnemyCollider : MonoBehaviour
     [Header("Take Damage")]
     [SerializeField] private Animator anim;
     [SerializeField] private SpriteRenderer render;
-    private float hurtTime = 0.1f;
+    private float hurtTime = 0.3f;
     private float hurtTimer = Mathf.Infinity;
+    private float hurtPlayerTime = 0.5f;
+    private float hurtPlayerTimer = Mathf.Infinity;
 
     private bool isDead = false;
     private Color oriColor;
@@ -24,11 +26,23 @@ public class EnemyCollider : MonoBehaviour
     
     private void Update(){
         hurtTimer += Time.deltaTime;
+        hurtPlayerTimer += Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.tag == "Player")
-            collision.GetComponent<PlayerMovement>().TakeDamage(damage, this.transform);
+    private void OnTriggerStay2D(Collider2D collision) {
+        if(collision.tag == "Player"){
+            HurtPlayer(collision);
+        }
+    }
+
+    public void HurtPlayer(Collider2D collision){
+        if(hurtPlayerTimer < hurtPlayerTime) return ;
+
+        GameObject trans = new GameObject();
+        trans.transform.position = transform.parent.transform.position;
+
+        collision.GetComponent<PlayerMovement>().TakeDamage(damage, trans.transform);
+        hurtPlayerTimer = 0;
     }
 
     public void TakeDamage(int damage){

@@ -147,8 +147,6 @@ public class FirstBoss : MonoBehaviour
     
     private void AttackSequence() {
         if( task == Task.Inactive ){
-            float nowX = transform.position.x; 
-
             int rand = UnityEngine.Random.Range(0, 2);
             isMovingLeft = (rand == 0);
 
@@ -331,9 +329,9 @@ public class FirstBoss : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo) {
-        if(hitInfo.gameObject.tag == "Player" && status == Status.Dash){
+        if(hitInfo.gameObject.tag == "Player" && status == Status.Dash && task == Task.Running){
+            enemyCollider.gameObject.GetComponent<EnemyCollider>().HurtPlayer(hitInfo);
             enemyCollider.gameObject.SetActive(false);
         }
     }
-    
 }

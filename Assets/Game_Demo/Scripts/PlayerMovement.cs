@@ -200,7 +200,7 @@ public class PlayerMovement : MonoBehaviour {
 
 				foreach (Collider2D enemy in hitEnemies){
 
-					Debug.Log("hit " + enemy.name);
+					//Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
             		_healthBar.SetValue(currentMp + 20, "mp");
 
@@ -348,23 +348,17 @@ public class PlayerMovement : MonoBehaviour {
 
 		SetInjured(0.5f);
 
-		float f = 5;
-
-		if (transform.position.x < source.position.x) {
-			// On left
-			f = -5;
-		}
-
+		float f = transform.position.x < source.position.x ? -5 : 5;
 		float constR = 100;
 
-		controller.m_Rigidbody2D.AddForce(new Vector2(f * constR, 10f));
+		GetComponent<Rigidbody2D>().AddForce(new Vector2(f * constR, 10f));
 
 		StartCoroutine(SetStiffness(0.8f));
 		
 		//hurt animation
 		animator.SetTrigger("Injured");
 
-		// Debug.Log("Player takes " + damage + " damage!\n");
+		Debug.Log("Player takes " + damage + " damage!\n");
 
 		_healthBar.SetValue(_healthBar.GetCurrentHp() - damage, "hp");
 	}

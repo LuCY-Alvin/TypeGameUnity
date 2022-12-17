@@ -59,6 +59,11 @@ public class CastController : MonoBehaviour
             return boss.GetComponent<FirstBoss>().CancelSpell(input);
         };
 
+        boss = GameObject.Find("SecondBoss");
+        if(boss != null){
+            return boss.GetComponent<SecondBoss>().CancelSpell(input);
+        };
+
         return false;
     }
 

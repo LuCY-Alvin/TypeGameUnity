@@ -9,6 +9,7 @@ public class CastController : MonoBehaviour
 {
     public SpellController spellController;
     public HealthBar _healthBar;
+    public Animator animator;
 
     public GameObject castPanel;
     public TMP_Text textBox;
@@ -20,7 +21,8 @@ public class CastController : MonoBehaviour
     void Start()
     {
         input = "";
-        textBox.GetComponent<TextMeshProUGUI>().text = input;        
+        textBox.GetComponent<TextMeshProUGUI>().text = input;    
+        animator = this.gameObject.GetComponent<Animator>();    
         castPanel.SetActive(false);
     }
 
@@ -38,7 +40,9 @@ public class CastController : MonoBehaviour
         input = input.TrimStart();
         input = input.TrimEnd();
 
-        if( CheckBossSpell(input) ){}
+        if( CheckBossSpell(input) ){
+
+        }
         else{
             string[] inputList = input.Split(' ');
             spellController.Spell(inputList);
@@ -47,6 +51,7 @@ public class CastController : MonoBehaviour
         // Finish Cast
         castPanel.SetActive(false);
         _healthBar.changeInvoke(false);
+        animator.SetBool("IsTyping", false);
     }
 
     private bool CheckBossSpell(string input) {

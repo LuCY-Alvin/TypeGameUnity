@@ -78,11 +78,12 @@ public class SpellController : MonoBehaviour
 
             supportSpells.Add(theSupportSpell);
         }
-
+        Debug.Log("1");
         StartCoroutine(SpellHandler(theSpell, supportSpells.ToArray()));
     }
 
     IEnumerator SpellHandler(Spell theSpell, Spell[] supportSpells) {
+        Debug.Log("2");
             supportSpellsList = supportSpells;
 
             // Reset dialogBox
@@ -163,7 +164,7 @@ public class SpellController : MonoBehaviour
                 _healthBar.SetValue(currentHp + (theSpell.point * nPoint), "hp");
             }
             
-            _healthBar.SetValue(currentMp - (theSpell.cost * nCost), "mp");
+            // _healthBar.SetValue(currentMp - (theSpell.cost * nCost), "mp");
 
             // 動畫處理
             // 先預設火球

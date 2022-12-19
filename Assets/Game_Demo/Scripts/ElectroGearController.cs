@@ -5,6 +5,7 @@ using UnityEngine;
 public class ElectroGearController : MonoBehaviour
 {
     public GameObject EntranceLevel3;
+    public GameObject guide;
     
     void Start()
     {
@@ -13,6 +14,10 @@ public class ElectroGearController : MonoBehaviour
             if (PlayerPrefs.GetString("next level") != "Level3")
             {
                 gameObject.SetActive(false);
+            }
+            else
+            {
+                guide.SetActive(false);
             }
         }
         else
@@ -26,6 +31,13 @@ public class ElectroGearController : MonoBehaviour
         if (c.gameObject.name == "Thunder(Clone)")
         {
             EntranceLevel3.SetActive(true);
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            Invoke("smoothGuideCamera", 1f);
         }
+    }
+
+    void smoothGuideCamera()
+    {
+        GameObject.Find("Usual Camera").GetComponent<PlayerCamera>().smoothGuideCamera();
     }
 }

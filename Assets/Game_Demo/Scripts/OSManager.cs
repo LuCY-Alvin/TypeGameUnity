@@ -64,11 +64,8 @@ public class OSManager : MonoBehaviour
         string sceneName = currentScene.name;
         if (sceneName == "Entryway")
         {
-            if (next_level == "Level1" | next_level == "Level3")
-            {
-                readTextFile(next_level);
-                StartDialogue();
-            }
+            readTextFile(next_level);
+            StartDialogue();
         }
         if (sceneName == "Level1")
         {

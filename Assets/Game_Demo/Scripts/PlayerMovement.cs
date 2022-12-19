@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour {
 	public Button bookBoxBackBtn;
 	public Button bookBoxNextBtn;
 	public SpellController _spellController;
+	public GameObject prefabHit;
 
 	// Status
 	[SerializeField] private int atkDamage;
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	/* combat related */
 	public Transform combatPoint;
+	public Transform hitPoint;
 	public float combatRange = 1.5f;
 	public LayerMask enemyLayers;
 	public bool isInvincible = false;
@@ -197,8 +199,11 @@ public class PlayerMovement : MonoBehaviour {
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
+					Debug.Log(hitPoint.position.x);
+					Debug.Log(combatPoint.position.x);
+					
+					Instantiate(prefabHit, hitPoint.position, hitPoint.rotation);
 
-					//Debug.Log("hit " + enemy.name);
 					var currentMp = _healthBar.GetCurrentMp();
             		_healthBar.SetValue(currentMp + 20, "mp");
 
@@ -209,7 +214,6 @@ public class PlayerMovement : MonoBehaviour {
 					if (enemy.GetComponent<MonsterStatus>() != null) {
 						StartCoroutine(enemy.GetComponent<MonsterStatus>().TakeDamage(atkDamage));
 					}
-                    // Debug.Log(enemy.name);
 				}
             }
 		}

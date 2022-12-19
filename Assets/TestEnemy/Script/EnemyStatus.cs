@@ -40,7 +40,7 @@ public class EnemyStatus : MonoBehaviour
 
     }
 
-    public void openExit() {
+    IEnumerator openExit() {
         SpriteRenderer[] allSpriteRenderer = GameObject.FindObjectsOfType<SpriteRenderer>(true);
         foreach (SpriteRenderer sr in allSpriteRenderer)
         {
@@ -53,8 +53,9 @@ public class EnemyStatus : MonoBehaviour
         PlayerPrefs.SetString("next level", nextLevel);
         PlayerPrefs.SetString("next phase", nextPhase);
         PlayerPrefs.Save();
-
-        GameObject.Find("Player").GetComponent<OSManager>().StartDialogue();
+        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("Usual Camera").GetComponent<PlayerCamera>().smoothGuideCamera();
     }
 
     public void TakeDamage(int damage){
@@ -94,7 +95,7 @@ public class EnemyStatus : MonoBehaviour
         if(UIbar != null)
             Destroy(UIbar);
         
-        if (transform.parent.name.Contains("Boss")) openExit();
+        if (transform.parent.name.Contains("Boss")) StartCoroutine(openExit());
     }
 
     IEnumerator Die() {

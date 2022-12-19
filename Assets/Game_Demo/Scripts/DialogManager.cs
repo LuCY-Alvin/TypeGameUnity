@@ -20,6 +20,8 @@ public class DialogManager : MonoBehaviour
 
     private void disablePlayerController()
     {
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        player.GetComponent<Animator>().SetFloat("Speed", 0);
         player.GetComponent<PlayerMovement>().enabled = false;
     }
 

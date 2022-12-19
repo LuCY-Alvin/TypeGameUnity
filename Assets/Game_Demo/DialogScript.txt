@@ -49,3 +49,15 @@ EndQueue
 [name=Ideals]那邊的時空夾縫正逐漸擴張，趕快出發吧!
 EndQueue
 1-2
+2-1
+[name=Ideals]你終於來啦，我的朋友
+[name=玩家]Ideals?是你嗎?
+你在哪?我怎麼沒看到你
+[name=Ideals]我就在你眼前啊，你再往前走一點
+EndQueue
+[name=Ideals]怎麼樣啊，看到我了嗎?
+[name=玩家]誰?我怎麼在那邊，你是誰?
+[name=Ideals]我就是你，更完美的你
+[name=玩家]...什麼意思?我不明白
+[name=Ideals]那麼就來看看誰才是真正掌握靈感的人吧!
+2-1

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game_Demo/Level2.unity
     guid: 6c6e4f11295bcff429cfd3bfaf67722d
+  - enabled: 1
+    path: Assets/Game_Demo/Level3.unity
+    guid: f9501d547fb973c41b0a83fe70f2cbc9
   m_configObjects: {}

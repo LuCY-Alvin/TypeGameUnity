@@ -129,7 +129,6 @@
      <Compile Include="Assets\Game_Demo\Scripts\Monster\Mushroom_Attack.cs" />
      <Compile Include="Assets\Game_Demo\Scripts\ButtonHover.cs" />
      <Compile Include="Assets\Game_Demo\Scripts\Monster\Mushroom.cs" />
-     <Compile Include="Assets\TestEnemy\Script\FinalBoss.cs" />
      <Compile Include="Assets\TestEnemy\Script\EnemyCollider.cs" />
      <Compile Include="Assets\TestEnemy\BossSpells\BossFireBolt.cs" />
      <Compile Include="Assets\TestEnemy\FirstBoss\Script\FirstBoss.cs" />
@@ -139,6 +138,7 @@
      <Compile Include="Assets\TestEnemy\SecondBoss\Script\DarkBolt.cs" />
      <Compile Include="Assets\TestEnemy\SecondBoss\Script\Spark.cs" />
      <Compile Include="Assets\TestEnemy\SecondBoss\Script\Lighting.cs" />
+     <Compile Include="Assets\TestEnemy\FinalBoss\Script\FinalBoss.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

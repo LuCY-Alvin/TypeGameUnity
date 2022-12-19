@@ -5,11 +5,11 @@ using UnityEngine;
 public class FinalBoss : MonoBehaviour
 {
     enum Task { Inactive, Running, Success, Failed }
-    enum Status { Idle, Jump, Firebolt }
+    enum Status { Idle, Jump, Attack, Firebolt }
     
     private Status status;
     private Task task;
-    int movementNum = 3;
+    int movementNum = 4;
     
     [Header("Idle")]
     [SerializeField] private float idelTime = 1.0f;
@@ -55,6 +55,7 @@ public class FinalBoss : MonoBehaviour
         switch (status){
             case Status.Idle: Idle(); break;
             case Status.Jump: JumpSequence(); break;
+            case Status.Attack: AttackSequence(); break;
             case Status.Firebolt: FireboltSequence(); break;
         }
 
@@ -128,7 +129,62 @@ public class FinalBoss : MonoBehaviour
         );
     }
 
-// TODO: Firebolt: move to position and spell three huge Firebolt
+    [Header("Attack")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange;
+    [SerializeField] private int attackDamage;
+    [SerializeField] private LayerMask playerLayer;
+
+    private Vector3 attackPosition;
+
+    private void AttackSequence(){
+        if( task == Task.Inactive ){
+            attackPosition = player.transform.position;
+            isMovingLeft = (attackPosition.x < transform.position.x);
+            CheckFace(player.transform);
+            task = Task.Running;
+        }
+
+    /* Running */
+    // move to attack position 
+        if(isMovingLeft && transform.position.x-attackRange >= attackPosition.x){
+            anim.SetBool("IsMoving", true);
+            Move(-1);
+            return;
+        }
+
+        if(!isMovingLeft && transform.position.x+attackRange <= attackPosition.x){
+            anim.SetBool("IsMoving", true);
+            Move(1);
+            return;
+        }
+        anim.SetBool("IsMoving", false);
+
+    // attack
+        CheckFace(player.transform);
+        anim.SetTrigger("Attack");
+        
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Player_idle")){
+            task = Task.Success;
+            return;
+        }
+    }
+
+    public void Attack(){
+        Collider2D[] hit =  Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider2D player in hit){
+            if (player.GetComponent<PlayerMovement>() != null) {
+                player.GetComponent<PlayerMovement>().TakeDamage(attackDamage, attackPoint);
+            }
+        }
+    }
+
+	private void OnDrawGizmosSelected() {
+		if(attackPoint == null) return;
+		Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+	}
+
     [Header("Firebolt")]
     [SerializeField] private GameObject fireboltPrefab;
     [SerializeField] private Transform fireboltLeftPoint;
@@ -152,20 +208,20 @@ public class FinalBoss : MonoBehaviour
     /* Running */
     // move to spell position 
         if(isMovingLeft && transform.position.x >= fireboltLeftPoint.position.x){
-            anim.SetBool("IsRunning", true);
+            anim.SetBool("IsMoving", true);
             CheckFace(fireboltLeftPoint);
             Move(-1);
             return;
         }
 
         if(!isMovingLeft && transform.position.x <= fireboltRightPoint.position.x){
-            anim.SetBool("IsRunning", true);
+            anim.SetBool("IsMoving", true);
             CheckFace(fireboltRightPoint);
             Move(1);
             return;
         }
 
-        anim.SetBool("IsRunning", false);
+        anim.SetBool("IsMoving", false);
 
     // spelling
         CheckFace(player.transform);
@@ -202,8 +258,96 @@ public class FinalBoss : MonoBehaviour
             firebolt.transform.Rotate(0f, 180f, 0f);
 
         fireboltCastCount += 1;
-        // Debug.Log("CastFb " + fireboltCastCount + "/" + fireboltCastTimes );
     }
+
+    // TODO: Here
+    [Header("DarkLightning")]
+    [SerializeField] private GameObject sparkPrefab;
+    [SerializeField] private Transform sparkPoint;
+    [SerializeField] private float lightHealthPercentage;
+    [SerializeField] private Transform[] lightPoint = new Transform[2];
+    [SerializeField] private float lightSpellingTime;
+
+    private int lightCastTimes = 7, lightCastCount = 0;
+    private float lightTimer, lightCooldown;
+    private String lightName = "DarkLightning";
+
+    private void LightningSequence(){
+        if( task == Task.Inactive ){
+            float healthP = enemyStatus.GetCurrentHealth() / enemyStatus.GetStartingHealth();
+            if(lightTimer < lightCooldown || healthP > lightHealthPercentage){
+                idleTimer += idelTime;
+                task = Task.Failed;
+                return;
+            }
+
+            int rand = UnityEngine.Random.Range(0, 2);
+            isMovingLeft = (rand == 0);
+
+            task = Task.Running; 
+            return;
+        }
+
+    /* Running */
+    // move to spell position 
+        if(isMovingLeft && transform.position.x >= lightPoint[0].position.x){
+            anim.SetBool("IsMoving", true);
+            CheckFace(lightPoint[0]);
+            Move(-1);
+            return;
+        }
+
+        if(!isMovingLeft && transform.position.x <= lightPoint[1].position.x){
+            anim.SetBool("IsMoving", true);
+            CheckFace(lightPoint[1]);
+            Move(1);
+            return;
+        }
+
+        anim.SetBool("IsMoving", false);
+
+    // spelling
+        CheckFace(player.transform);
+        spellTimer += Time.deltaTime;
+
+        if( spellTimer <= lightSpellingTime ){
+            anim.SetBool("IsSpelling", true);
+            spellBuffer = lightName;
+            ShowSpellName();
+            return;
+        }
+
+    // cast
+        anim.SetBool("IsSpelling", false);
+        HideSpellName();
+
+        if(lightCastCount < lightCastTimes){
+            anim.SetBool("IsCasting", true);
+            return;
+        } else {
+            anim.SetBool("IsCasting", false);
+            lightTimer = 0;
+            spellTimer = 0;
+            spellBuffer = "";
+            lightCastCount = 0;
+
+            task = Task.Success;
+            return;
+        }
+    }
+
+    public void CastLightning(){
+        float offset = lightCastCount * 5;
+        Vector3 tar = new Vector3(
+            transform.position.x + (offset * (transform.position.x < player.transform.position.x ? 1 : -1)),
+            sparkPoint.position.y,
+            sparkPoint.position.z
+        );
+
+        Instantiate(sparkPrefab, tar, sparkPoint.rotation);
+        lightCastCount += 1;
+    }
+    
 
     private void ShowSpellName(){
         if( !isNameShow ){
@@ -219,7 +363,6 @@ public class FinalBoss : MonoBehaviour
         if(isNameShow){
             Destroy(ultNameObject);
             isNameShow = false;
-            anim.SetBool("casting", false);
         }
     }
 

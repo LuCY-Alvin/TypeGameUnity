@@ -33,7 +33,6 @@ public class ElectroGearController : MonoBehaviour
             EntranceLevel3.SetActive(true);
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
             Invoke("smoothGuideCamera", 1f);
-            
         }
     }
 

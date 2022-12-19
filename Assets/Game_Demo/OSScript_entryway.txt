@@ -3,6 +3,11 @@ Level1
 那裡好像有個人，不然問問看他好了
 EndQueue
 Level1
+Level2
+呼...累死了，怎麼這麼麻煩
+對了，還得跟Ideals講講剛剛的發現
+EndQueue
+Level2
 Level3
 ......Ideals人呢?
 奇怪，之前有這個電機關嗎?

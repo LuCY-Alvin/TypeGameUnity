@@ -113,7 +113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.7059484, y: 4.7677317}
+  m_Size: {x: 5, y: 4.7677317}
   m_EdgeRadius: 0
 --- !u!198 &1881968205
 ParticleSystem:

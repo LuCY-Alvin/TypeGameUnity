@@ -104,10 +104,10 @@ public class DialogManager_L3 : MonoBehaviour
         allowAdvance = true;
         freezePlayerOnDialogue = true;
         disablePlayerController();
-        GameObject boss = GameObject.Find("SecondBoss");
+        GameObject boss = GameObject.Find("FinalBoss");
         if (boss != null)
         {
-            boss.GetComponent<SecondBoss>().enabled = false;
+            boss.GetComponent<FinalBoss>().enabled = false;
         }
         dialogBox.SetActive(true);
         PrintDialogue();
@@ -142,10 +142,10 @@ public class DialogManager_L3 : MonoBehaviour
         {
             enablePlayerController();
         }
-        GameObject boss = GameObject.Find("SecondBoss");
+        GameObject boss = GameObject.Find("FinalBoss");
         if (boss != null)
         {
-            boss.GetComponent<SecondBoss>().enabled = true;
+            boss.GetComponent<FinalBoss>().enabled = true;
         }
     }
 }

@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capsCollider: {fileID: 7657713412171008671}
-  damage: 10
+  damage: 15
 --- !u!70 &7657713412171008671
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

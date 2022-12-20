@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
 	public SpellController _spellController;
 	public GameObject prefabHit;
 
+	public GameObject dialogBox;
 	// Status
 	[SerializeField] private int atkDamage;
 	public float runSpeed = 40f;
@@ -190,6 +191,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				jump = true;
 				animator.SetBool("IsJumping", true);
+				dialogBox.SetActive(false);
 			}
 
 			if(Input.GetKeyDown(KeyCode.X))	// Combat

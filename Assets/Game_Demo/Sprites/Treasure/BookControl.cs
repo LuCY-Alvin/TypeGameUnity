@@ -21,6 +21,7 @@ public class BookControl : MonoBehaviour
     {
         _isTaken = false;
         BookImage = GetComponent<SpriteRenderer>();
+        // StartCoroutine(showDialog());
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class BookControl : MonoBehaviour
         BookImage.enabled = _isTaken;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private IEnumerator OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && _isTaken)
         {
@@ -38,22 +39,26 @@ public class BookControl : MonoBehaviour
 
             int index = Array.FindIndex(
                 _spellController.spellList.spells,
-                item => item.name == "teleport"
+                item => item.name == "earthbump"
             );
 
             _spellController.spellList.spells[index].enabled = true;
 
-            StartCoroutine(showDialog());
+            yield return StartCoroutine(showDialog());
+            // dialogBoxText.text = "Try to type 'earthbump'";
+
+            // dialogBox.SetActive(true);
+            // yield return new WaitForSeconds(2f);
+            
+            // dialogBox.SetActive(false);
         }
     }
 
     IEnumerator showDialog() {
-        dialogBoxText.text = "Try to type left/right teleport";
-        dialogBox.SetActive(true);
+        dialogBoxText.text = "Try to type 'earthbump'";
 
-        // TODO: notworking
-        yield return new WaitForSeconds(3f);
-        
+        dialogBox.SetActive(true);
+        yield return new WaitForSeconds(2f);
         dialogBox.SetActive(false);
     }
 

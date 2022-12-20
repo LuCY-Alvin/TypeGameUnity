@@ -14368,11 +14368,11 @@ MonoBehaviour:
   prefabFirebolt: {fileID: 6659320309255536004, guid: 7bcae3518aa628640921f7d223e7abf7, type: 3}
   prefabHeal: {fileID: 6143984224385916832, guid: f49c13af75f3a364bb59543d180c12b4, type: 3}
   prefabBlast: {fileID: 4043512819266818946, guid: 12020d8d3183c4101b8a6f075708dc97, type: 3}
-  prefabIcespear: {fileID: 0}
+  prefabIcespear: {fileID: 7303847182734845614, guid: 86972aefcd06642dfb6db56da2d3526e, type: 3}
   prefabEarthbump: {fileID: 5851074113392193827, guid: 66d3c2c38a7af408886b831c8875e076, type: 3}
   prefabThunder: {fileID: 3697553311490424280, guid: 649fd5754dd534f7ea3b0dbebf56520c, type: 3}
-  prefabTornado: {fileID: 0}
-  prefabHolyBuff: {fileID: 0}
+  prefabTornado: {fileID: 5128206107764105091, guid: e91c558d6fc634e9399b3d944bc8fc6b, type: 3}
+  prefabHolyBuff: {fileID: 1893235743126255762, guid: fbd8554fffa474a32b5f7be0a9f8e4e5, type: 3}
   bookBox: {fileID: 1844192425}
   _shield: {fileID: 329870110}
   _playerMovement: {fileID: 1161474900}
@@ -14391,10 +14391,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellController: {fileID: 1161474898}
   _healthBar: {fileID: 1148279768}
-  animator: {fileID: 0}
+  animator: {fileID: 1161474897}
   castPanel: {fileID: 1942733914}
   textBox: {fileID: 424482656}
-  bossController: {fileID: 0}
 --- !u!114 &1161474900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14411,14 +14410,15 @@ MonoBehaviour:
   btController: {fileID: 1161474901}
   castController: {fileID: 1161474899}
   animator: {fileID: 1161474897}
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 1148279768}
   bookBox: {fileID: 1844192425}
-  bookBoxCast: {fileID: 0}
-  bookBoxAffix: {fileID: 0}
-  bookBoxBackBtn: {fileID: 0}
-  bookBoxNextBtn: {fileID: 0}
+  bookBoxCast: {fileID: 972593988}
+  bookBoxAffix: {fileID: 1381628927}
+  bookBoxBackBtn: {fileID: 658798744}
+  bookBoxNextBtn: {fileID: 2080708782}
   _spellController: {fileID: 1161474898}
-  prefabHit: {fileID: 0}
+  prefabHit: {fileID: 8927824571029587952, guid: fb5f15c4b4bab4dea939686c675083d4, type: 3}
+  dialogBox: {fileID: 1167321753}
   atkDamage: 3
   runSpeed: 50
   combatPoint: {fileID: 1292166056}

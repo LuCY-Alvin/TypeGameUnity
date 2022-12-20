@@ -870,6 +870,7 @@ MonoBehaviour:
   bookBoxNextBtn: {fileID: 92559643}
   _spellController: {fileID: 276569279}
   prefabHit: {fileID: 8927824571029587952, guid: fb5f15c4b4bab4dea939686c675083d4, type: 3}
+  dialogBox: {fileID: 397843423}
   atkDamage: 3
   runSpeed: 50
   combatPoint: {fileID: 1289410346}
@@ -42837,8 +42838,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5228340cd7c4195a75711bc4ec2edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btController: {fileID: 0}
-  castController: {fileID: 0}
+  btController: {fileID: 276569282}
+  castController: {fileID: 276569280}
   _hpMask: {fileID: 1165532071}
   _mpMask: {fileID: 1052206407}
   _mpSpellMask: {fileID: 1296194310}

@@ -448,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f6f759479822e458639dc837c9ecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 276569276}
 --- !u!114 &54739011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +608,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92559641}
   m_CullTransparentMesh: 1
+--- !u!1 &237975059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237975062}
+  - component: {fileID: 237975061}
+  - component: {fileID: 237975060}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &237975060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237975059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &237975061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237975059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &237975062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237975059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251928047
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,10 +825,10 @@ MonoBehaviour:
   prefabThunder: {fileID: 3697553311490424280, guid: 649fd5754dd534f7ea3b0dbebf56520c, type: 3}
   prefabTornado: {fileID: 5128206107764105091, guid: e91c558d6fc634e9399b3d944bc8fc6b, type: 3}
   prefabHolyBuff: {fileID: 1893235743126255762, guid: fbd8554fffa474a32b5f7be0a9f8e4e5, type: 3}
-  bookBox: {fileID: 0}
+  bookBox: {fileID: 1959435561}
   _shield: {fileID: 616278597}
   _playerMovement: {fileID: 276569281}
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 1864679649}
 --- !u!114 &276569280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,8 +842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellController: {fileID: 276569279}
-  _healthBar: {fileID: 0}
-  animator: {fileID: 0}
+  _healthBar: {fileID: 1864679649}
+  animator: {fileID: 276569277}
   castPanel: {fileID: 483511876}
   textBox: {fileID: 1048357580}
 --- !u!114 &276569281
@@ -794,12 +862,12 @@ MonoBehaviour:
   btController: {fileID: 276569282}
   castController: {fileID: 276569280}
   animator: {fileID: 276569277}
-  _healthBar: {fileID: 0}
-  bookBox: {fileID: 0}
-  bookBoxCast: {fileID: 0}
-  bookBoxAffix: {fileID: 0}
-  bookBoxBackBtn: {fileID: 0}
-  bookBoxNextBtn: {fileID: 0}
+  _healthBar: {fileID: 1864679649}
+  bookBox: {fileID: 1959435561}
+  bookBoxCast: {fileID: 1403083479}
+  bookBoxAffix: {fileID: 1257849484}
+  bookBoxBackBtn: {fileID: 353292173}
+  bookBoxNextBtn: {fileID: 92559643}
   _spellController: {fileID: 276569279}
   prefabHit: {fileID: 8927824571029587952, guid: fb5f15c4b4bab4dea939686c675083d4, type: 3}
   atkDamage: 3

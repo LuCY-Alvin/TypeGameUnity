@@ -24,7 +24,7 @@
             "effect": "attack",
             "point": 20,
             "cost": 20,
-            "enabled": true
+            "enabled": false
         },
         {
             "name": "thunder",
@@ -64,30 +64,6 @@
             "effect": "attack",
             "point": 20,
             "cost": 20,
-            "enabled": true
-        },
-        {
-            "name": "teleport",
-            "type": "active",
-            "effect": "function",
-            "point": 1,
-            "cost": 1,
-            "enabled": false
-        },
-        {
-            "name": "left",
-            "type": "support",
-            "effect": "function",
-            "point": -4,
-            "cost": 1,
-            "enabled": true
-        },
-        {
-            "name": "right",
-            "type": "support",
-            "effect": "function",
-            "point": 95,
-            "cost": 1,
             "enabled": true
         },
         {

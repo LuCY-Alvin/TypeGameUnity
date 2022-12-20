@@ -48,7 +48,9 @@ public class EntryController : MonoBehaviour
             {
                 levelName = "Level" + gameObject.name[^1];
             } 
-            crossFade.SetActive(true);   
+            crossFade.SetActive(true);
+            GameObject statusBar = GameObject.Find("StatusBar");
+            if (statusBar != null) statusBar.SetActive(false);
             StartCoroutine(enterLevel(levelName));
         }
     }

@@ -778,7 +778,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   castPanel: {fileID: 483511876}
   textBox: {fileID: 1048357580}
-  bossController: {fileID: 0}
 --- !u!114 &276569281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2335,7 +2334,7 @@ RectTransform:
   - {fileID: 1506838146}
   - {fileID: 1026128868}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -1.126, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -43168,13 +43167,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 3936945662344772246, guid: be00773ee8ede98428ca1397c6aad091, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3936945662344772248, guid: be00773ee8ede98428ca1397c6aad091, type: 3}
       propertyPath: prefabBoss
       value: 
-      objectReference: {fileID: 3941488434025465449, guid: 720be2bc20da6e544924913d9b710f6b, type: 3}
+      objectReference: {fileID: 6522940138204943778, guid: 8b86c0385479a3e4c93066e55d906e1c, type: 3}
     - target: {fileID: 3936945662344772249, guid: be00773ee8ede98428ca1397c6aad091, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3936945662344772249, guid: be00773ee8ede98428ca1397c6aad091, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43218,11 +43221,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936945663997039803, guid: be00773ee8ede98428ca1397c6aad091, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.2
+      value: -10.03
       objectReference: {fileID: 0}
     - target: {fileID: 3936945663997039803, guid: be00773ee8ede98428ca1397c6aad091, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.21
+      value: -1.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be00773ee8ede98428ca1397c6aad091, type: 3}

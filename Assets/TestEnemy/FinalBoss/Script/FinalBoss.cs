@@ -5,14 +5,14 @@ using UnityEngine;
 public class FinalBoss : MonoBehaviour
 {
     enum Task { Inactive, Running, Success, Failed }
-    enum Status { Idle, Jump, Attack, Firebolt }
+    enum Status { Idle, Jump, Attack, Firebolt, Tornado, Blast }
     
     private Status status;
     private Task task;
-    int movementNum = 4;
+    int movementNum = 6;
     
     [Header("Idle")]
-    [SerializeField] private float idelTime = 1.0f;
+    [SerializeField] private float idelTime = 3.0f;
     private float idleTimer = Mathf.Infinity;
     
     [Header("Movement")]
@@ -35,6 +35,7 @@ public class FinalBoss : MonoBehaviour
     private float baseScaleX;
     private Rigidbody2D body;
     private BoxCollider2D baseColl;
+    public EnemyStatus enemyStatus;
     private Animator anim;
     private GameObject player;
 
@@ -57,6 +58,8 @@ public class FinalBoss : MonoBehaviour
             case Status.Jump: JumpSequence(); break;
             case Status.Attack: AttackSequence(); break;
             case Status.Firebolt: FireboltSequence(); break;
+            case Status.Tornado: TornadoSequence(); break;
+            case Status.Blast: BlastSequence(); break;
         }
 
     /* Task Check */
@@ -260,22 +263,22 @@ public class FinalBoss : MonoBehaviour
         fireboltCastCount += 1;
     }
 
-    // TODO: Here
-    [Header("DarkLightning")]
-    [SerializeField] private GameObject sparkPrefab;
-    [SerializeField] private Transform sparkPoint;
-    [SerializeField] private float lightHealthPercentage;
-    [SerializeField] private Transform[] lightPoint = new Transform[2];
-    [SerializeField] private float lightSpellingTime;
+    [Header("DarkTornado")]
+    [SerializeField] private GameObject tornadoPrefab;
+    [SerializeField] private Transform tornadoPoint;
+    [SerializeField] private float tornadoPercentage;
+    [SerializeField] private Transform[] tornadoPosition = new Transform[2];
+    [SerializeField] private float tornadoSpellingTime;
+    [SerializeField] private float tornadoCooldown;
 
-    private int lightCastTimes = 7, lightCastCount = 0;
-    private float lightTimer, lightCooldown;
-    private String lightName = "DarkLightning";
+    private float tornadoTimer;
+    private bool isTornadoCasted = false;
+    private String tornadoName = "DarkTornado";
 
-    private void LightningSequence(){
+    private void TornadoSequence(){
         if( task == Task.Inactive ){
             float healthP = enemyStatus.GetCurrentHealth() / enemyStatus.GetStartingHealth();
-            if(lightTimer < lightCooldown || healthP > lightHealthPercentage){
+            if(tornadoTimer < tornadoCooldown || healthP > tornadoPercentage){
                 idleTimer += idelTime;
                 task = Task.Failed;
                 return;
@@ -290,16 +293,16 @@ public class FinalBoss : MonoBehaviour
 
     /* Running */
     // move to spell position 
-        if(isMovingLeft && transform.position.x >= lightPoint[0].position.x){
+        if(isMovingLeft && transform.position.x >= tornadoPosition[0].position.x){
             anim.SetBool("IsMoving", true);
-            CheckFace(lightPoint[0]);
+            CheckFace(tornadoPosition[0]);
             Move(-1);
             return;
         }
 
-        if(!isMovingLeft && transform.position.x <= lightPoint[1].position.x){
+        if(!isMovingLeft && transform.position.x <= tornadoPosition[1].position.x){
             anim.SetBool("IsMoving", true);
-            CheckFace(lightPoint[1]);
+            CheckFace(tornadoPosition[1]);
             Move(1);
             return;
         }
@@ -310,9 +313,9 @@ public class FinalBoss : MonoBehaviour
         CheckFace(player.transform);
         spellTimer += Time.deltaTime;
 
-        if( spellTimer <= lightSpellingTime ){
+        if( spellTimer <= tornadoSpellingTime ){
             anim.SetBool("IsSpelling", true);
-            spellBuffer = lightName;
+            spellBuffer = tornadoName;
             ShowSpellName();
             return;
         }
@@ -321,33 +324,118 @@ public class FinalBoss : MonoBehaviour
         anim.SetBool("IsSpelling", false);
         HideSpellName();
 
-        if(lightCastCount < lightCastTimes){
-            anim.SetBool("IsCasting", true);
-            return;
-        } else {
-            anim.SetBool("IsCasting", false);
-            lightTimer = 0;
+        if(isTornadoCasted){
+            tornadoTimer = 0;
             spellTimer = 0;
             spellBuffer = "";
-            lightCastCount = 0;
+            isTornadoCasted = false;
 
             task = Task.Success;
+            return;
+
+        } else if(!anim.GetCurrentAnimatorStateInfo(0).IsName("cast_tornado")) {
+            anim.SetTrigger("CastTornado");
             return;
         }
     }
 
-    public void CastLightning(){
-        float offset = lightCastCount * 5;
-        Vector3 tar = new Vector3(
-            transform.position.x + (offset * (transform.position.x < player.transform.position.x ? 1 : -1)),
-            sparkPoint.position.y,
-            sparkPoint.position.z
-        );
+    public void CastTornado(){
+        for(int i=0; i<7; ++i){
+            float offset = i * 5;
+            Vector3 tar = new Vector3(
+                transform.position.x + (offset * (transform.position.x < player.transform.position.x ? 1 : -1)),
+                tornadoPoint.position.y,
+                tornadoPoint.position.z
+            );
 
-        Instantiate(sparkPrefab, tar, sparkPoint.rotation);
-        lightCastCount += 1;
+            Instantiate(tornadoPrefab, tar, tornadoPoint.rotation);
+        }
+        isTornadoCasted = true;
     }
     
+    [Header("Blast")]
+    [SerializeField] private GameObject blastPrefab;
+    [SerializeField] private Transform blastPosition;
+    [SerializeField] private float blastPercentage;
+    [SerializeField] private float blastSpellingTime;
+    [SerializeField] private float blastCooldown;
+
+    private float blastTimer;
+    private bool isBlastCasted = false;
+    private String blastName = "DarkSuperBlast";
+
+    private void BlastSequence(){
+        if( task == Task.Inactive ){
+            float healthP = enemyStatus.GetCurrentHealth() / enemyStatus.GetStartingHealth();
+            if(blastTimer < blastCooldown || healthP > blastPercentage){
+                idleTimer += idelTime;
+                task = Task.Failed;
+                return;
+            }
+
+            isMovingLeft = (blastPosition.position.x < transform.position.x);
+            CheckFace(player.transform);
+
+            task = Task.Running; 
+            return;
+        }
+
+    /* Running */
+    // move to spell position
+        if(isMovingLeft && transform.position.x >= blastPosition.position.x){
+            anim.SetBool("IsMoving", true);
+            CheckFace(blastPosition);
+            Move(-1);
+            return;
+        }
+
+        if(!isMovingLeft && transform.position.x <= blastPosition.position.x){
+            anim.SetBool("IsMoving", true);
+            CheckFace(blastPosition);
+            Move(1);
+            return;
+        }
+
+        anim.SetBool("IsMoving", false);
+
+    // spelling
+        CheckFace(player.transform);
+        spellTimer += Time.deltaTime;
+
+        if( spellTimer <= blastSpellingTime ){
+            anim.SetBool("IsSpelling", true);
+            spellBuffer = blastName;
+            ShowSpellName();
+            return;
+        }
+
+    // cast
+        anim.SetBool("IsSpelling", false);
+        HideSpellName();
+
+        if(isBlastCasted){
+            blastTimer = 0;
+            spellTimer = 0;
+            spellBuffer = "";
+            isBlastCasted = false;
+
+            task = Task.Success;
+            return;
+
+        } else if(!anim.GetCurrentAnimatorStateInfo(0).IsName("cast_blast")) {
+            anim.SetTrigger("CastBlast");
+            return;
+        }
+    }
+
+    public void CastBlast(){
+        Vector3 tar = player.transform.position;
+        tar.y = blastPosition.position.y;
+        Instantiate(blastPrefab, tar, player.transform.rotation);
+        isBlastCasted = true;
+    }
+    
+
 
     private void ShowSpellName(){
         if( !isNameShow ){

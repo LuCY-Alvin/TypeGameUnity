@@ -17,6 +17,8 @@ public class StartSceneControl : MonoBehaviour
     {
         startBtn.onClick.AddListener(startGame);
         tutorialBtn.onClick.AddListener(tutorialCanvas);
+        PlayerPrefs.SetString("next level", "Level1");
+        PlayerPrefs.SetString("next phase", "0-1");
     }
 
     void startGame()

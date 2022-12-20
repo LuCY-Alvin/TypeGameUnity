@@ -40,7 +40,15 @@ public class TypeWriting : MonoBehaviour
         if (startBtn.gameObject.activeSelf && Input.GetKeyDown(KeyCode.C))
         {
             crossFade.SetActive(true);
-            StartCoroutine(enterLevel("Entryway"));
+            if (gameObject.scene.name == "StartScene")
+            {
+                StartCoroutine(enterLevel("Entryway"));
+            }
+            else if (gameObject.scene.name == "Level3")
+            {
+                StartCoroutine(enterLevel("StartScene"));
+            } 
+            
         }
     }
 

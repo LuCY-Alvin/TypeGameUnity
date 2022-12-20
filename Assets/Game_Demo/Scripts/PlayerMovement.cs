@@ -191,7 +191,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				jump = true;
 				animator.SetBool("IsJumping", true);
-				dialogBox.SetActive(false);
+				//dialogBox.SetActive(false);
 			}
 
 			if(Input.GetKeyDown(KeyCode.X))	// Combat

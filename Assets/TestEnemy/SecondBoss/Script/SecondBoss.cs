@@ -223,7 +223,7 @@ public class SecondBoss : MonoBehaviour
 
     private int lightCastTimes = 7, lightCastCount = 0;
     private float lightTimer;
-    private String lightName = "DarkLightning";
+    private String lightName = "DarkliGhtNiNG";
 
     private void LightningSequence(){
         if( task == Task.Inactive ){
@@ -312,7 +312,10 @@ public class SecondBoss : MonoBehaviour
             ultNameObject = Instantiate(prefabUltName, bossCanvas.transform) as GameObject;
             if(player.transform.position.x < transform.position.x) ultNameObject.transform.Rotate(0, 180, 0);
             ultNameObject.transform.position = namePoint.position;
+            Debug.Log(ultNameObject.GetComponent<TMP_Text>().text );
+            Debug.Log(spellBuffer);
             ultNameObject.GetComponent<TMP_Text>().text = spellBuffer;
+            Debug.Log(ultNameObject.GetComponent<TMP_Text>().text );
             isNameShow = true;
         }
     }

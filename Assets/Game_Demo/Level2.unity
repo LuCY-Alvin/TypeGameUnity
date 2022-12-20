@@ -3203,10 +3203,10 @@ MonoBehaviour:
   prefabThunder: {fileID: 3697553311490424280, guid: 649fd5754dd534f7ea3b0dbebf56520c, type: 3}
   prefabTornado: {fileID: 5128206107764105091, guid: e91c558d6fc634e9399b3d944bc8fc6b, type: 3}
   prefabHolyBuff: {fileID: 1893235743126255762, guid: fbd8554fffa474a32b5f7be0a9f8e4e5, type: 3}
-  bookBox: {fileID: 0}
+  bookBox: {fileID: 1055373364}
   _shield: {fileID: 352795198}
   _playerMovement: {fileID: 132031355}
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 791375822}
 --- !u!114 &132031354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,7 +3220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellController: {fileID: 132031353}
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 791375822}
   animator: {fileID: 132031351}
   castPanel: {fileID: 645948497}
   textBox: {fileID: 1386172029}
@@ -3241,11 +3241,11 @@ MonoBehaviour:
   castController: {fileID: 132031354}
   animator: {fileID: 132031351}
   _healthBar: {fileID: 791375822}
-  bookBox: {fileID: 0}
-  bookBoxCast: {fileID: 0}
-  bookBoxAffix: {fileID: 0}
-  bookBoxBackBtn: {fileID: 0}
-  bookBoxNextBtn: {fileID: 0}
+  bookBox: {fileID: 1055373364}
+  bookBoxCast: {fileID: 565241819}
+  bookBoxAffix: {fileID: 913749319}
+  bookBoxBackBtn: {fileID: 1093774859}
+  bookBoxNextBtn: {fileID: 693552090}
   _spellController: {fileID: 132031353}
   prefabHit: {fileID: 8927824571029587952, guid: fb5f15c4b4bab4dea939686c675083d4, type: 3}
   atkDamage: 3
@@ -4460,7 +4460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7608054076772676787, guid: 11834856c41305747b057132705c97a8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7608054076772676813, guid: 11834856c41305747b057132705c97a8, type: 3}
       propertyPath: m_RootOrder
@@ -6498,7 +6498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f6f759479822e458639dc837c9ecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 132031350}
 --- !u!114 &1253817690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110631,7 +110631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc60ea915d4cd0468d8b6299218be01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossFade: {fileID: 0}
+  crossFade: {fileID: 355705212}
 --- !u!58 &2089981207
 CircleCollider2D:
   m_ObjectHideFlags: 0

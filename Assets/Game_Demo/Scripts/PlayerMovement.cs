@@ -251,8 +251,8 @@ public class PlayerMovement : MonoBehaviour {
 		if (superSupport != null) {
 			runSpeed = 120f;
 		}
-		yield return new WaitForSeconds(4f);
-		runSpeed = 80f;
+		yield return new WaitForSeconds(5f);
+		runSpeed = 40f;
 	}
 
 	public IEnumerator SetStiffness(float time) {

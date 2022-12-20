@@ -6,7 +6,7 @@ public class MonsterStatus : MonoBehaviour
 {
     private Rigidbody2D _this;
     private bool isDie;
-    public int life = 1;
+    public int life = 5;
     public int hitBack = 2;
     private Animator animator = null;
 
@@ -43,8 +43,14 @@ public class MonsterStatus : MonoBehaviour
         if (life < 0) {
             if (!isDie) {
                 isDie = true;
-                StartCoroutine(fadeOut(0.3f));
+                StartCoroutine(fadeOut(0.2f));
             }
+
+            yield return null;
+        }
+
+        if (isDie) {
+            yield return null;
         }
 
         SpriteRenderer MyRenderer = this.GetComponent<SpriteRenderer>();
@@ -53,8 +59,6 @@ public class MonsterStatus : MonoBehaviour
         MyRenderer.color = new Color(spriteColor.r, 0, 0, 1);
         yield return new WaitForSeconds(0.15f);
         MyRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, 1);
-
-        // take = false;
     }
 
     public IEnumerator BreakSecond(float seconds) {
@@ -64,6 +68,9 @@ public class MonsterStatus : MonoBehaviour
     IEnumerator fadeOut(float duration)
     {
         float counter = 0;
+        if (isDie) {
+            yield return null;
+        }
 
         if (this.gameObject != null) {
             SpriteRenderer MyRenderer = GetComponent<SpriteRenderer>();
@@ -79,8 +86,8 @@ public class MonsterStatus : MonoBehaviour
             }
         }
         
-        yield return new WaitForSeconds(duration + 0.1f);
-        
+        yield return new WaitForSeconds(duration + 0.3f);
+
         Destroy(gameObject);
     }
 }

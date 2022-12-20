@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7700508750179972921}
   - component: {fileID: 4064240660438782012}
   - component: {fileID: 239429692185498541}
+  - component: {fileID: -3023370912060303589}
   m_Layer: 3
   m_Name: Earth Bump 1_3
   m_TagString: Ground
@@ -101,7 +102,7 @@ Rigidbody2D:
   m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -142,3 +143,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &-3023370912060303589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851074113392193827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba7f5332166d433f920701a43811f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

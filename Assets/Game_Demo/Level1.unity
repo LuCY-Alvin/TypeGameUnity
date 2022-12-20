@@ -100241,7 +100241,8 @@ MonoBehaviour:
   bookBoxNextBtn: {fileID: 1244477556}
   _spellController: {fileID: 1621064070}
   prefabHit: {fileID: 8927824571029587952, guid: fb5f15c4b4bab4dea939686c675083d4, type: 3}
-  atkDamage: 3
+  dialogBox: {fileID: 1027927731}
+  atkDamage: 1
   runSpeed: 50
   combatPoint: {fileID: 681016602}
   hitPoint: {fileID: 1573909839}
@@ -100390,7 +100391,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   castPanel: {fileID: 234963636}
   textBox: {fileID: 224044692}
-  bossController: {fileID: 0}
 --- !u!114 &1621064072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120747,10 +120747,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   tornadoSpellingTime: 0
+  tornadoCooldown: 0
   blastPrefab: {fileID: 0}
   blastPosition: {fileID: 0}
   blastPercentage: 0
   blastSpellingTime: 0
+  blastCooldown: 0
 --- !u!212 &6522940138453942520
 SpriteRenderer:
   m_ObjectHideFlags: 0

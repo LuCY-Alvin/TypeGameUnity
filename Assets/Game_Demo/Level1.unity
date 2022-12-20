@@ -100388,7 +100388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellController: {fileID: 1621064070}
   _healthBar: {fileID: 836390122}
-  animator: {fileID: 0}
+  animator: {fileID: 1621064067}
   castPanel: {fileID: 234963636}
   textBox: {fileID: 224044692}
 --- !u!114 &1621064072

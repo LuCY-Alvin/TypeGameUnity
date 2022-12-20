@@ -3248,6 +3248,7 @@ MonoBehaviour:
   bookBoxNextBtn: {fileID: 693552090}
   _spellController: {fileID: 132031353}
   prefabHit: {fileID: 8927824571029587952, guid: fb5f15c4b4bab4dea939686c675083d4, type: 3}
+  dialogBox: {fileID: 1907709826}
   atkDamage: 3
   runSpeed: 50
   combatPoint: {fileID: 1682668748}

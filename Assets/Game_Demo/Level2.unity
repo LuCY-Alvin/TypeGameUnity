@@ -4459,6 +4459,10 @@ PrefabInstance:
       value: EnemyPatrol
       objectReference: {fileID: 0}
     - target: {fileID: 7608054076772676787, guid: 11834856c41305747b057132705c97a8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608054076772676787, guid: 11834856c41305747b057132705c97a8, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -4505,6 +4509,14 @@ PrefabInstance:
     - target: {fileID: 7608054076772676813, guid: 11834856c41305747b057132705c97a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608054077351500731, guid: 11834856c41305747b057132705c97a8, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608054077414304223, guid: 11834856c41305747b057132705c97a8, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11834856c41305747b057132705c97a8, type: 3}
@@ -54838,6 +54850,10 @@ PrefabInstance:
     - target: {fileID: 8406676398934529289, guid: 3b5caf455735dbc4f8b37defe0359472, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406676398934529289, guid: 3b5caf455735dbc4f8b37defe0359472, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8406676398934529295, guid: 3b5caf455735dbc4f8b37defe0359472, type: 3}
       propertyPath: components.Array.data[1]

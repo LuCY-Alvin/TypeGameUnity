@@ -13,8 +13,6 @@ public class CastController : MonoBehaviour
 
     public GameObject castPanel;
     public TMP_Text textBox;
-
-    public BossController bossController;
     
     private string input;
 

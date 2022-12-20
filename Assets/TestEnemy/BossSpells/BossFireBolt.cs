@@ -27,13 +27,12 @@ public class BossFireBolt : MonoBehaviour
         }
 
         if(hitInfo.gameObject.layer != bossLayer){
-            // Debug.Log("boss firebolt hit: " + hitInfo.name);
             StartCoroutine(HitHandler());
         }
     }
 
     IEnumerator HitHandler() {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         Destroy(gameObject);
         Instantiate(prefabExplosion, transform.position, transform.rotation);
     }

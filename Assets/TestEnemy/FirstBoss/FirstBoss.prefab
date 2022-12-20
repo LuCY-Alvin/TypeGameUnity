@@ -195,8 +195,8 @@ MonoBehaviour:
   meteorFirePoint:
   - {fileID: 3363755384473504653}
   - {fileID: 3363755384636834910}
-  meteorCooldown: 1
-  meteorHealthPercentage: 1
+  meteorCooldown: 30
+  meteorHealthPercentage: 0.6
   meteorSpellingTime: 5
   meteorCastingTime: 15
 --- !u!50 &3363755383577711293
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19eab14a761811742be1d2161b12de86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1
+  startingHealth: 100
   currentHealth: 0
   components:
   - {fileID: 3363755383577711295}

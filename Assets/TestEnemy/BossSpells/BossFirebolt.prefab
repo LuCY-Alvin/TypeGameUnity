@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   speed: 20
   rb: {fileID: 2482148831723684630}
   prefabExplosion: {fileID: 2511511106503440520, guid: c76298bf302e2454fa3d307e882f4e8b, type: 3}
-  damage: 15
+  damage: 10
 --- !u!95 &2482148831723684628
 Animator:
   serializedVersion: 4

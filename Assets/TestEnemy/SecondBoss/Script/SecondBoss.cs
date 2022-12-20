@@ -219,9 +219,10 @@ public class SecondBoss : MonoBehaviour
     [SerializeField] private float lightHealthPercentage;
     [SerializeField] private Transform[] lightPoint = new Transform[2];
     [SerializeField] private float lightSpellingTime;
+    [SerializeField] private float lightCooldown;
 
     private int lightCastTimes = 7, lightCastCount = 0;
-    private float lightTimer, lightCooldown;
+    private float lightTimer;
     private String lightName = "DarkLightning";
 
     private void LightningSequence(){

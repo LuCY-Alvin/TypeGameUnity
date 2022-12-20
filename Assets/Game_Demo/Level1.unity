@@ -100202,7 +100202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621064059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.27, y: -100.31, z: 0}
+  m_LocalPosition: {x: -3.2, y: -100.77, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.59}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -120728,11 +120728,29 @@ MonoBehaviour:
   prefabUltName: {fileID: 6015142290187276133, guid: a33097c19bf44a04a912cb30357dc8fc, type: 3}
   bossCanvas: {fileID: 0}
   namePoint: {fileID: 0}
+  enemyStatus: {fileID: 0}
+  attackPoint: {fileID: 0}
+  attackRange: 0
+  attackDamage: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   fireboltPrefab: {fileID: 2482148831723684629, guid: 4ea7021a2e3027e42b3b1428cecd6977, type: 3}
   fireboltLeftPoint: {fileID: 6522940137244526690}
   fireboltRightPoint: {fileID: 6522940136663172559}
   fireboltFirePoint: {fileID: 6522940137451443877}
   fireBoltSpellingTime: 3
+  tornadoPrefab: {fileID: 0}
+  tornadoPoint: {fileID: 0}
+  tornadoPercentage: 0
+  tornadoPosition:
+  - {fileID: 0}
+  - {fileID: 0}
+  tornadoSpellingTime: 0
+  blastPrefab: {fileID: 0}
+  blastPosition: {fileID: 0}
+  blastPercentage: 0
+  blastSpellingTime: 0
 --- !u!212 &6522940138453942520
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossRoom : MonoBehaviour
@@ -13,7 +11,9 @@ public class BossRoom : MonoBehaviour
         if(hit.gameObject.tag == "Player" && !isPlayerIn){
             isPlayerIn = true;
             GameObject boss = Instantiate(prefabBoss, bossPoint.position, bossPoint.rotation);
-            GameObject.Find("Player").GetComponent<DialogManager_L3>().StartDialogue();
+            DialogManager_L3 dl3 = GameObject.Find("Player").GetComponent<DialogManager_L3>(); 
+            if(dl3 != null)
+                dl3.StartDialogue();
             Destroy(gameObject);
         }
     }

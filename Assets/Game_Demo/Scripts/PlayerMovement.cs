@@ -13,10 +13,6 @@ public class PlayerMovement : MonoBehaviour {
 
 	public HealthBar _healthBar;
 	public GameObject bookBox;
-    public Text bookBoxCast;
-	public Text bookBoxAffix;
-	public Button bookBoxBackBtn;
-	public Button bookBoxNextBtn;
 	public SpellController _spellController;
 	public GameObject prefabHit;
 
@@ -28,7 +24,6 @@ public class PlayerMovement : MonoBehaviour {
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool _BookOpened = false;
-	int pages = 0;
 	// bool crouch = false;
 
 	/* combat related */
@@ -52,125 +47,11 @@ public class PlayerMovement : MonoBehaviour {
 			// CastBook
 			if (Input.GetKeyDown(KeyCode.E) && !_BookOpened) {
 
-				List<Spell> activeSpells = new() { };
-				List<Spell> supportSpells = new() { };
-				List<Spell> functionSpells = new() { };
-
-				foreach (Spell spells in _spellController.spellList.spells)
-				{
-					if (spells.type == "active")
-						activeSpells.Add(spells);
-					else if (spells.type == "support" && spells.effect != "function" && !supportSpells.Contains(spells))
-						supportSpells.Add(spells);
-					else if (spells.type == "support" && spells.effect == "function" && !functionSpells.Contains(spells))
-						functionSpells.Add(spells);
-				}
-
-				bookBoxCast.text = "Skills\n";
-				bookBoxAffix.text = "Affix\n";
-
-				var spell = activeSpells[pages];
-				if (spell.effect == "function")
-				{
-					foreach (Spell functionCast in functionSpells)
-						bookBoxAffix.text += "\n" + functionCast.name;
-				}
-				else if (spell.effect == "buff")
-				{
-					foreach (Spell buffCast in supportSpells)
-						if (buffCast.name == "extend")
-							bookBoxAffix.text += "\n" + buffCast.name;
-				}
-				else if (spell.effect == "attack" || spell.effect == "heal")
-				{
-					foreach (Spell supportCast in supportSpells)
-						if (supportCast.name != "extend")
-							bookBoxAffix.text += "\n" + supportCast.name;
-				}
-
-				bookBoxCast.text += "\n" + spell.name;
-				bookBoxBackBtn.gameObject.SetActive(false);
-				bookBoxNextBtn.gameObject.SetActive(true);
-
-				bookBoxBackBtn.onClick.AddListener(back);
-				bookBoxNextBtn.onClick.AddListener(next);
-
-				void back()
-                {
-					if (pages>=1)
-					{
-						bookBoxNextBtn.gameObject.SetActive(true);
-						bookBoxCast.text = "Skills\n";
-						bookBoxAffix.text = "Affix\n";
-
-						pages -= 1;
-						spell = activeSpells[pages];
-						bookBoxCast.text += "\n" + spell.name;
-
-						if (spell.effect == "function")
-						{
-							foreach (Spell functionCast in functionSpells)
-								bookBoxAffix.text += "\n" + functionCast.name;
-						}
-						else if (spell.effect == "buff")
-						{
-							foreach (Spell buffCast in supportSpells)
-								if (buffCast.name == "extend")
-									bookBoxAffix.text += "\n" + buffCast.name;
-						}
-						else if (spell.effect == "attack" || spell.effect == "heal")
-						{
-							foreach (Spell supportCast in supportSpells)
-								if (supportCast.name != "extend")
-									bookBoxAffix.text += "\n" + supportCast.name;
-						}
-
-						if (pages == 0)
-							bookBoxBackBtn.gameObject.SetActive(false);
-					}
-                }
-
-				void next()
-				{
-					if (pages <= activeSpells.Count-2)
-					{
-						bookBoxBackBtn.gameObject.SetActive(true);
-						bookBoxCast.text = "Skills\n";
-						bookBoxAffix.text = "Affix\n";
-
-						pages += 1;
-						spell = activeSpells[pages];
-						bookBoxCast.text += "\n" + spell.name;
-
-						if (spell.effect == "function")
-						{
-							foreach (Spell functionCast in functionSpells)
-								bookBoxAffix.text += "\n" + functionCast.name;
-						}
-						else if (spell.effect == "buff")
-						{
-							foreach (Spell buffCast in supportSpells)
-								if (buffCast.name == "extend")
-									bookBoxAffix.text += "\n" + buffCast.name;
-						}
-						else if (spell.effect == "attack" || spell.effect == "heal")
-						{
-							foreach (Spell supportCast in supportSpells)
-								if (supportCast.name != "extend")
-									bookBoxAffix.text += "\n" + supportCast.name;
-						}
-
-						if (pages == activeSpells.Count-1)
-							bookBoxNextBtn.gameObject.SetActive(false);
-					}
-				}
-
 				_BookOpened = true;
 				bookBox.SetActive(true);
 
 			} else if (Input.GetKeyDown(KeyCode.E) && _BookOpened)
             {
-				pages = 0;
 				_BookOpened = false;
 				bookBox.SetActive(false);
 			}

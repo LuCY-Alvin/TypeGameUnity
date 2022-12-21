@@ -2373,7 +2373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charPerSecond: 0.1
   startBtn: {fileID: 103871127}
+  bg: {fileID: 1538670719}
   crossFade: {fileID: 2075060899}
+  Panel: {fileID: 1094810653}
 --- !u!114 &1418163035
 MonoBehaviour:
   m_ObjectHideFlags: 0

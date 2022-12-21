@@ -10,12 +10,14 @@ public class TypeWriting : MonoBehaviour
     public float charPerSecond = 0.2f;
     public Image startBtn;
     public GameObject crossFade;
+    public GameObject Panel;
     private string words;
 
     private bool isActive = false;
     private float timer;
     private TMP_Text myText;
     private int currentPos = 0;
+
 
     SceneTransition sceneTransition;
 
@@ -29,26 +31,25 @@ public class TypeWriting : MonoBehaviour
         myText = GetComponent<TMP_Text>();
         words = myText.text;
         myText.text = "";
-
     }
 
     // Update is called once per frame
     void Update()
     {
         OnStartWriter();
-        
+
         if (startBtn.gameObject.activeSelf && Input.GetKeyDown(KeyCode.C))
         {
-            crossFade.SetActive(true);
             if (gameObject.scene.name == "StartScene")
             {
+                crossFade.SetActive(true);
                 StartCoroutine(enterLevel("Entryway"));
             }
             else if (gameObject.scene.name == "Level3")
             {
-                StartCoroutine(enterLevel("StartScene"));
-            } 
-            
+                Panel.SetActive(true);
+            }
+
         }
     }
 
@@ -92,5 +93,10 @@ public class TypeWriting : MonoBehaviour
         yield return new WaitForSeconds(1f);
         sceneTransition.LoadLevel(levelName);
         SceneManager.LoadScene(levelName);
+    }
+
+    public void StartButton()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }

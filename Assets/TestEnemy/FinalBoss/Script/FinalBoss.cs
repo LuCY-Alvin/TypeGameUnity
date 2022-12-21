@@ -51,6 +51,8 @@ public class FinalBoss : MonoBehaviour
     }
 
     private void Update(){
+        tornadoTimer += Time.deltaTime;
+        blastTimer += Time.deltaTime;
     // TODO: Add Skills
     /* Behaviour */
         switch (status){

@@ -649,12 +649,12 @@ MonoBehaviour:
   - {fileID: 6522940137100816886}
   - {fileID: 6522940136519597147}
   tornadoSpellingTime: 6
-  tornadoCooldown: 20
+  tornadoCooldown: 10
   blastPrefab: {fileID: 863384990104493249, guid: 5bbddc07bb1ab114db8d0039163bef2a, type: 3}
   blastPosition: {fileID: 2015959462356808734}
   blastPercentage: 0.7
   blastSpellingTime: 4
-  blastCooldown: 15
+  blastCooldown: 10
 --- !u!1 &7131570120428323785
 GameObject:
   m_ObjectHideFlags: 0

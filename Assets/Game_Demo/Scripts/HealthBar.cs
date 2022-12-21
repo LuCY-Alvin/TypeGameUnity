@@ -38,7 +38,7 @@ public class HealthBar : MonoBehaviour
         CancelInvoke("ManaHandler");
 
         if (isBulletTime) {
-            InvokeRepeating ("ManaHandler", 0f, 0.01f); 
+            InvokeRepeating ("ManaHandler", 0f, 0.005f); 
         } else {
             InvokeRepeating ("ManaHandler", 0f, 0.5f); 
         }

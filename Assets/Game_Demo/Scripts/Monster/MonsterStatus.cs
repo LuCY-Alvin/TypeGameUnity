@@ -53,12 +53,17 @@ public class MonsterStatus : MonoBehaviour
             yield return null;
         }
 
-        SpriteRenderer MyRenderer = this.GetComponent<SpriteRenderer>();
-        Color spriteColor = MyRenderer.material.color;
+        if (this.gameObject != null && this.GetComponent<SpriteRenderer>() != null && !isDie) {
+            SpriteRenderer MyRenderer = this.GetComponent<SpriteRenderer>();
+            Color spriteColor = MyRenderer.material.color;
 
-        MyRenderer.color = new Color(spriteColor.r, 0, 0, 1);
-        yield return new WaitForSeconds(0.15f);
-        MyRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, 1);
+            MyRenderer.color = new Color(spriteColor.r, 0, 0, 1);
+            yield return new WaitForSeconds(0.15f);
+            if (this.gameObject != null && this.GetComponent<SpriteRenderer>() != null) {
+                MyRenderer.color = new Color(spriteColor.r, spriteColor.g, spriteColor.b, 1);
+            }
+        }
+        
     }
 
     public IEnumerator BreakSecond(float seconds) {
@@ -72,7 +77,7 @@ public class MonsterStatus : MonoBehaviour
             yield return null;
         }
 
-        if (this.gameObject != null) {
+        if (this.gameObject != null && this.GetComponent<SpriteRenderer>() != null) {
             SpriteRenderer MyRenderer = GetComponent<SpriteRenderer>();
             Color spriteColor = MyRenderer.material.color;
 

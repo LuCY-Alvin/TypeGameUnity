@@ -28,6 +28,12 @@ public class BookControl : MonoBehaviour
     void Update()
     {
         BookImage.enabled = _isTaken;
+        int index = Array.FindIndex(
+            _spellController.spellList.spells,
+            item => item.name == "earthbump"
+        );
+
+        _spellController.spellList.spells[index].enabled = false;
     }
 
     private IEnumerator OnTriggerExit2D(Collider2D collision)

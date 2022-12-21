@@ -72,7 +72,7 @@ public class DialogManager_L3 : MonoBehaviour
             if (isGuideTransform)
             {
                 dialogImage.sprite = guideImage_after;
-                dialogImage.color = new Color32(255, 0, 212, 255);
+                dialogImage.color = new Color32(136, 154, 255, 255);
             }
             else dialogImage.sprite = guideImage_before;
         }

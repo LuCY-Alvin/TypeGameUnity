@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterStatus : MonoBehaviour
 {
+    public AudioClip hit;
+    AudioSource audioSource;
     private Rigidbody2D _this;
     private bool isDie;
     public int life = 5;
@@ -18,6 +20,7 @@ public class MonsterStatus : MonoBehaviour
             animator = this.gameObject.GetComponent<Animator>();
         }
         _this = this.gameObject.GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +40,9 @@ public class MonsterStatus : MonoBehaviour
             // yield return new WaitForSeconds(0.3f);
             // animator.SetBool("Hurt", false);
         }
+
+        audioSource.PlayOneShot(hit, 0.7F);
+        
         _this.AddForce(new Vector2(v, 0), ForceMode2D.Impulse);
         life -= damage;
 

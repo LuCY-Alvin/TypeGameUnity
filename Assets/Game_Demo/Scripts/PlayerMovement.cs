@@ -6,6 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
+
+	public AudioClip impact;
+	public AudioClip onHurt;
+    AudioSource audioSource;
+	
 	public CharacterController2D controller;
 	public TimeController btController;
 	public CastController castController;
@@ -36,6 +41,11 @@ public class PlayerMovement : MonoBehaviour {
 	public bool isInjured = false;
 
 	public static Transform _playerTransform;
+
+	void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void Update () {
 		_playerTransform = transform;
@@ -82,6 +92,7 @@ public class PlayerMovement : MonoBehaviour {
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
 				foreach (Collider2D enemy in hitEnemies){
+					audioSource.PlayOneShot(impact, 0.7F);
 					//Debug.Log(hitPoint.position.x);
 					//Debug.Log(combatPoint.position.x);
 					
@@ -242,6 +253,8 @@ public class PlayerMovement : MonoBehaviour {
 		
 		//hurt animation
 		animator.SetTrigger("Injured");
+
+		audioSource.PlayOneShot(onHurt, 0.7F);
 
 		Debug.Log("Player takes " + damage + " damage!\n");
 

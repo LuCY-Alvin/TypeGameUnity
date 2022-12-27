@@ -55,7 +55,7 @@ public class HealthBar : MonoBehaviour
     public void SetValue(int newValue, string type)
     {
         if (newValue > initMax) {
-            return;
+            newValue = initMax;
         }
 
         if (newValue <= 0 && type == "hp") {

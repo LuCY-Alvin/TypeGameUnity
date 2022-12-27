@@ -6,9 +6,18 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public GameObject player;
+    public GameObject MainCamera;
+    public AudioClip failScene;
+    AudioSource audioSource;
+    AudioSource playerAudio;
 
     public void Setup()
     {
+        audioSource = MainCamera.GetComponent<AudioSource>();
+        playerAudio = player.GetComponent<AudioSource>();
+        playerAudio.volume = 0F;
+        audioSource.clip = failScene;
+        audioSource.Play();
         gameObject.SetActive(true);
         player.GetComponent<PlayerMovement>().enabled = false;
     }

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class EntryController : MonoBehaviour
 {
+    public AudioClip enterRift;
+    AudioSource audioSource;
     private bool isInBox = false;
     private string next_level;
     private string levelName;
@@ -16,6 +18,8 @@ public class EntryController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         sceneTransition = crossFade.GetComponent<SceneTransition>();
         if (!PlayerPrefs.HasKey("next level"))
         {
@@ -40,6 +44,7 @@ public class EntryController : MonoBehaviour
 
         if (isInBox && Input.GetKeyDown(KeyCode.Z))
         {
+            audioSource.PlayOneShot(enterRift,0.5F);
             if (gameObject.name.Contains("Exit"))
             {
                 levelName = "Entryway";

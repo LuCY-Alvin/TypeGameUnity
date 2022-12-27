@@ -7,9 +7,12 @@ using UnityEngine.SceneManagement;
 public class EndGameController : MonoBehaviour
 {
     private bool isInBox;
+    public GameObject MainCamera;
     public Canvas StoryCanvas;
     public GameObject crossFade;
     public float waitSec;
+    public AudioClip endGame;
+    AudioSource audioSource;
 
     SceneTransition sceneTransition;
 
@@ -24,6 +27,7 @@ public class EndGameController : MonoBehaviour
     void Start()
     {
         sceneTransition = crossFade.GetComponent<SceneTransition>();
+        audioSource = MainCamera.GetComponent<AudioSource>();
     }
     
     void Update()
@@ -31,6 +35,8 @@ public class EndGameController : MonoBehaviour
         if (isInBox && Input.GetKeyDown(KeyCode.Z))
         {
             StoryCanvas.gameObject.SetActive(true);
+            audioSource.clip = endGame;
+            audioSource.Play();
         }
     }
 }

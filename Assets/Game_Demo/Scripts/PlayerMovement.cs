@@ -91,8 +91,9 @@ public class PlayerMovement : MonoBehaviour {
 				StartCoroutine(SetStiffness(0.5f));
 				Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(combatPoint.position, combatRange, enemyLayers);
 
+				audioSource.PlayOneShot(impact, 0.7F);
+
 				foreach (Collider2D enemy in hitEnemies){
-					audioSource.PlayOneShot(impact, 0.7F);
 					//Debug.Log(hitPoint.position.x);
 					//Debug.Log(combatPoint.position.x);
 					
@@ -226,9 +227,9 @@ public class PlayerMovement : MonoBehaviour {
 		
 	}
 
-	public void OnLanding(){
-		animator.SetBool("IsJumping", false);
-	}
+	// public void OnLanding(){
+	// 	animator.SetBool("IsJumping", false);
+	// }
 
 	private void OnDrawGizmosSelected() {
 		if(combatPoint == null) return;

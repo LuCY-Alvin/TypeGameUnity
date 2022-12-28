@@ -27,12 +27,18 @@ public class CharacterController2D : MonoBehaviour
 
 	public UnityEvent OnLandEvent;
 
+	public Animator animator;
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
+
+	void Start()
+    {
+        animator = this.gameObject.GetComponent<Animator>();
+    }
 
 	private void Awake()
 	{
@@ -58,8 +64,11 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if (wasGrounded) 
-					OnLandEvent.Invoke();
+				if (wasGrounded) {
+					Debug.Log("???");
+					animator.SetBool("IsJumping", false);
+				}
+					// OnLandEvent.Invoke();
 			}
 		}
 	}

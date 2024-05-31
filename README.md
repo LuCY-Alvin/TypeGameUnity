@@ -8,5 +8,6 @@
 
 
 ## Links
-Download [our demo game](https://mega.nz/file/oK8gVBjT#zjQs_cggB639qDIuYKD_0kan9DAQkZTPkITH8RqhtkM) and upzip it.
-Run **靈感不見了.exe**  to start playing. Enjoy your game!
+Download [our demo game](https://mega.nz/file/oK8gVBjT#zjQs_cggB639qDIuYKD_0kan9DAQkZTPkITH8RqhtkM) and upzip it.  
+Run **靈感不見了.exe**  to start playing.  
+Enjoy your game!
